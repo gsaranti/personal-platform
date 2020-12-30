@@ -1,13 +1,17 @@
 <template>
   <div class="experience">
     <h2>My Experience</h2>
+    <redbull/>
   </div>
 </template>
 
 <script>
+  import redbull from "./redbull";
+
   export default {
-    name: 'about',
+    name: 'experience',
     components: {
+      redbull
     }
   }
 </script>
