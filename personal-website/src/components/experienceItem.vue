@@ -42,7 +42,7 @@
       const handler = this.onVisibilityChange(this.$el);
 
       if (window.addEventListener) {
-        addEventListener('scroll', _.throttle(handler, 100), false);
+        addEventListener('scroll', _.throttle(handler, 50), false);
       }
     },
     methods: {
@@ -61,13 +61,13 @@
         const rect = el.getBoundingClientRect();
         if (window.innerWidth >= 1200) {
           return (
-            rect.top >= -150 &&
-            rect.top + 500 <= 750
+            rect.top >= -245 &&
+            rect.top <= 200
           );
         } else {
           return (
-            rect.top >= -200 &&
-            rect.top + 400 <= 750
+            rect.top >= -245 &&
+            rect.top <= 350
           );
         }
       }
