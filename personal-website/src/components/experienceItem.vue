@@ -43,7 +43,7 @@
       const handler = this.onVisibilityChange(this.$el);
 
       if (window.addEventListener) {
-        addEventListener('scroll', _.throttle(handler, 100), false);
+        addEventListener('scroll', _.throttle(handler, 50), false);
       }
     },
     methods: {
@@ -53,22 +53,36 @@
         return function () {
           const visible = self.isElementInViewport(el);
           if (visible !== old_visible) {
-            self.isExpanded = self.scrollDirection === "down";
+            self.isExpanded = visible;
           }
         }
       },
       isElementInViewport (el) {
         const rect = el.getBoundingClientRect();
-        if (window.innerWidth >= 1200) {
-          return (
-            // rect.top >= -300 &&
-            rect.top + 350 <= 750
-          );
+        if (this.scrollDirection === 'down') {
+          if (window.innerWidth >= 1200) {
+            return (
+              rect.top >= -245 &&
+              rect.top <= 200
+            );
+          } else {
+            return (
+              rect.top >= -245 &&
+              rect.top <= 350
+            );
+          }
         } else {
-          return (
-            rect.top >= -200 &&
-            rect.top + 400 <= 750
-          );
+          if (window.innerWidth >= 1200) {
+            return (
+              rect.top >= -245 &&
+              rect.top <= 200
+            );
+          } else {
+            return (
+              rect.top >= -245 &&
+              rect.top <= 350
+            );
+          }
         }
       }
     }
