@@ -130,7 +130,7 @@
       const handler = this.onScroll();
 
       if (window.addEventListener) {
-        addEventListener('scroll', _.throttle(handler, 100), false);
+        addEventListener('scroll', _.throttle(handler, 10), false);
       }
     },
     methods: {

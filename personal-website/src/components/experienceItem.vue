@@ -43,43 +43,106 @@
       const handler = this.onVisibilityChange(this.$el);
 
       if (window.addEventListener) {
-        addEventListener('scroll', _.throttle(handler, 50), false);
+        addEventListener('scroll', _.throttle(handler, 10), false);
       }
     },
     methods: {
       onVisibilityChange(el) {
-        let old_visible = this.isExpanded;
         const self = this;
         return function () {
           const visible = self.isElementInViewport(el);
-          if (visible !== old_visible) {
+          if (visible !== self.isExpanded && visible !== undefined) {
             self.isExpanded = visible;
           }
         }
       },
       isElementInViewport (el) {
         const rect = el.getBoundingClientRect();
-        if (this.scrollDirection === 'down') {
-          if (window.innerWidth >= 1200) {
+        if (this.scrollDirection === 'down' && this.isExpanded === false) {
+          if (window.innerWidth >= 1450) {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 720
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 450
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 200
+              );
+            }
             return (
-              rect.top >= -245 &&
-              rect.top <= 200
+              rect.top <= 0
+            );
+          } else if (window.innerWidth >= 1200) {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 500
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 375
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 150
+              );
+            }
+            return (
+              rect.top <= 0
             );
           } else {
             return (
-              rect.top >= -245 &&
               rect.top <= 350
             );
           }
-        } else {
-          if (window.innerWidth >= 1200) {
+        } else if (this.scrollDirection === 'up' && this.isExpanded === true) {
+          if (window.innerWidth >= 1450) {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 900
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 600
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 450
+              );
+            }
             return (
-              rect.top >= -245 &&
-              rect.top <= 200
+              rect.top <= 100
+            );
+          } else if (window.innerWidth >= 1200) {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 900
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 600
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 350
+              );
+            }
+            return (
+              rect.top <= 0
             );
           } else {
             return (
-              rect.top >= -245 &&
               rect.top <= 350
             );
           }
@@ -136,7 +199,7 @@
 
   @keyframes expandText {
     0% {
-      max-height: 150px;
+      max-height: 155px;
     }
     100% {
       max-height: 750px;
@@ -148,7 +211,7 @@
       max-height: 750px;
     }
     100% {
-      max-height: 150px;
+      max-height: 155px;
     }
   }
 
