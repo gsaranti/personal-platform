@@ -125,12 +125,12 @@
           } else if (window.innerWidth >= 1200) {
             if (window.innerHeight >= 1000) {
               return (
-                rect.top <= 900
+                rect.top <= 600
               );
             }
             if (window.innerHeight >= 700) {
               return (
-                rect.top <= 600
+                rect.top <= 475
               );
             }
             if (window.innerHeight >= 400) {
