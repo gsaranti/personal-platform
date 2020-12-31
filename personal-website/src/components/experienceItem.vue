@@ -62,21 +62,21 @@
           if (window.innerWidth >= 1450) {
             if (window.innerHeight >= 1000) {
               return (
-                rect.top <= 720
+                rect.top <= 525
               );
             }
             if (window.innerHeight >= 700) {
               return (
-                rect.top <= 450
+                rect.top <= 350
               );
             }
             if (window.innerHeight >= 400) {
               return (
-                rect.top <= 200
+                rect.top <= 250
               );
             }
             return (
-              rect.top <= 0
+              rect.top <= 75
             );
           } else if (window.innerWidth >= 1200) {
             if (window.innerHeight >= 1000) {
@@ -106,17 +106,17 @@
           if (window.innerWidth >= 1450) {
             if (window.innerHeight >= 1000) {
               return (
-                rect.top <= 900
+                rect.top <= 600
               );
             }
             if (window.innerHeight >= 700) {
               return (
-                rect.top <= 600
+                rect.top <= 425
               );
             }
             if (window.innerHeight >= 400) {
               return (
-                rect.top <= 450
+                rect.top <= 350
               );
             }
             return (
