@@ -1,7 +1,9 @@
 <template>
   <div>
     <intro/>
-    <experience/>
+    <v-lazy>
+      <experience/>
+    </v-lazy>
   </div>
 </template>
 
@@ -10,12 +12,12 @@
   import experience from "../components/experience";
 
   export default {
-  name: 'home',
-  components: {
-    intro,
-    experience
+    name: 'home',
+    components: {
+      intro,
+      experience
+    }
   }
-}
 </script>
 
 <style>

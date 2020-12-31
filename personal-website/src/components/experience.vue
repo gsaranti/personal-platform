@@ -1,17 +1,122 @@
 <template>
   <div class="experience">
-    <h2>My Experience</h2>
-    <redbull/>
+    <h2 class="label">The Path So Far...</h2>
+    <experienceItem side="left"
+                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
+                    label="Red Bull Media House"
+                    :description="[
+                      'My time at Red Bull Media House has been incredible. Being able to work with' +
+                      ' a group of experienced, driven individuals who show passion for what they do ' +
+                      'both in and out of the office inspires me on a daily basis.',
+                      'After proving my abilities to the team leadership, I was promoted from a junior' +
+                      ' Software Engineer to Software Engineer at the beginning of 2019. Over the past ' +
+                      'two plus years I’ve worked on the backend engineering team, building and ' +
+                      'maintaining the services that power the Red Bull TV and Servus TV streaming ' +
+                      'services and Red Bull AR App.',
+                      'During this time I have gained significant experience in video streaming. A ' +
+                      'unique project that my team and I built was our multilinear service, which ' +
+                      'generates 24/7 HLS and DASH linear streams and accompanying electronic ' +
+                      'programming guides. By doing so, Red Bull TV now offers multiple linear stream ' +
+                      'channels along with VOD and live streams. Along with this, I helped build the ' +
+                      'metadata and stream localization features for Red Bull TV, improving the ' +
+                      'content served to numerous regions.',
+                      'Want to learn more about what I’ve worked on at Red Bull Media House (ETL' +
+                      ' systems, leaderboard services, data migrations, and more!)? Connect with me ' +
+                      'on LinkedIn! Let’s chat.'
+                    ]"
+                    :expand="true"
+    />
+    <experienceItem side="right"
+                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
+                    label="Red Bull Media House"
+                    :description="[
+                      'My time at Red Bull Media House has been incredible. Being able to work with' +
+                      ' a group of experienced, driven individuals who show passion for what they do ' +
+                      'both in and out of the office inspires me on a daily basis.',
+                      'After proving my abilities to the team leadership, I was promoted from a junior' +
+                      ' Software Engineer to Software Engineer at the beginning of 2019. Over the past ' +
+                      'two plus years I’ve worked on the backend engineering team, building and ' +
+                      'maintaining the services that power the Red Bull TV and Servus TV streaming ' +
+                      'services and Red Bull AR App.',
+                      'During this time I have gained significant experience in video streaming. A ' +
+                      'unique project that my team and I built was our multilinear service, which ' +
+                      'generates 24/7 HLS and DASH linear streams and accompanying electronic ' +
+                      'programming guides. By doing so, Red Bull TV now offers multiple linear stream ' +
+                      'channels along with VOD and live streams. Along with this, I helped build the ' +
+                      'metadata and stream localization features for Red Bull TV, improving the ' +
+                      'content served to numerous regions.',
+                      'Want to learn more about what I’ve worked on at Red Bull Media House (ETL' +
+                      ' systems, leaderboard services, data migrations, and more!)? Connect with me ' +
+                      'on LinkedIn! Let’s chat.'
+                    ]"
+                    :expand="true"
+    />
+    <experienceItem side="left"
+                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
+                    label="Red Bull Media House"
+                    :description="[
+                      'My time at Red Bull Media House has been incredible. Being able to work with' +
+                      ' a group of experienced, driven individuals who show passion for what they do ' +
+                      'both in and out of the office inspires me on a daily basis.',
+                      'After proving my abilities to the team leadership, I was promoted from a junior' +
+                      ' Software Engineer to Software Engineer at the beginning of 2019. Over the past ' +
+                      'two plus years I’ve worked on the backend engineering team, building and ' +
+                      'maintaining the services that power the Red Bull TV and Servus TV streaming ' +
+                      'services and Red Bull AR App.',
+                      'During this time I have gained significant experience in video streaming. A ' +
+                      'unique project that my team and I built was our multilinear service, which ' +
+                      'generates 24/7 HLS and DASH linear streams and accompanying electronic ' +
+                      'programming guides. By doing so, Red Bull TV now offers multiple linear stream ' +
+                      'channels along with VOD and live streams. Along with this, I helped build the ' +
+                      'metadata and stream localization features for Red Bull TV, improving the ' +
+                      'content served to numerous regions.',
+                      'Want to learn more about what I’ve worked on at Red Bull Media House (ETL' +
+                      ' systems, leaderboard services, data migrations, and more!)? Connect with me ' +
+                      'on LinkedIn! Let’s chat.'
+                    ]"
+                    :expand="true"
+    />
+    <experienceItem side="right"
+                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
+                    label="Red Bull Media House"
+                    :description="[
+                      'My time at Red Bull Media House has been incredible. Being able to work with' +
+                      ' a group of experienced, driven individuals who show passion for what they do ' +
+                      'both in and out of the office inspires me on a daily basis.',
+                      'After proving my abilities to the team leadership, I was promoted from a junior' +
+                      ' Software Engineer to Software Engineer at the beginning of 2019. Over the past ' +
+                      'two plus years I’ve worked on the backend engineering team, building and ' +
+                      'maintaining the services that power the Red Bull TV and Servus TV streaming ' +
+                      'services and Red Bull AR App.',
+                      'During this time I have gained significant experience in video streaming. A ' +
+                      'unique project that my team and I built was our multilinear service, which ' +
+                      'generates 24/7 HLS and DASH linear streams and accompanying electronic ' +
+                      'programming guides. By doing so, Red Bull TV now offers multiple linear stream ' +
+                      'channels along with VOD and live streams. Along with this, I helped build the ' +
+                      'metadata and stream localization features for Red Bull TV, improving the ' +
+                      'content served to numerous regions.',
+                      'Want to learn more about what I’ve worked on at Red Bull Media House (ETL' +
+                      ' systems, leaderboard services, data migrations, and more!)? Connect with me ' +
+                      'on LinkedIn! Let’s chat.'
+                    ]"
+                    :expand="true"
+    />
+    <div style="margin-top: 700px">
+
+    </div>
   </div>
 </template>
 
 <script>
-  import redbull from "./redbull";
+  import experienceItem from "./experienceItem";
 
   export default {
     name: 'experience',
     components: {
-      redbull
+      experienceItem
+    },
+    data: () => {
+      return {}
     }
   }
 </script>
@@ -22,7 +127,7 @@
     background: white;
   }
 
-  h2 {
+  .label {
     overflow: hidden;
     white-space: nowrap;
     text-align: center;
@@ -36,8 +141,8 @@
     }
   }
 
-  h2:before,
-  h2:after {
+  .label:before,
+  .label:after {
     background-color: #000;
     content: "";
     display: inline-block;
@@ -47,12 +152,12 @@
     width: 50%;
   }
 
-  h2:before {
+  .label:before {
     right: 0.5em;
     margin-left: -50%;
   }
 
-  h2:after {
+  .label:after {
     left: 0.5em;
     margin-right: -50%;
   }

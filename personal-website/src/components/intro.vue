@@ -1,16 +1,16 @@
 <template>
-  <div class="intro">
+  <div v-bind:class="{intro: isLoaded, beforeLoad: !isLoaded}">
     <div>
-      <p class="signature">George Sarantinos</p>
+      <p v-bind:class="{signature: isLoaded}">George Sarantinos</p>
     </div>
-    <div class="animated-title">
-      <div class="text-top">
+    <div v-bind:class="{'animated-title': isLoaded}">
+      <div v-bind:class="{'text-top': isLoaded}">
         <div>
           <span style="margin-right: 135px">Hi there,</span>
           <span>My name is George</span>
         </div>
       </div>
-      <div class="text-bottom">
+      <div v-bind:class="{'text-bottom': isLoaded}">
         <div>Get to know me!</div>
       </div>
     </div>
@@ -21,6 +21,14 @@
   export default {
     name: 'intro',
     components: {
+    },
+    data: () => {
+      return {
+        isLoaded: false
+      }
+    },
+    mounted() {
+      this.isLoaded = true;
     }
   }
 </script>
@@ -81,6 +89,10 @@
     }
   }
 
+  .beforeLoad {
+    visibility: hidden;
+  }
+
   .intro {
     width: 100%;
     height: 100%;
@@ -97,7 +109,6 @@
     -moz-animation: fadeIn ease 2s;
     -o-animation: fadeIn ease 2s;
     -ms-animation: fadeIn ease 2s;
-    /*z-index: -1;*/
   }
 
   .signature {
