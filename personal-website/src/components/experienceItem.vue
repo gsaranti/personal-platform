@@ -86,7 +86,7 @@
             }
             if (window.innerHeight >= 700) {
               return (
-                rect.top <= 375
+                rect.top <= 325
               );
             }
             if (window.innerHeight >= 400) {
@@ -98,8 +98,23 @@
               rect.top <= 0
             );
           } else {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 600
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 400
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 200
+              );
+            }
             return (
-              rect.top <= 350
+              rect.top <= 100
             );
           }
         } else if (this.scrollDirection === 'up' && this.isExpanded === true) {
@@ -130,7 +145,7 @@
             }
             if (window.innerHeight >= 700) {
               return (
-                rect.top <= 475
+                rect.top <= 350
               );
             }
             if (window.innerHeight >= 400) {
@@ -142,8 +157,23 @@
               rect.top <= 0
             );
           } else {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 600
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 450
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 300
+              );
+            }
             return (
-              rect.top <= 350
+              rect.top <= 100
             );
           }
         }
