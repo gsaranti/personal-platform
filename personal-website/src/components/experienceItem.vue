@@ -59,11 +59,17 @@
       },
       isElementInViewport (el) {
         const rect = el.getBoundingClientRect();
-
-        return (
-          rect.top >= -150 - (window.innerWidth * .1) &&
-          rect.top + 400 <= 700
-        );
+        if (window.innerWidth >= 1200) {
+          return (
+            rect.top >= -150 &&
+            rect.top + 500 <= 750
+          );
+        } else {
+          return (
+            rect.top >= -200 &&
+            rect.top + 400 <= 750
+          );
+        }
       }
     }
   }
@@ -116,24 +122,24 @@
 
   @keyframes expandText {
     0% {
-      max-height: 180px;
+      max-height: 150px;
     }
     100% {
-      max-height: 500px;
+      max-height: 750px;
     }
   }
 
   @keyframes collapseText {
     0% {
-      max-height: 500px;
+      max-height: 750px;
     }
     100% {
-      max-height: 180px;
+      max-height: 150px;
     }
   }
 
   .collapsed {
-    max-height: 180px;
+    max-height: 150px;
     animation: collapseText 1s;
     -webkit-animation: collapseText 1s;
     -moz-animation: collapseText 1s;
