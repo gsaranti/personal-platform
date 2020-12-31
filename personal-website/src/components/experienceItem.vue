@@ -13,8 +13,8 @@
             {{ paragraph }}<br><br>
           </p>
         </div>
-        <p :class="{noDots: isExpanded, dots: !isExpanded}">...</p>
       </div>
+<!--      <p :class="{noDots: isExpanded, dots: !isExpanded}">...</p>-->
     </div>
   </div>
 </template>
@@ -29,7 +29,8 @@
       imgUrl: String,
       label: String,
       description: Array,
-      expand: Boolean
+      expand: Boolean,
+      scrollDirection: String
     },
     components: {
     },
@@ -52,8 +53,7 @@
         return function () {
           const visible = self.isElementInViewport(el);
           if (visible !== old_visible) {
-            old_visible = visible;
-            self.isExpanded = visible;
+            self.isExpanded = self.scrollDirection === "down";
           }
         }
       },
@@ -61,8 +61,8 @@
         const rect = el.getBoundingClientRect();
         if (window.innerWidth >= 1200) {
           return (
-            rect.top >= -150 &&
-            rect.top + 500 <= 750
+            // rect.top >= -300 &&
+            rect.top + 350 <= 750
           );
         } else {
           return (
