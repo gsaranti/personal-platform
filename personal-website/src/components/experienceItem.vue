@@ -59,123 +59,14 @@
       isElementInViewport (el) {
         const rect = el.getBoundingClientRect();
         if (this.scrollDirection === 'down' && this.isExpanded === false) {
-          if (window.innerWidth >= 1450) {
-            if (window.innerHeight >= 1000) {
-              return (
-                rect.top <= 525
-              );
-            }
-            if (window.innerHeight >= 700) {
-              return (
-                rect.top <= 350
-              );
-            }
-            if (window.innerHeight >= 400) {
-              return (
-                rect.top <= 250
-              );
-            }
             return (
-              rect.top <= 75
+              rect.top >= 0 &&
+              rect.bottom + 150 <= (window.innerHeight || document.documentElement.clientHeight)
             );
-          } else if (window.innerWidth >= 1200) {
-            if (window.innerHeight >= 1000) {
-              return (
-                rect.top <= 500
-              );
-            }
-            if (window.innerHeight >= 700) {
-              return (
-                rect.top <= 325
-              );
-            }
-            if (window.innerHeight >= 400) {
-              return (
-                rect.top <= 150
-              );
-            }
-            return (
-              rect.top <= 0
-            );
-          } else {
-            if (window.innerHeight >= 1000) {
-              return (
-                rect.top <= 600
-              );
-            }
-            if (window.innerHeight >= 700) {
-              return (
-                rect.top <= 400
-              );
-            }
-            if (window.innerHeight >= 400) {
-              return (
-                rect.top <= 200
-              );
-            }
-            return (
-              rect.top <= 100
-            );
-          }
         } else if (this.scrollDirection === 'up' && this.isExpanded === true) {
-          if (window.innerWidth >= 1450) {
-            if (window.innerHeight >= 1000) {
-              return (
-                rect.top <= 600
-              );
-            }
-            if (window.innerHeight >= 700) {
-              return (
-                rect.top <= 425
-              );
-            }
-            if (window.innerHeight >= 400) {
-              return (
-                rect.top <= 350
-              );
-            }
             return (
-              rect.top <= 100
+              rect.top <= window.innerHeight - 350
             );
-          } else if (window.innerWidth >= 1200) {
-            if (window.innerHeight >= 1000) {
-              return (
-                rect.top <= 600
-              );
-            }
-            if (window.innerHeight >= 700) {
-              return (
-                rect.top <= 350
-              );
-            }
-            if (window.innerHeight >= 400) {
-              return (
-                rect.top <= 350
-              );
-            }
-            return (
-              rect.top <= 0
-            );
-          } else {
-            if (window.innerHeight >= 1000) {
-              return (
-                rect.top <= 600
-              );
-            }
-            if (window.innerHeight >= 700) {
-              return (
-                rect.top <= 450
-              );
-            }
-            if (window.innerHeight >= 400) {
-              return (
-                rect.top <= 300
-              );
-            }
-            return (
-              rect.top <= 100
-            );
-          }
         }
       }
     }
