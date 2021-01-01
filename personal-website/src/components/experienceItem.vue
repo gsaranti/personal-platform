@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div :class="{itemCollapsed: !isExpanded, itemExpanded: isExpanded}">
     <div :class="{imageHolderLeft: side === 'left', imageHolderRight: side === 'right'}">
       <v-lazy>
         <img class="image" :src=imgUrl alt=""/>
@@ -8,6 +8,9 @@
     <div :class="{infoLeft: side === 'left', infoRight: side === 'right'}">
       <div>
         <h2 class="placement">{{label}}</h2>
+        <div class="positions">
+          <p v-for="(p, index) in positions" :key="index">{{ p }}</p>
+        </div>
         <div :class="{collapsed: !isExpanded, expanded: isExpanded}">
           <p v-for="(paragraph, index) in description" :key="index">
             {{ paragraph }}<br><br>
@@ -30,7 +33,8 @@
       label: String,
       description: Array,
       expand: Boolean,
-      scrollDirection: String
+      scrollDirection: String,
+      positions: Array
     },
     components: {
     },
@@ -59,14 +63,25 @@
       isElementInViewport (el) {
         const rect = el.getBoundingClientRect();
         if (this.scrollDirection === 'down' && this.isExpanded === false) {
+          if (window.innerWidth < 1000) {
             return (
               rect.top >= 0 &&
-              rect.bottom + 150 <= (window.innerHeight || document.documentElement.clientHeight)
+              rect.bottom + 100 <= (window.innerHeight || document.documentElement.clientHeight)
             );
+          }
+          return (
+            rect.top >= 0 &&
+            rect.bottom + 125 <= (window.innerHeight || document.documentElement.clientHeight)
+          );
         } else if (this.scrollDirection === 'up' && this.isExpanded === true) {
+          if (window.innerWidth < 1000) {
             return (
-              rect.top <= window.innerHeight - 350
+              rect.top <= window.innerHeight - 625
             );
+          }
+          return (
+            rect.top <= window.innerHeight - 350
+          );
         }
       }
     }
@@ -74,23 +89,76 @@
 </script>
 
 <style>
-  .item {
-    margin-top: 20px;
-    margin-bottom: 80px;
+  @media (max-width: 1000px) {
+    .itemExpanded {
+      margin-bottom: 10px;
+    }
+
+    .itemCollapsed {
+      margin-bottom: 40px;
+    }
+
+    .imageHolderLeft {
+      border-radius: 25px;
+      padding-right: 20px;
+    }
+
+    .imageHolderRight {
+      border-radius: 25px;
+      padding-left: 20px;
+    }
+
+    .infoLeft {
+      margin-right: 10vw;
+      margin-left: 10vw;
+      margin-top: 20px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .infoRight {
+      margin-left: 10vw;
+      margin-right: 10vw;
+      margin-top: 20px;
+      overflow: hidden;
+      text-align: center;
+    }
   }
 
-  .imageHolderLeft {
-    float: left;
-    margin-left: 5vw;
-    border-radius: 25px;
-    padding-right: 20px;
-  }
+  @media (min-width: 1000px) {
+    .itemExpanded {
+      margin-bottom: 30px;
+    }
 
-  .imageHolderRight {
-    float: right;
-    margin-right: 5vw;
-    border-radius: 25px;
-    padding-left: 20px;
+    .itemCollapsed {
+      margin-bottom: 70px;
+    }
+
+    .imageHolderLeft {
+      float: left;
+      margin-left: 5vw;
+      border-radius: 25px;
+      padding-right: 20px;
+    }
+
+    .imageHolderRight {
+      float: right;
+      margin-right: 5vw;
+      border-radius: 25px;
+      padding-left: 20px;
+    }
+
+    .infoLeft {
+      margin-right: 5vw;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .infoRight {
+      margin-left: 5vw;
+      overflow: hidden;
+      text-align: left;
+    }
   }
 
   .image {
@@ -102,20 +170,14 @@
     background-color: rgba(192,192,192, 0.4);
   }
 
-  .infoLeft {
-    margin-right: 5vw;
-    overflow: hidden;
-    text-align: left;
-  }
-
-  .infoRight {
-    margin-left: 5vw;
-    overflow: hidden;
-    text-align: left;
-  }
-
   .placement {
-    margin-bottom: 10px;
+    margin-bottom: 3px;
+  }
+
+  .positions {
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 5px;
   }
 
   @keyframes expandText {

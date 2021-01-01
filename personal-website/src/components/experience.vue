@@ -26,6 +26,10 @@
                     ]"
                     :expand="true"
                     :scrollDirection="scrollDirection"
+                    :positions="[
+                      'Software Engineer - Jan 2019 - Present',
+                      'Junior Software Engineer - Aug 2018 - Dec 2018'
+                    ]"
     />
     <experienceItem side="right"
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
@@ -52,6 +56,10 @@
                     ]"
                     :expand="true"
                     :scrollDirection="scrollDirection"
+                    :positions="[
+                      'Software Engineer - Jan 2019 - Present',
+                      'Junior Software Engineer - Aug 2018 - Dec 2018',
+                    ]"
     />
     <experienceItem side="left"
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
@@ -78,6 +86,10 @@
                     ]"
                     :expand="true"
                     :scrollDirection="scrollDirection"
+                    :positions="[
+                      'Junior Software Engineer - Aug 2018 - Dec 2018',
+                      'Software Engineer - Jan 2019 - Present'
+                    ]"
     />
     <experienceItem side="right"
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
@@ -104,6 +116,10 @@
                     ]"
                     :expand="true"
                     :scrollDirection="scrollDirection"
+                    :positions="[
+                      'Junior Software Engineer - Aug 2018 - Dec 2018',
+                      'Software Engineer - Jan 2019 - Present'
+                    ]"
     />
     <div style="margin-top: 700px">
 
@@ -162,6 +178,7 @@
     text-align: center;
     margin-right: 30%;
     margin-left: 30%;
+    margin-bottom: 40px;
   }
 
   @media (max-width: 500px) {
