@@ -13,8 +13,8 @@
             {{ paragraph }}<br><br>
           </p>
         </div>
+        <p :class="{noDots: isExpanded, dots: !isExpanded}">...</p>
       </div>
-<!--      <p :class="{noDots: isExpanded, dots: !isExpanded}">...</p>-->
     </div>
   </div>
 </template>
@@ -137,7 +137,8 @@
   }
 
   .collapsed {
-    max-height: 150px;
+    max-height: 155px;
+    overflow: hidden;
     animation: collapseText 1s;
     -webkit-animation: collapseText 1s;
     -moz-animation: collapseText 1s;
