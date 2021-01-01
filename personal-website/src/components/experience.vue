@@ -25,6 +25,7 @@
                       'on LinkedIn! Let’s chat.'
                     ]"
                     :expand="true"
+                    :scrollDirection="scrollDirection"
     />
     <experienceItem side="right"
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
@@ -50,6 +51,7 @@
                       'on LinkedIn! Let’s chat.'
                     ]"
                     :expand="true"
+                    :scrollDirection="scrollDirection"
     />
     <experienceItem side="left"
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
@@ -75,6 +77,7 @@
                       'on LinkedIn! Let’s chat.'
                     ]"
                     :expand="true"
+                    :scrollDirection="scrollDirection"
     />
     <experienceItem side="right"
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
@@ -100,6 +103,7 @@
                       'on LinkedIn! Let’s chat.'
                     ]"
                     :expand="true"
+                    :scrollDirection="scrollDirection"
     />
     <div style="margin-top: 700px">
 
@@ -109,6 +113,7 @@
 
 <script>
   import experienceItem from "./experienceItem";
+  import _ from "lodash";
 
   export default {
     name: 'experience',
@@ -116,7 +121,31 @@
       experienceItem
     },
     data: () => {
-      return {}
+      return {
+        scrollDirection: "down",
+        viewPortTop: 0
+      }
+    },
+    mounted() {
+      const handler = this.onScroll();
+
+      if (window.addEventListener) {
+        addEventListener('scroll', _.throttle(handler, 10), false);
+      }
+    },
+    methods: {
+      onScroll() {
+        const self = this;
+        return function () {
+          const currentTop = window.pageYOffset || window.scrollTop;
+          if (currentTop > self.viewPortTop) {
+            self.scrollDirection = "down";
+          } else {
+            self.scrollDirection = "up";
+          }
+          self.viewPortTop = currentTop;
+        }
+      }
     }
   }
 </script>

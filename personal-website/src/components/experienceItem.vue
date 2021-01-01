@@ -13,8 +13,8 @@
             {{ paragraph }}<br><br>
           </p>
         </div>
-        <p :class="{noDots: isExpanded, dots: !isExpanded}">...</p>
       </div>
+<!--      <p :class="{noDots: isExpanded, dots: !isExpanded}">...</p>-->
     </div>
   </div>
 </template>
@@ -29,7 +29,8 @@
       imgUrl: String,
       label: String,
       description: Array,
-      expand: Boolean
+      expand: Boolean,
+      scrollDirection: String
     },
     components: {
     },
@@ -42,33 +43,139 @@
       const handler = this.onVisibilityChange(this.$el);
 
       if (window.addEventListener) {
-        addEventListener('scroll', _.throttle(handler, 50), false);
+        addEventListener('scroll', _.throttle(handler, 10), false);
       }
     },
     methods: {
       onVisibilityChange(el) {
-        let old_visible = this.isExpanded;
         const self = this;
         return function () {
           const visible = self.isElementInViewport(el);
-          if (visible !== old_visible) {
-            old_visible = visible;
+          if (visible !== self.isExpanded && visible !== undefined) {
             self.isExpanded = visible;
           }
         }
       },
       isElementInViewport (el) {
         const rect = el.getBoundingClientRect();
-        if (window.innerWidth >= 1200) {
-          return (
-            rect.top >= -245 &&
-            rect.top <= 200
-          );
-        } else {
-          return (
-            rect.top >= -245 &&
-            rect.top <= 350
-          );
+        if (this.scrollDirection === 'down' && this.isExpanded === false) {
+          if (window.innerWidth >= 1450) {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 525
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 350
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 250
+              );
+            }
+            return (
+              rect.top <= 75
+            );
+          } else if (window.innerWidth >= 1200) {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 500
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 325
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 150
+              );
+            }
+            return (
+              rect.top <= 0
+            );
+          } else {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 600
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 400
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 200
+              );
+            }
+            return (
+              rect.top <= 100
+            );
+          }
+        } else if (this.scrollDirection === 'up' && this.isExpanded === true) {
+          if (window.innerWidth >= 1450) {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 600
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 425
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 350
+              );
+            }
+            return (
+              rect.top <= 100
+            );
+          } else if (window.innerWidth >= 1200) {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 600
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 350
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 350
+              );
+            }
+            return (
+              rect.top <= 0
+            );
+          } else {
+            if (window.innerHeight >= 1000) {
+              return (
+                rect.top <= 600
+              );
+            }
+            if (window.innerHeight >= 700) {
+              return (
+                rect.top <= 450
+              );
+            }
+            if (window.innerHeight >= 400) {
+              return (
+                rect.top <= 300
+              );
+            }
+            return (
+              rect.top <= 100
+            );
+          }
         }
       }
     }
@@ -122,7 +229,7 @@
 
   @keyframes expandText {
     0% {
-      max-height: 150px;
+      max-height: 155px;
     }
     100% {
       max-height: 750px;
@@ -134,7 +241,7 @@
       max-height: 750px;
     }
     100% {
-      max-height: 150px;
+      max-height: 155px;
     }
   }
 
