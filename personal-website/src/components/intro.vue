@@ -14,6 +14,11 @@
         <div>Get to know me!</div>
       </div>
     </div>
+    <div :class="{downButtonIntro: isLoaded}">
+      <div v-on:click="callAutoScroll" class="downButton">
+        <i class="arrow down"></i>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,6 +27,9 @@
     name: 'intro',
     components: {
     },
+    props: {
+      autoScroll: Function
+    },
     data: () => {
       return {
         isLoaded: false
@@ -29,6 +37,11 @@
     },
     mounted() {
       this.isLoaded = true;
+    },
+    methods: {
+      callAutoScroll() {
+        this.autoScroll();
+      }
     }
   }
 </script>
@@ -154,9 +167,27 @@
     }
   }
 
+  @media (max-height: 600px) {
+    .animated-title {
+      margin-top: 40vh;
+    }
+  }
+
+  @media (max-height: 500px) {
+    .animated-title {
+      margin-top: 30vh;
+    }
+  }
+
   @media (max-height: 400px) {
     .animated-title {
       margin-top: 0;
+    }
+  }
+
+  @media (max-height: 350px) {
+    .downButton {
+      visibility: hidden;
     }
   }
 
@@ -209,5 +240,88 @@
     animation-fill-mode: forwards;
     top: 0;
     transform: translate(0, -100%);
+  }
+
+  @keyframes flash {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(248, 248, 255, 0.7);
+    }
+
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(248, 248, 255, 0);
+    }
+
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(248, 248, 255, 0);
+    }
+  }
+
+  @keyframes moveUpDown {
+    0%, 100% {
+      margin-top: 15px;
+    }
+    50% {
+      margin-top: 10px;
+    }
+  }
+
+  .downButtonIntro {
+    visibility: hidden;
+    animation: fadeIn ease 1.5s;
+    -webkit-animation: fadeIn ease 1.5s;
+    -moz-animation: fadeIn ease 1.5s;
+    -o-animation: fadeIn ease 1.5s;
+    -ms-animation: fadeIn ease 1.5s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+  }
+
+  .downButton {
+    margin-left: 45vw;
+    border: 2px solid ghostwhite;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 20px;
+    animation: flash 1.5s;
+    -webkit-animation: flash 1.5s;
+    -moz-animation: flash 1.5s;
+    -o-animation: flash 1.5s;
+    -ms-animation: flash 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .arrow {
+    border: solid ghostwhite;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 11px;
+    margin-top: 12px;
+    border-radius: 15%;
+  }
+
+  .downButton:hover {
+    border: 1px solid ghostwhite;
+  }
+
+  .downButton:hover > .arrow {
+    border-width: 0 5px 5px 0;
+    animation: moveUpDown 800ms;
+    -webkit-animation: moveUpDown 800ms;
+    -moz-animation: moveUpDown 800ms;
+    -o-animation: moveUpDown 800ms;
+    -ms-animation: moveUpDown 800ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
   }
 </style>
