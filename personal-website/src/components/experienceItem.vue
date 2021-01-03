@@ -99,13 +99,28 @@
     }
 
     .imageHolderLeft {
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
       border-radius: 25px;
-      padding-right: 20px;
+      width: 400px;
+      height: 250px;
+      background-color: rgba(192,192,192, 0.4);
+      background-repeat: no-repeat;
+      background-blend-mode: screen;
+
     }
 
     .imageHolderRight {
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
       border-radius: 25px;
-      padding-left: 20px;
+      width: 400px;
+      height: 250px;
+      background-color: rgba(192,192,192, 0.4);
+      background-repeat: no-repeat;
+      background-blend-mode: screen;
     }
 
     .infoLeft {
@@ -136,16 +151,28 @@
 
     .imageHolderLeft {
       float: left;
+      position: relative;
       margin-left: 5vw;
+      margin-right: 20px;
       border-radius: 25px;
-      padding-right: 20px;
+      width: 400px;
+      height: 250px;
+      background-color: rgba(192,192,192, 0.4);
+      background-repeat: no-repeat;
+      background-blend-mode: screen;
     }
 
     .imageHolderRight {
       float: right;
+      position: relative;
       margin-right: 5vw;
+      margin-left: 20px;
       border-radius: 25px;
-      padding-left: 20px;
+      width: 400px;
+      height: 250px;
+      background-color: rgba(192,192,192, 0.4);
+      background-repeat: no-repeat;
+      background-blend-mode: screen;
     }
 
     .infoLeft {
@@ -162,12 +189,14 @@
   }
 
   .image {
-    border-radius: 25px;
-    width: 400px;
-    height: 250px;
-    background-repeat: no-repeat;
-    background-blend-mode: screen;
-    background-color: rgba(192,192,192, 0.4);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
   }
 
   .placement {

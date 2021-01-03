@@ -2,7 +2,7 @@
   <div class="experience">
     <h2 class="label">The Path So Far...</h2>
     <experienceItem side="left"
-                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/v1609373485/redbull_wr7wps.png"
+                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_400,h_250/v1609373485/redbull_wr7wps.png"
                     label="Red Bull Media House"
                     :description="[
                       'My time at Red Bull Media House has been incredible. Being able to work with' +
@@ -29,6 +29,36 @@
                     :positions="[
                       'Software Engineer - Jan 2019 - Present',
                       'Junior Software Engineer - Aug 2018 - Dec 2018'
+                    ]"
+    />
+    <experienceItem side="right"
+                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_350,h_200/v1609570109/LMU1_t6sf4w.png"
+                    label="Loyola Marymount University"
+                    :description="[
+                      'My time at Red Bull Media House has been incredible. Being able to work with' +
+                      ' a group of experienced, driven individuals who show passion for what they do ' +
+                      'both in and out of the office inspires me on a daily basis.',
+                      'After proving my abilities to the team leadership, I was promoted from a junior' +
+                      ' Software Engineer to Software Engineer at the beginning of 2019. Over the past ' +
+                      'two plus years I’ve worked on the backend engineering team, building and ' +
+                      'maintaining the services that power the Red Bull TV and Servus TV streaming ' +
+                      'services and Red Bull AR App.',
+                      'During this time I have gained significant experience in video streaming. A ' +
+                      'unique project that my team and I built was our multilinear service, which ' +
+                      'generates 24/7 HLS and DASH linear streams and accompanying electronic ' +
+                      'programming guides. By doing so, Red Bull TV now offers multiple linear stream ' +
+                      'channels along with VOD and live streams. Along with this, I helped build the ' +
+                      'metadata and stream localization features for Red Bull TV, improving the ' +
+                      'content served to numerous regions.',
+                      'Want to learn more about what I’ve worked on at Red Bull Media House (ETL' +
+                      ' systems, leaderboard services, data migrations, and more!)? Connect with me ' +
+                      'on LinkedIn! Let’s chat.'
+                    ]"
+                    :expand="true"
+                    :scrollDirection="scrollDirection"
+                    :positions="[
+                      'B.S. Computer Science',
+                      'Class of 2018'
                     ]"
     />
     <div style="margin-top: 700px">
@@ -92,7 +122,7 @@
   }
 
   @media (max-width: 500px) {
-    h2 {
+    .label {
       border-bottom: 1px solid black;
     }
   }
