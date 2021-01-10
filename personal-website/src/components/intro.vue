@@ -1,20 +1,20 @@
 <template>
-  <div v-bind:class="{'intro': isLoaded, 'introBeforeLoad': !isLoaded}">
-    <div v-bind:class="{'beforeLoad': !isLoaded}">
-      <p v-bind:class="{'signature': isLoaded}">George Sarantinos</p>
+  <div v-bind:class="{intro: backgroundLoaded && windowLoaded, introBeforeLoad: !backgroundLoaded || !windowLoaded}">
+    <div v-bind:class="{'beforeLoad': !backgroundLoaded || !windowLoaded}">
+      <p v-bind:class="{'signature': backgroundLoaded && windowLoaded}">George Sarantinos</p>
     </div>
-    <div v-bind:class="{'animated-title': isLoaded, 'beforeLoad': !isLoaded}">
-      <div v-bind:class="{'text-top': isLoaded}">
+    <div v-bind:class="{'animated-title': backgroundLoaded && windowLoaded, 'beforeLoad': !backgroundLoaded || !windowLoaded}">
+      <div v-bind:class="{'text-top': backgroundLoaded && windowLoaded}">
         <div>
           <span style="margin-right: 135px">Hi there,</span>
           <span>My name is George</span>
         </div>
       </div>
-      <div v-bind:class="{'text-bottom': isLoaded}">
+      <div v-bind:class="{'text-bottom': backgroundLoaded && windowLoaded}">
         <div>Get to know me!</div>
       </div>
     </div>
-    <div :class="{'downButtonIntro': isLoaded, 'beforeLoad': !isLoaded}">
+    <div :class="{'downButtonIntro': backgroundLoaded && windowLoaded, 'beforeLoad': !backgroundLoaded || !windowLoaded}">
       <div v-on:click="callAutoScroll" class="downButton">
         <i class="arrow down"></i>
       </div>
@@ -32,7 +32,8 @@
     },
     data: () => {
       return {
-        isLoaded: false,
+        backgroundLoaded: false,
+        windowLoaded: false,
         backgroundImage: new Image()
       }
     },
@@ -42,8 +43,11 @@
     mounted() {
       const self = this;
       this.backgroundImage.onload = function () {
-        self.isLoaded = true;
+        self.backgroundLoaded = true;
       };
+      window.onload = function () {
+        self.windowLoaded = true;
+      }
     },
     methods: {
       callAutoScroll() {
