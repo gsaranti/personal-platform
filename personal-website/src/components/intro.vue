@@ -1,9 +1,9 @@
 <template>
-  <div v-bind:class="{intro: isLoaded, beforeLoad: !isLoaded}">
-    <div>
-      <p v-bind:class="{signature: isLoaded}">George Sarantinos</p>
+  <div v-bind:class="{'intro': isLoaded, 'introBeforeLoad': !isLoaded}">
+    <div v-bind:class="{'beforeLoad': !isLoaded}">
+      <p v-bind:class="{'signature': isLoaded}">George Sarantinos</p>
     </div>
-    <div v-bind:class="{'animated-title': isLoaded}">
+    <div v-bind:class="{'animated-title': isLoaded, 'beforeLoad': !isLoaded}">
       <div v-bind:class="{'text-top': isLoaded}">
         <div>
           <span style="margin-right: 135px">Hi there,</span>
@@ -14,7 +14,7 @@
         <div>Get to know me!</div>
       </div>
     </div>
-    <div :class="{downButtonIntro: isLoaded}">
+    <div :class="{'downButtonIntro': isLoaded, 'beforeLoad': !isLoaded}">
       <div v-on:click="callAutoScroll" class="downButton">
         <i class="arrow down"></i>
       </div>
@@ -32,11 +32,18 @@
     },
     data: () => {
       return {
-        isLoaded: false
+        isLoaded: false,
+        backgroundImage: new Image()
       }
     },
+    created() {
+      this.backgroundImage.src = "https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_auto,f_auto,e_sharpen:100,e_brightness_hsb:-10/v1609018153/2020-11-06_12.37.49_h3ayue.jpg";
+    },
     mounted() {
-      this.isLoaded = true;
+      const self = this;
+      this.backgroundImage.onload = function () {
+        self.isLoaded = true;
+      };
     },
     methods: {
       callAutoScroll() {
@@ -49,61 +56,75 @@
 <style>
   @keyframes fadeIn {
     0% {
-      opacity:0;
+      filter: blur(5px);
       visibility: visible;
     }
     100% {
-      opacity:1;
+      filter: blur(0);
       visibility: visible;
     }
   }
 
   @-moz-keyframes fadeIn {
     0% {
-      opacity:0;
+      filter: blur(5px);
       visibility: visible;
     }
     100% {
-      opacity:1;
+      filter: blur(0);
       visibility: visible;
     }
   }
 
   @-webkit-keyframes fadeIn {
     0% {
-      opacity:0;
+      filter: blur(5px);
       visibility: visible;
     }
     100% {
-      opacity:1;
+      filter: blur(0);
       visibility: visible;
     }
   }
 
   @-o-keyframes fadeIn {
     0% {
-      opacity:0;
+      filter: blur(5px);
       visibility: visible;
     }
     100% {
-      opacity:1;
+      filter: blur(0);
       visibility: visible;
     }
   }
 
   @-ms-keyframes fadeIn {
     0% {
-      opacity:0;
+      filter: blur(5px);
       visibility: visible;
     }
     100% {
-      opacity:1;
+      filter: blur(0);
       visibility: visible;
     }
   }
 
   .beforeLoad {
     visibility: hidden;
+  }
+
+  .introBeforeLoad {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    filter: blur(5px);
+    background: url(https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto,e_brightness_hsb:-10/v1609018153/2020-11-06_12.37.49_h3ayue.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 
   .intro {
