@@ -124,7 +124,7 @@
     left: 0;
     position: absolute;
     filter: blur(5px);
-    background: url(https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto,e_brightness_hsb:-10/v1609018153/2020-11-06_12.37.49_h3ayue.jpg) no-repeat center center fixed;
+    background: url(https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto,e_brightness_hsb:-10/v1609018153/2020-11-06_12.37.49_h3ayue.jpg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
