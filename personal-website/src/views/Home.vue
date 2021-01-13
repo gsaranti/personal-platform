@@ -1,9 +1,13 @@
 <template>
   <div>
-    <intro :autoScroll="autoScroll" />
+    <intro :autoScroll="autoScroll"/>
     <v-lazy>
-      <experience class="experience" />
+      <experience class="experienceScroll"/>
     </v-lazy>
+    <v-lazy>
+      <about class="aboutScroll"/>
+    </v-lazy>
+    <div style="margin-top: 5000px"></div>
   </div>
 </template>
 
@@ -11,26 +15,31 @@
   import smoothscroll from 'smoothscroll-polyfill';
   import intro from "../components/intro";
   import experience from "../components/experience";
+  import about from "../components/about";
 
   export default {
     name: 'home',
     components: {
       intro,
-      experience
+      experience,
+      about
     },
     created() {
       smoothscroll.polyfill();
     },
     methods: {
       autoScroll() {
-        this.$el.querySelector('.experience').scrollIntoView({ behavior: 'smooth' });
+        this.$el.querySelector('.experienceScroll').scrollIntoView({ behavior: 'smooth' });
       }
     }
   }
 </script>
 
 <style>
-  .experience {
+  .experienceScroll {
+  }
+
+  .aboutScroll {
 
   }
 </style>
