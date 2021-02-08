@@ -61,9 +61,6 @@
                       'Class of 2018'
                     ]"
     />
-    <div style="margin-top: 700px">
-
-    </div>
   </div>
 </template>
 
@@ -86,7 +83,7 @@
       const handler = this.onScroll();
 
       if (window.addEventListener) {
-        addEventListener('scroll', _.throttle(handler, 10), false);
+        addEventListener('scroll', _.throttle(handler, 10), {passive: true, capture: true});
       }
     },
     methods: {
