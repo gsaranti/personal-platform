@@ -7,7 +7,6 @@
     <v-lazy>
       <about class="aboutScroll"/>
     </v-lazy>
-    <div style="margin-top: 5000px"></div>
   </div>
 </template>
 

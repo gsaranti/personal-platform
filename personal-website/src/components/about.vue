@@ -144,4 +144,26 @@
     margin-left: 5px;
     margin-top: 5px;
   }
+
+  @media (max-width: 500px) {
+    .aboutMe {
+      width: 100%;
+    }
+
+    .collage {
+      visibility: hidden;
+    }
+
+    .imageRow {
+      visibility: hidden;
+    }
+
+    .long {
+      visibility: hidden;
+    }
+
+    .tall {
+      visibility: hidden;
+    }
+  }
 </style>
