@@ -41,9 +41,9 @@
         <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612501030/henry_tsler1.jpg" alt=""/>
       </div>
       <div class="imageRow">
-        <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612501041/book_zpjxm6.heic" alt=""/>
-        <img class="tall" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365602/walk_gjbscw.jpg" alt=""/>
-        <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365590/wine_kwzdsl.jpg" alt=""/>
+        <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750132/ferry_nbn0lt.jpg" alt=""/>
+        <img class="tall" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750137/bike_pvbf3n.jpg" alt=""/>
+        <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750125/fam-ski_lojnwq.jpg" alt=""/>
       </div>
     </div>
   </div>
@@ -121,6 +121,12 @@
     display: flex;
     align-items: center;
     z-index: -1;
+  }
+
+  @media (min-width: 1545px) {
+    .imageRow {
+      float: right;
+    }
   }
 
   .long {
