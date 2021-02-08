@@ -236,6 +236,7 @@
     margin-top: 50vh;
     margin-left: 45vw;
     margin-right: 5vw;
+    white-space: nowrap;
   }
 
   @media (max-width: 550px) {
@@ -563,5 +564,20 @@
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
+  }
+
+  @media (max-width: 500px) {
+    .introBeforeLoad {
+      background-position: left center;
+    }
+
+    .intro {
+      background-position: left 35% center;
+    }
+
+    .animated-title {
+      margin-left: 25vw;
+      margin-top: 47vh;
+    }
   }
 </style>
