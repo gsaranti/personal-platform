@@ -327,4 +327,22 @@
   .noDots {
     visibility: hidden;
   }
+
+  @media (max-width: 500px) {
+    .imageHolderLeft {
+      width: 350px;
+      height: 219px;
+    }
+
+    .imageHolderRight {
+      width: 350px;
+      height: 219px;
+    }
+
+    .image {
+      transform: scale(.85, .85) translate(-50%, -50%);
+      left: 42.5%;
+      top: 42.5%;
+    }
+  }
 </style>

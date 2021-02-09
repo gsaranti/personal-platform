@@ -119,7 +119,7 @@
 
   .introBeforeLoad {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     top: 0;
     left: 0;
     position: absolute;
@@ -133,7 +133,7 @@
 
   .intro {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     top: 0;
     left: 0;
     position: absolute;
@@ -568,7 +568,7 @@
 
   @media (max-width: 500px) {
     .introBeforeLoad {
-      background-position: left center;
+      background-position: left 35% center;
     }
 
     .intro {

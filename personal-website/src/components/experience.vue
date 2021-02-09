@@ -32,7 +32,7 @@
                     ]"
     />
     <experienceItem side="right"
-                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_350,h_200/v1609570109/LMU1_t6sf4w.png"
+                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_350,h_170/v1609570109/LMU1_t6sf4w.png"
                     label="Loyola Marymount University"
                     :description="[
                       'My time at Red Bull Media House has been incredible. Being able to work with' +
@@ -105,7 +105,8 @@
 
 <style>
   .experience {
-    margin-top: 105vh;
+    margin-top: 100vh;
+    padding-top: 30px;
     background: white;
   }
 
@@ -116,12 +117,6 @@
     margin-right: 30%;
     margin-left: 30%;
     margin-bottom: 40px;
-  }
-
-  @media (max-width: 500px) {
-    .label {
-      border-bottom: 1px solid black;
-    }
   }
 
   .label:before,
@@ -143,5 +138,23 @@
   .label:after {
     left: 0.5em;
     margin-right: -50%;
+  }
+
+  @media (max-width: 575px) {
+    .label {
+      border-bottom: 1px solid black;
+      margin-right: 24%;
+      margin-left: 24%;
+    }
+
+    .label:before {
+      right: 2em;
+      margin-left: -50%;
+    }
+
+    .label:after {
+      left: 2em;
+      margin-right: -50%;
+    }
   }
 </style>
