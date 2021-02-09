@@ -17,6 +17,9 @@
           </p>
         </div>
         <p :class="{noDots: isExpanded, dots: !isExpanded}">...</p>
+        <div class="smallDownButton">
+          <i class="smallArrow smallDown"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -51,39 +54,39 @@
       }
     },
     methods: {
-      onVisibilityChange(el) {
-        const self = this;
-        return function () {
-          const visible = self.isElementInViewport(el);
-          if (visible !== self.isExpanded && visible !== undefined) {
-            self.isExpanded = visible;
-          }
-        }
-      },
-      isElementInViewport (el) {
-        const rect = el.getBoundingClientRect();
-        if (this.scrollDirection === 'down' && this.isExpanded === false) {
-          if (window.innerWidth < 1000) {
-            return (
-              rect.top >= 0 &&
-              rect.bottom + 100 <= (window.innerHeight || document.documentElement.clientHeight)
-            );
-          }
-          return (
-            rect.top >= 0 &&
-            rect.bottom + 125 <= (window.innerHeight || document.documentElement.clientHeight)
-          );
-        } else if (this.scrollDirection === 'up' && this.isExpanded === true) {
-          if (window.innerWidth < 1000) {
-            return (
-              rect.top <= window.innerHeight - 625
-            );
-          }
-          return (
-            rect.top <= window.innerHeight - 350
-          );
-        }
-      }
+      // onVisibilityChange(el) {
+      //   const self = this;
+      //   return function () {
+      //     const visible = self.isElementInViewport(el);
+      //     if (visible !== self.isExpanded && visible !== undefined) {
+      //       self.isExpanded = visible;
+      //     }
+      //   }
+      // },
+      // isElementInViewport (el) {
+      //   const rect = el.getBoundingClientRect();
+      //   if (this.scrollDirection === 'down' && this.isExpanded === false) {
+      //     if (window.innerWidth < 1000) {
+      //       return (
+      //         rect.top >= 0 &&
+      //         rect.bottom + 100 <= (window.innerHeight || document.documentElement.clientHeight)
+      //       );
+      //     }
+      //     return (
+      //       rect.top >= 0 &&
+      //       rect.bottom + 125 <= (window.innerHeight || document.documentElement.clientHeight)
+      //     );
+      //   } else if (this.scrollDirection === 'up' && this.isExpanded === true) {
+      //     if (window.innerWidth < 1000) {
+      //       return (
+      //         rect.top <= window.innerHeight - 625
+      //       );
+      //     }
+      //     return (
+      //       rect.top <= window.innerHeight - 350
+      //     );
+      //   }
+      // }
     }
   }
 </script>
@@ -326,6 +329,34 @@
 
   .noDots {
     visibility: hidden;
+  }
+
+  .smallDownButton {
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 1px auto auto;
+    background-color: rgba(192,192,192, 0.4);
+  }
+
+  .smallArrow {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    padding: 4px;
+    position: absolute;
+    display: table-cell;
+    margin-left: 5px;
+    margin-top: 3px;
+  }
+
+  .smallDown {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
   }
 
   @media (max-width: 500px) {
