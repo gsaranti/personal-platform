@@ -82,7 +82,7 @@
       max-height: 130px;
     }
     100% {
-      max-height: 750px;
+      max-height: 1000px;
     }
   }
 
@@ -91,7 +91,7 @@
       max-height: 130px;
     }
     100% {
-      max-height: 750px;
+      max-height: 1000px;
     }
   }
 
@@ -100,7 +100,7 @@
       max-height: 130px;
     }
     100% {
-      max-height: 750px;
+      max-height: 1000px;
     }
   }
 
@@ -109,7 +109,7 @@
       max-height: 130px;
     }
     100% {
-      max-height: 750px;
+      max-height: 1000px;
     }
   }
 
@@ -118,13 +118,13 @@
       max-height: 130px;
     }
     100% {
-      max-height: 750px;
+      max-height: 1000px;
     }
   }
 
   @keyframes collapseText {
     0% {
-      max-height: 750px;
+      max-height: 1000px;
     }
     100% {
       max-height: 130px;
@@ -133,7 +133,7 @@
 
   @-moz-keyframes collapseText {
     0% {
-      max-height: 750px;
+      max-height: 1000px;
     }
     100% {
       max-height: 130px;
@@ -142,7 +142,7 @@
 
   @-webkit-keyframes collapseText {
     0% {
-      max-height: 750px;
+      max-height: 1000px;
     }
     100% {
       max-height: 130px;
@@ -151,7 +151,7 @@
 
   @-o-keyframes collapseText {
     0% {
-      max-height: 750px;
+      max-height: 1000px;
     }
     100% {
       max-height: 130px;
@@ -160,7 +160,7 @@
 
   @-ms-keyframes collapseText {
     0% {
-      max-height: 750px;
+      max-height: 1000px;
     }
     100% {
       max-height: 130px;
@@ -215,12 +215,13 @@
   }
 
   .expandButtonUp {
+    position: relative;
     align-items: center;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     cursor: pointer;
-    margin: -35px auto auto;
+    margin: auto;
     background-color: rgba(192,192,192, 0.4);
   }
 
@@ -423,6 +424,7 @@
     }
 
     .expandButtonUp {
+      position: relative;
       margin-bottom: 25px;
     }
   }
@@ -475,7 +477,7 @@
     }
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     .imageHolderLeft {
       width: 350px;
       height: 219px;
@@ -497,7 +499,7 @@
     }
 
     .expandButtonUp {
-      margin-bottom: 30px;
+      margin-top: -20vw;
     }
   }
 </style>
