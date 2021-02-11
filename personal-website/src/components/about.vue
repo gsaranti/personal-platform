@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="aboutSection">
     <div class="aboutMe">
       <div class="aboutLabelWrapper">
         <h2 class="aboutLabel">About Me</h2>
@@ -58,6 +58,10 @@
 </script>
 
 <style>
+  .aboutSection {
+    overflow: hidden;
+  }
+
   .aboutMe {
     float: right;
     width: 650px;
@@ -145,24 +149,13 @@
     margin-top: 5px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 1000px) {
     .aboutMe {
       width: 100%;
+      border-left: none;
     }
 
     .collage {
-      visibility: hidden;
-    }
-
-    .imageRow {
-      visibility: hidden;
-    }
-
-    .long {
-      visibility: hidden;
-    }
-
-    .tall {
       visibility: hidden;
     }
   }

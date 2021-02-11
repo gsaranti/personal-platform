@@ -17,8 +17,9 @@
           </p>
         </div>
         <p :class="{noDots: isExpanded, dots: !isExpanded}">...</p>
-        <div class="smallDownButton">
-          <i class="smallArrow smallDown"></i>
+        <div v-on:click="expandText" :class="{expandButtonUp: isExpanded, expandButton: !isExpanded}">
+          <i class="smallArrow smallDown" v-if="!isExpanded"></i>
+          <i class="smallArrow smallUp" v-if="isExpanded"></i>
         </div>
       </div>
     </div>
@@ -46,52 +47,331 @@
         isExpanded: false
       }
     },
-    mounted() {
-      const handler = this.onVisibilityChange(this.$el);
-
-      if (window.addEventListener) {
-        addEventListener('scroll', _.throttle(handler, 10), false);
-      }
-    },
     methods: {
-      // onVisibilityChange(el) {
-      //   const self = this;
-      //   return function () {
-      //     const visible = self.isElementInViewport(el);
-      //     if (visible !== self.isExpanded && visible !== undefined) {
-      //       self.isExpanded = visible;
-      //     }
-      //   }
-      // },
-      // isElementInViewport (el) {
-      //   const rect = el.getBoundingClientRect();
-      //   if (this.scrollDirection === 'down' && this.isExpanded === false) {
-      //     if (window.innerWidth < 1000) {
-      //       return (
-      //         rect.top >= 0 &&
-      //         rect.bottom + 100 <= (window.innerHeight || document.documentElement.clientHeight)
-      //       );
-      //     }
-      //     return (
-      //       rect.top >= 0 &&
-      //       rect.bottom + 125 <= (window.innerHeight || document.documentElement.clientHeight)
-      //     );
-      //   } else if (this.scrollDirection === 'up' && this.isExpanded === true) {
-      //     if (window.innerWidth < 1000) {
-      //       return (
-      //         rect.top <= window.innerHeight - 625
-      //       );
-      //     }
-      //     return (
-      //       rect.top <= window.innerHeight - 350
-      //     );
-      //   }
-      // }
+      expandText() {
+        this.isExpanded = !this.isExpanded;
+      }
     }
   }
 </script>
 
 <style>
+  .image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+  .placement {
+    margin-bottom: 3px;
+  }
+
+  .positions {
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  @keyframes expandText {
+    0% {
+      max-height: 130px;
+    }
+    100% {
+      max-height: 750px;
+    }
+  }
+
+  @-moz-keyframes expandText {
+    0% {
+      max-height: 130px;
+    }
+    100% {
+      max-height: 750px;
+    }
+  }
+
+  @-webkit-keyframes expandText {
+    0% {
+      max-height: 130px;
+    }
+    100% {
+      max-height: 750px;
+    }
+  }
+
+  @-o-keyframes expandText {
+    0% {
+      max-height: 130px;
+    }
+    100% {
+      max-height: 750px;
+    }
+  }
+
+  @-ms-keyframes expandText {
+    0% {
+      max-height: 130px;
+    }
+    100% {
+      max-height: 750px;
+    }
+  }
+
+  @keyframes collapseText {
+    0% {
+      max-height: 750px;
+    }
+    100% {
+      max-height: 130px;
+    }
+  }
+
+  @-moz-keyframes collapseText {
+    0% {
+      max-height: 750px;
+    }
+    100% {
+      max-height: 130px;
+    }
+  }
+
+  @-webkit-keyframes collapseText {
+    0% {
+      max-height: 750px;
+    }
+    100% {
+      max-height: 130px;
+    }
+  }
+
+  @-o-keyframes collapseText {
+    0% {
+      max-height: 750px;
+    }
+    100% {
+      max-height: 130px;
+    }
+  }
+
+  @-ms-keyframes collapseText {
+    0% {
+      max-height: 750px;
+    }
+    100% {
+      max-height: 130px;
+    }
+  }
+
+  .collapsed {
+    max-height: 130px;
+    overflow: hidden;
+    animation: collapseText 1s;
+    -webkit-animation: collapseText 1s;
+    -moz-animation: collapseText 1s;
+    -o-animation: collapseText 1s;
+    -ms-animation: collapseText 1s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+  }
+
+  .expanded {
+    animation: expandText 1s;
+    -webkit-animation: expandText 1s;
+    -moz-animation: expandText 1s;
+    -o-animation: expandText 1s;
+    -ms-animation: expandText 1s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+  }
+
+  .dots {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .noDots {
+    visibility: hidden;
+  }
+
+  .expandButton {
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 1px auto auto;
+    background-color: rgba(192,192,192, 0.4);
+  }
+
+  .expandButtonUp {
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: -35px auto auto;
+    background-color: rgba(192,192,192, 0.4);
+  }
+
+  .smallArrow {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    padding: 4px;
+    position: absolute;
+    display: table-cell;
+    margin-left: 5px;
+    margin-top: 3px;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(45deg);
+      margin-top: 3px;
+    }
+    100% {
+      transform: rotate(225deg);
+      margin-top: 7px;
+    }
+  }
+
+  @-moz-keyframes spin {
+    0% {
+      -moz-transform: rotate(45deg);
+      margin-top: 3px;
+
+    }
+    100% {
+      -moz-transform: rotate(225deg);
+      margin-top: 7px;
+    }
+  }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(45deg);
+      margin-top: 3px;
+    }
+    100% {
+      -webkit-transform: rotate(225deg);
+      margin-top: 7px;
+    }
+  }
+
+  @-o-keyframes spin {
+    0% {
+      -o-transform: rotate(45deg);
+      margin-top: 3px;
+    }
+    100% {
+      -o-transform: rotate(225deg);
+      margin-top: 7px;
+    }
+  }
+
+  @-ms-keyframes spin {
+    0% {
+      -ms-transform: rotate(45deg);
+      margin-top: 3px;
+    }
+    100% {
+      -ms-transform: rotate(225deg);
+      margin-top: 7px;
+    }
+  }
+
+  @keyframes reverseSpin {
+    0% {
+      transform: rotate(225deg);
+      margin-top: 7px;
+
+    }
+    100% {
+      transform: rotate(45deg);
+      margin-top: 3px;
+    }
+  }
+
+  @-moz-keyframes reverseSpin {
+    0% {
+      -moz-transform: rotate(225deg);
+      margin-top: 7px;
+    }
+    100% {
+      -moz-transform: rotate(45deg);
+      margin-top: 3px;
+    }
+  }
+
+  @-webkit-keyframes reverseSpin {
+    0% {
+      -webkit-transform: rotate(225deg);
+      margin-top: 7px;
+    }
+    100% {
+      -webkit-transform: rotate(45deg);
+      margin-top: 3px;
+    }
+  }
+
+  @-o-keyframes reverseSpin {
+    0% {
+      -o-transform: rotate(225deg);
+      margin-top: 7px;
+    }
+    100% {
+      -o-transform: rotate(45deg);
+      margin-top: 3px;
+    }
+  }
+
+  @-ms-keyframes reverseSpin {
+    0% {
+      -ms-transform: rotate(225deg);
+      margin-top: 7px;
+    }
+    100% {
+      -ms-transform: rotate(45deg);
+      margin-top: 3px;
+    }
+  }
+
+  .smallDown {
+    animation: reverseSpin .5s;
+    -webkit-animation: reverseSpin .5s;
+    -moz-animation: reverseSpin .5s;
+    -o-animation: reverseSpin .5s;
+    -ms-animation: reverseSpin .5s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+  }
+
+  .smallUp {
+    animation: spin .5s;
+    -webkit-animation: spin .5s;
+    -moz-animation: spin .5s;
+    -o-animation: spin .5s;
+    -ms-animation: spin .5s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+  }
+
   @media (max-width: 1000px) {
     .itemExpanded {
       margin-bottom: 10px;
@@ -140,6 +420,10 @@
       margin-top: 20px;
       overflow: hidden;
       text-align: center;
+    }
+
+    .expandButtonUp {
+      margin-bottom: 25px;
     }
   }
 
@@ -191,175 +475,7 @@
     }
   }
 
-  .image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-  }
-
-  .placement {
-    margin-bottom: 3px;
-  }
-
-  .positions {
-    font-style: italic;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  @keyframes expandText {
-    0% {
-      max-height: 155px;
-    }
-    100% {
-      max-height: 750px;
-    }
-  }
-
-  @-moz-keyframes expandText {
-    0% {
-      max-height: 155px;
-    }
-    100% {
-      max-height: 750px;
-    }
-  }
-
-  @-webkit-keyframes expandText {
-    0% {
-      max-height: 155px;
-    }
-    100% {
-      max-height: 750px;
-    }
-  }
-
-  @-o-keyframes expandText {
-    0% {
-      max-height: 155px;
-    }
-    100% {
-      max-height: 750px;
-    }
-  }
-
-  @-ms-keyframes expandText {
-    0% {
-      max-height: 155px;
-    }
-    100% {
-      max-height: 750px;
-    }
-  }
-
-  @keyframes collapseText {
-    0% {
-      max-height: 750px;
-    }
-    100% {
-      max-height: 155px;
-    }
-  }
-
-  @-moz-keyframes collapseText {
-    0% {
-      max-height: 750px;
-    }
-    100% {
-      max-height: 155px;
-    }
-  }
-
-  @-webkit-keyframes collapseText {
-    0% {
-      max-height: 750px;
-    }
-    100% {
-      max-height: 155px;
-    }
-  }
-
-  @-o-keyframes collapseText {
-    0% {
-      max-height: 750px;
-    }
-    100% {
-      max-height: 155px;
-    }
-  }
-
-  @-ms-keyframes collapseText {
-    0% {
-      max-height: 750px;
-    }
-    100% {
-      max-height: 155px;
-    }
-  }
-
-  .collapsed {
-    max-height: 155px;
-    overflow: hidden;
-    animation: collapseText 1s;
-    -webkit-animation: collapseText 1s;
-    -moz-animation: collapseText 1s;
-    -o-animation: collapseText 1s;
-    -ms-animation: collapseText 1s;
-    animation-fill-mode: forwards;
-  }
-
-  .expanded {
-    animation: expandText 1s;
-    -webkit-animation: expandText 1s;
-    -moz-animation: expandText 1s;
-    -o-animation: expandText 1s;
-    -ms-animation: expandText 1s;
-    animation-fill-mode: forwards;
-  }
-
-  .dots {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .noDots {
-    visibility: hidden;
-  }
-
-  .smallDownButton {
-    align-items: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 1px auto auto;
-    background-color: rgba(192,192,192, 0.4);
-  }
-
-  .smallArrow {
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    padding: 4px;
-    position: absolute;
-    display: table-cell;
-    margin-left: 5px;
-    margin-top: 3px;
-  }
-
-  .smallDown {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-  }
-
-  @media (max-width: 500px) {
+  @media (max-width: 450px) {
     .imageHolderLeft {
       width: 350px;
       height: 219px;
@@ -374,6 +490,14 @@
       transform: scale(.85, .85) translate(-50%, -50%);
       left: 42.5%;
       top: 42.5%;
+    }
+
+    .expanded {
+      margin-bottom: 70px;
+    }
+
+    .expandButtonUp {
+      margin-bottom: 30px;
     }
   }
 </style>
