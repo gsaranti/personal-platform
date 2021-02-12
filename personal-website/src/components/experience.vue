@@ -27,8 +27,8 @@
                     :expand="true"
                     :scrollDirection="scrollDirection"
                     :positions="[
-                      'Software Engineer - Jan 2019 - Present',
-                      'Junior Software Engineer - Aug 2018 - Dec 2018'
+                      'Software Engineer: Jan 2019 - Present',
+                      'Junior Software Engineer: Aug 2018 - Dec 2018'
                     ]"
     />
     <experienceItem side="right"

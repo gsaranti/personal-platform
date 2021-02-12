@@ -65,8 +65,6 @@
   .aboutMe {
     float: right;
     width: 650px;
-    text-align: center;
-    text-autospace: initial;
     line-height: 1.5;
     padding: 30px 65px;
     background-color: #DAAD86;
@@ -88,7 +86,6 @@
     margin-right: 25%;
     margin-left: 25%;
     margin-bottom: 20px;
-    top: 0;
   }
 
   .aboutLabel:before,
@@ -113,12 +110,8 @@
   }
 
   .aboutLabelWrapper {
-    top: 0;
-    bottom: -200px;
     padding-top: 25px;
-    position: sticky;
     background-color: #DAAD86;
-    padding-bottom: 3px;
   }
 
   .imageRow {
@@ -152,11 +145,34 @@
   @media (max-width: 1000px) {
     .aboutMe {
       width: 100%;
+      height: unset;
       border-left: none;
+      overflow: auto;
     }
 
     .collage {
       visibility: hidden;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .aboutMe {
+      padding: 30px 40px;
+    }
+
+    .aboutLabel:before {
+      right: 0.5em;
+      margin-left: -50%;
+    }
+
+    .aboutLabel:after {
+      left: 0.5em;
+      margin-right: -50%;
+    }
+
+    .aboutLabel {
+      margin-right: 12%;
+      margin-left: 12%;
     }
   }
 </style>
