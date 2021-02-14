@@ -1,20 +1,20 @@
 <template>
-  <div v-bind:class="{intro: backgroundLoaded && windowLoaded, introBeforeLoad: !backgroundLoaded || !windowLoaded}">
-    <div v-bind:class="{'beforeLoad': !backgroundLoaded || !windowLoaded}">
-      <p v-bind:class="{'signature': backgroundLoaded && windowLoaded}">George Sarantinos</p>
+  <div v-bind:class="{intro: backgroundLoaded, introBeforeLoad: !backgroundLoaded}">
+    <div v-bind:class="{'beforeLoad': !backgroundLoaded}">
+      <p v-bind:class="{'signature': backgroundLoaded}">George Sarantinos</p>
     </div>
-    <div v-bind:class="{'animated-title': backgroundLoaded && windowLoaded, 'beforeLoad': !backgroundLoaded || !windowLoaded}">
-      <div v-bind:class="{'text-top': backgroundLoaded && windowLoaded}">
+    <div v-bind:class="{'animated-title': backgroundLoaded, 'beforeLoad': !backgroundLoaded}">
+      <div v-bind:class="{'text-top': backgroundLoaded}">
         <div>
           <span style="margin-right: 135px">Hi there,</span>
           <span>My name is George</span>
         </div>
       </div>
-      <div v-bind:class="{'text-bottom': backgroundLoaded && windowLoaded}">
+      <div v-bind:class="{'text-bottom': backgroundLoaded}">
         <div>Get to know me!</div>
       </div>
     </div>
-    <div :class="{'downButtonIntro': backgroundLoaded && windowLoaded, 'beforeLoad': !backgroundLoaded || !windowLoaded}">
+    <div :class="{'downButtonIntro': backgroundLoaded, 'beforeLoad': !backgroundLoaded}">
       <div v-on:click="callAutoScroll" class="downButton">
         <i class="arrow down"></i>
       </div>
@@ -33,7 +33,6 @@
     data: () => {
       return {
         backgroundLoaded: false,
-        windowLoaded: false,
         backgroundImage: new Image()
       }
     },
@@ -45,9 +44,6 @@
       this.backgroundImage.onload = function () {
         self.backgroundLoaded = true;
       };
-      window.onload = function () {
-        self.windowLoaded = true;
-      }
     },
     methods: {
       callAutoScroll() {
@@ -119,7 +115,7 @@
 
   .introBeforeLoad {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     top: 0;
     left: 0;
     position: absolute;
@@ -133,7 +129,7 @@
 
   .intro {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     top: 0;
     left: 0;
     position: absolute;
@@ -236,6 +232,7 @@
     margin-top: 50vh;
     margin-left: 45vw;
     margin-right: 5vw;
+    white-space: nowrap;
   }
 
   @media (max-width: 550px) {
@@ -563,5 +560,20 @@
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
+  }
+
+  @media (max-width: 500px) {
+    .introBeforeLoad {
+      background-position: left 35% center;
+    }
+
+    .intro {
+      background-position: left 35% center;
+    }
+
+    .animated-title {
+      margin-left: 25vw;
+      margin-top: 47vh;
+    }
   }
 </style>
