@@ -1,25 +1,27 @@
 <template>
-  <div :class="{itemCollapsed: !isExpanded, itemExpanded: isExpanded}">
-    <div :class="{imageHolderLeft: side === 'left', imageHolderRight: side === 'right'}">
-      <v-lazy>
-        <img class="image" :src=imgUrl alt=""/>
-      </v-lazy>
-    </div>
-    <div :class="{infoLeft: side === 'left', infoRight: side === 'right'}">
-      <div>
-        <h2 class="placement">{{label}}</h2>
-        <div class="positions">
-          <p v-for="(p, index) in positions" :key="index">{{ p }}</p>
-        </div>
-        <div :class="{collapsed: !isExpanded, expanded: isExpanded}">
-          <p v-for="(paragraph, index) in description" :key="index">
-            {{ paragraph }}<br><br>
-          </p>
-        </div>
-        <p v-if="!isExpanded" class="dots">...</p>
-        <div v-on:click="expandText" :class="{expandButtonUp: isExpanded, expandButton: !isExpanded}">
-          <i class="smallArrow smallDown" v-if="!isExpanded"></i>
-          <i class="smallArrow smallUp" v-if="isExpanded"></i>
+  <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
+    <div :class="{itemCollapsed: !isExpanded, itemExpanded: isExpanded}">
+      <div :class="{imageHolderLeft: side === 'left', imageHolderRight: side === 'right'}">
+        <v-lazy>
+          <img class="image" :src=imgUrl alt=""/>
+        </v-lazy>
+      </div>
+      <div :class="{infoLeft: side === 'left', infoRight: side === 'right'}">
+        <div>
+          <h2 class="placement">{{label}}</h2>
+          <div class="positions">
+            <p v-for="(p, index) in positions" :key="index">{{ p }}</p>
+          </div>
+          <div :class="{collapsed: !isExpanded, expanded: isExpanded}">
+            <p v-for="(paragraph, index) in description" :key="index">
+              {{ paragraph }}<br><br>
+            </p>
+          </div>
+          <p v-if="!isExpanded" class="dots">...</p>
+          <div v-on:click="expandText" :class="{expandButtonUp: isExpanded, expandButton: !isExpanded}">
+            <i class="smallArrow smallDown" v-if="!isExpanded"></i>
+            <i class="smallArrow smallUp" v-if="isExpanded"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -27,6 +29,8 @@
 </template>
 
 <script>
+  import _ from "lodash";
+
   export default {
     name: 'experienceItem',
     props: {
@@ -35,19 +39,34 @@
       label: String,
       description: Array,
       expand: Boolean,
-      scrollDirection: String,
       positions: Array
     },
     components: {
     },
     data: () => {
       return {
-        isExpanded: false
+        isExpanded: false,
+        isVisible: false
+      }
+    },
+    mounted() {
+      const handler = this.onVisibilityChange(this.$el);
+      if (window.addEventListener) {
+        addEventListener('scroll', _.throttle(handler, 10), false);
       }
     },
     methods: {
       expandText() {
         this.isExpanded = !this.isExpanded;
+      },
+      onVisibilityChange(el) {
+        const self = this;
+        return function () {
+          if (!self.isVisible) {
+            const rect = el.getBoundingClientRect();
+            self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
+          }
+        }
       }
     }
   }

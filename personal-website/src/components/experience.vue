@@ -1,6 +1,8 @@
 <template>
   <div class="experience">
-    <h2 class="label">The Path So Far...</h2>
+    <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
+      <h2 class="label">The Path So Far...</h2>
+    </div>
     <experienceItem side="left"
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_400,h_250/v1609373485/redbull_wr7wps.png"
                     label="Red Bull Media House"
@@ -25,7 +27,6 @@
                       'on LinkedIn! Let’s chat.'
                     ]"
                     :expand="true"
-                    :scrollDirection="scrollDirection"
                     :positions="[
                       'Software Engineer: Jan 2019 - Present',
                       'Junior Software Engineer: Aug 2018 - Dec 2018'
@@ -45,7 +46,6 @@
                       'services and Red Bull AR App.'
                     ]"
                     :expand="true"
-                    :scrollDirection="scrollDirection"
                     :positions="[
                       'B.S. Computer Science',
                       'Class of 2018'
@@ -66,27 +66,24 @@
     data: () => {
       return {
         scrollDirection: "down",
-        viewPortTop: 0
+        viewPortTop: 0,
+        isVisible: false
       }
     },
     mounted() {
-      const handler = this.onScroll();
-
+      const handler = this.onVisibilityChange(this.$el);
       if (window.addEventListener) {
-        addEventListener('scroll', _.throttle(handler, 10), {passive: true, capture: true});
+        addEventListener('scroll', _.throttle(handler, 10), false);
       }
     },
     methods: {
-      onScroll() {
+      onVisibilityChange(el) {
         const self = this;
         return function () {
-          const currentTop = window.pageYOffset || window.scrollTop;
-          if (currentTop > self.viewPortTop) {
-            self.scrollDirection = "down";
-          } else {
-            self.scrollDirection = "up";
+          if (!self.isVisible) {
+            const rect = el.getBoundingClientRect();
+            self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
           }
-          self.viewPortTop = currentTop;
         }
       }
     }
