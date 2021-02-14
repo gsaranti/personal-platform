@@ -109,6 +109,8 @@
   }
 
   .collage {
+    position: relative;
+    z-index: -1;
     background-color: #659DBD;
     height: 770px;
     width: 100vw;
