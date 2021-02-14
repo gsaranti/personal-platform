@@ -1,12 +1,8 @@
 <template>
   <div>
     <intro :autoScroll="autoScroll"/>
-    <v-lazy>
-      <experience class="experienceScroll"/>
-    </v-lazy>
-    <v-lazy>
-      <about class="aboutScroll"/>
-    </v-lazy>
+    <experience class="experienceScroll"/>
+    <about class="aboutScroll"/>
   </div>
 </template>
 

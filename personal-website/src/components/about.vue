@@ -1,7 +1,7 @@
 <template>
-  <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
     <div class="aboutSection">
       <div class="aboutMe">
+        <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
         <div class="aboutLabelWrapper">
           <h2 class="aboutLabel">About Me</h2>
         </div>
@@ -28,26 +28,35 @@
           and family! They're the people that keep me going, keep me laughing, and keep me loving
           life.
         </p>
+        </div>
       </div>
       <div class="collage">
         <div class="imageRow">
-          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612501041/book_zpjxm6.heic" alt=""/>
-          <img class="tall" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365602/walk_gjbscw.jpg" alt=""/>
-          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365590/wine_kwzdsl.jpg" alt=""/>
+          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612501041/book_zpjxm6.heic"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612501041/book_zpjxm6.heic"/>
+          <v-img class="tall" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1611365602/walk_gjbscw.jpg"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365602/walk_gjbscw.jpg"/>
+          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1611365590/wine_kwzdsl.jpg"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365590/wine_kwzdsl.jpg"/>
         </div>
         <div class="imageRow">
-          <img class="tall" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365609/look_evj1cv.jpg" alt=""/>
-          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365569/ski_sh2b91.jpg" alt=""/>
-          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612501030/henry_tsler1.jpg" alt=""/>
+          <v-img class="tall" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1611365609/look_evj1cv.jpg"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365609/look_evj1cv.jpg"/>
+          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1611365569/ski_sh2b91.jpg"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365569/ski_sh2b91.jpg"/>
+          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612501030/henry_tsler1.jpg"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612501030/henry_tsler1.jpg"/>
         </div>
         <div class="imageRow">
-          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750132/ferry_nbn0lt.jpg" alt=""/>
-          <img class="tall" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750137/bike_pvbf3n.jpg" alt=""/>
-          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750125/fam-ski_lojnwq.jpg" alt=""/>
+          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612750132/ferry_nbn0lt.jpg"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750132/ferry_nbn0lt.jpg"/>
+          <v-img class="tall" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612750137/bike_pvbf3n.jpg"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750137/bike_pvbf3n.jpg"/>
+          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612750125/fam-ski_lojnwq.jpg"
+                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750125/fam-ski_lojnwq.jpg"/>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -74,7 +83,7 @@
         return function () {
           if (!self.isVisible) {
             const rect = el.getBoundingClientRect();
-            self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
+            self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50;
           }
         }
       }
@@ -96,6 +105,7 @@
     border-left: 5px solid #659DBD;
     height: 770px;
     position: relative;
+    z-index: 1;
   }
 
   .collage {
@@ -142,7 +152,6 @@
   .imageRow {
     display: flex;
     align-items: center;
-    z-index: -1;
   }
 
   @media (min-width: 1545px) {
