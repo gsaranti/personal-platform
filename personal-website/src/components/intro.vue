@@ -8,6 +8,27 @@
       <a href="https://www.instagram.com/george_sarantinos/" target="_blank">
         <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
       </a>
+      <v-menu>
+        <template v-slot:activator="{ on, attrs }">
+          <div class="dropDownMenu" v-bind="attrs" v-on="on">
+            <div>
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div>
+          </div>
+        </template>
+        <v-list rounded style="z-index: 2">
+          <v-list-item
+                  v-for="(item, index) in items"
+                  :key="index"
+                  @click="callAutoScroll(item.scrollTo)"
+                  link
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </div>
     <div v-bind:class="{'animated-title': backgroundLoaded, 'beforeLoad': !backgroundLoaded}">
       <div v-bind:class="{'text-top': backgroundLoaded}">
@@ -21,7 +42,7 @@
       </div>
     </div>
     <div :class="{'downButtonIntro': backgroundLoaded, 'beforeLoad': !backgroundLoaded}">
-      <div v-on:click="callAutoScroll" class="downButton">
+      <div v-on:click="callAutoScroll('.experienceScroll')" class="downButton">
         <i class="arrow down"></i>
       </div>
     </div>
@@ -39,7 +60,13 @@
     data: () => {
       return {
         backgroundLoaded: false,
-        backgroundImage: new Image()
+        backgroundImage: new Image(),
+        items: [
+          { title: 'Home', scrollTo: '.introScroll' },
+          { title: 'Experience', scrollTo: '.experienceScroll' },
+          { title: 'About Me', scrollTo: '.aboutScroll' },
+          { title: 'Projects', scrollTo: '' },
+        ]
       }
     },
     created() {
@@ -52,8 +79,10 @@
       };
     },
     methods: {
-      callAutoScroll() {
-        this.autoScroll();
+      callAutoScroll(selector) {
+        if (selector) {
+          this.autoScroll(selector);
+        }
       }
     }
   }
@@ -151,6 +180,62 @@
     -ms-animation: fadeIn ease 2s;
   }
 
+  .dropDownMenu {
+    visibility: hidden;
+    position: fixed;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 50%;
+    border: 1px solid ghostwhite;
+    background-color: rgba(192,192,192, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    animation: fadeIn ease 1.5s forwards;
+    -webkit-animation: fadeIn ease 1.5s forwards;
+    -moz-animation: fadeIn ease 1.5s forwards;
+    -o-animation: fadeIn ease 1.5s forwards;
+    -ms-animation: fadeIn ease 1.5s forwards;
+    animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    -moz-animation-delay: 3s;
+    -o-animation-delay: 3s;
+    -ms-animation-delay: 3s;
+  }
+
+  .bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 3px;
+    background-color: ghostwhite;
+    margin: 4px 0;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+
+  .change .bar1 {
+    transform: rotate(-45deg) translate(-9px, 6px);
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    -moz-transform: rotate(-45deg) translate(-9px, 6px);
+    -o-transform: rotate(-45deg) translate(-9px, 6px);
+    -ms-transform: rotate(-45deg) translate(-9px, 6px);
+
+  }
+
+  .change .bar2 {opacity: 0;}
+
+  .change .bar3 {
+    transform: rotate(45deg) translate(-8px, -8px);
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    -moz-transform: rotate(45deg) translate(-8px, -8px);
+    -o-transform: rotate(45deg) translate(-8px, -8px);
+    -ms-transform: rotate(45deg) translate(-8px, -8px);
+  }
+
   .signature {
     visibility: hidden;
     color: ghostwhite;
@@ -184,11 +269,16 @@
     margin-top: 22px;
     margin-right: 10px;
     float: right;
-    animation: fadeIn ease 1.5s forwards 3s;
-    -webkit-animation: fadeIn ease 1.5s forwards 3s;
-    -moz-animation: fadeIn ease 1.5s forwards 3s;
-    -o-animation: fadeIn ease 1.5s forwards 3s;
-    -ms-animation: fadeIn ease 1.5s forwards 3s;
+    animation: fadeIn ease 1.5s forwards;
+    -webkit-animation: fadeIn ease 1.5s forwards;
+    -moz-animation: fadeIn ease 1.5s forwards;
+    -o-animation: fadeIn ease 1.5s forwards;
+    -ms-animation: fadeIn ease 1.5s forwards;
+    animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    -moz-animation-delay: 3s;
+    -o-animation-delay: 3s;
+    -ms-animation-delay: 3s;
   }
 
   @keyframes showTopText {

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <intro :autoScroll="autoScroll"/>
+  <div data-app>
+    <intro class="introScroll" :autoScroll="autoScroll.bind('arg1')"/>
     <experience class="experienceScroll"/>
     <about class="aboutScroll"/>
   </div>
@@ -23,14 +23,17 @@
       smoothscroll.polyfill();
     },
     methods: {
-      autoScroll() {
-        this.$el.querySelector('.experienceScroll').scrollIntoView({ behavior: 'smooth' });
+      autoScroll(selector) {
+        this.$el.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
       }
     }
   }
 </script>
 
 <style>
+  .introScroll {
+  }
+
   .experienceScroll {
   }
 
