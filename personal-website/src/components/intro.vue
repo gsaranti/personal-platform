@@ -2,6 +2,12 @@
   <div v-bind:class="{intro: backgroundLoaded, introBeforeLoad: !backgroundLoaded}">
     <div v-bind:class="{'beforeLoad': !backgroundLoaded}">
       <p v-bind:class="{'signature': backgroundLoaded}">George Sarantinos</p>
+      <a href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
+        <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411122/linkedin_fb1tqv.png"/>
+      </a>
+      <a href="https://www.instagram.com/george_sarantinos/" target="_blank">
+        <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
+      </a>
     </div>
     <div v-bind:class="{'animated-title': backgroundLoaded, 'beforeLoad': !backgroundLoaded}">
       <div v-bind:class="{'text-top': backgroundLoaded}">
@@ -169,6 +175,20 @@
     -moz-animation-delay: 3s;
     -o-animation-delay: 3s;
     -ms-animation-delay: 3s;
+  }
+
+  .socialLogo {
+    visibility: hidden;
+    width: 25px;
+    height: 25px;
+    margin-top: 22px;
+    margin-right: 10px;
+    float: right;
+    animation: fadeIn ease 1.5s forwards 3s;
+    -webkit-animation: fadeIn ease 1.5s forwards 3s;
+    -moz-animation: fadeIn ease 1.5s forwards 3s;
+    -o-animation: fadeIn ease 1.5s forwards 3s;
+    -ms-animation: fadeIn ease 1.5s forwards 3s;
   }
 
   @keyframes showTopText {
@@ -569,6 +589,16 @@
 
     .intro {
       background-position: left 35% center;
+    }
+
+    .signature {
+      font-size: 25px;
+      margin-right: 10px;
+    }
+
+    .socialLogo {
+      width: 15px;
+      height: 15px;
     }
 
     .animated-title {
