@@ -3,7 +3,7 @@
     <div v-bind:class="{'beforeLoad': !backgroundLoaded}">
       <p v-bind:class="{'signature': backgroundLoaded}">George Sarantinos</p>
       <a href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
-        <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411122/linkedin_fb1tqv.png"/>
+        <v-img class="socialLogo linkedIn" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411122/linkedin_fb1tqv.png"/>
       </a>
       <a href="https://www.instagram.com/george_sarantinos/" target="_blank">
         <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
@@ -279,6 +279,10 @@
     -moz-animation-delay: 3s;
     -o-animation-delay: 3s;
     -ms-animation-delay: 3s;
+  }
+
+  .linkedIn {
+    width: 30px;
   }
 
   @keyframes showTopText {
@@ -689,6 +693,10 @@
     .socialLogo {
       width: 15px;
       height: 15px;
+    }
+
+    .linkedIn {
+      width: 20px;
     }
 
     .animated-title {
