@@ -188,6 +188,7 @@
 
     .collage {
       visibility: hidden;
+      height: 0;
     }
   }
 

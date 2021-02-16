@@ -3,7 +3,7 @@
     <div v-bind:class="{'beforeLoad': !backgroundLoaded}">
       <p v-bind:class="{'signature': backgroundLoaded}">George Sarantinos</p>
       <a href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
-        <v-img class="socialLogo linkedIn" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411122/linkedin_fb1tqv.png"/>
+        <v-img class="socialLogo linkedIn" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
       </a>
       <a href="https://www.instagram.com/george_sarantinos/" target="_blank">
         <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
@@ -65,7 +65,7 @@
           { title: 'Home', scrollTo: '.introScroll' },
           { title: 'Experience', scrollTo: '.experienceScroll' },
           { title: 'About Me', scrollTo: '.aboutScroll' },
-          { title: 'Projects', scrollTo: '' },
+          { title: 'Contact', scrollTo: '.contactScroll' }
         ]
       }
     },
@@ -189,7 +189,7 @@
     height: 50px;
     margin-top: 15px;
     margin-left: 15px;
-    border-radius: 50%;
+    border-radius: 30%;
     border: 1px solid ghostwhite;
     background-color: rgba(192,192,192, 0.7);
     display: flex;
@@ -279,10 +279,6 @@
     -moz-animation-delay: 3s;
     -o-animation-delay: 3s;
     -ms-animation-delay: 3s;
-  }
-
-  .linkedIn {
-    width: 30px;
   }
 
   @keyframes showTopText {
@@ -686,17 +682,14 @@
     }
 
     .signature {
-      font-size: 25px;
+      font-size: 30px;
       margin-right: 10px;
     }
 
     .socialLogo {
-      width: 15px;
-      height: 15px;
-    }
-
-    .linkedIn {
       width: 20px;
+      height: 20px;
+      margin-top: 20px;
     }
 
     .animated-title {

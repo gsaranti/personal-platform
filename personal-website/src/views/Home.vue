@@ -3,6 +3,7 @@
     <intro class="introScroll" :autoScroll="autoScroll.bind('arg1')"/>
     <experience class="experienceScroll"/>
     <about class="aboutScroll"/>
+    <contact class="contactScroll"/>
   </div>
 </template>
 
@@ -11,13 +12,15 @@
   import intro from "../components/intro";
   import experience from "../components/experience";
   import about from "../components/about";
+  import contact from "../components/contact";
 
   export default {
     name: 'home',
     components: {
       intro,
       experience,
-      about
+      about,
+      contact
     },
     created() {
       smoothscroll.polyfill();
@@ -38,6 +41,9 @@
   }
 
   .aboutScroll {
+  }
+
+  .contactScroll {
   }
 
   .visibleItem {
