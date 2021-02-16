@@ -1,18 +1,18 @@
 <template>
   <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
-    <div :class="{itemCollapsed: !isExpanded, itemExpanded: isExpanded}">
-      <div :class="{imageHolderLeft: side === 'left', imageHolderRight: side === 'right'}">
+    <div :class="{itemCollapsed: !this.isExpanded, itemExpanded: this.isExpanded}">
+      <div :class="{imageHolderLeft: this.side === 'left', imageHolderRight: this.side === 'right'}">
         <v-lazy>
           <img class="image" :src=imgUrl alt=""/>
         </v-lazy>
       </div>
-      <div :class="{infoLeft: side === 'left', infoRight: side === 'right'}">
+      <div :class="{infoLeft: this.side === 'left', infoRight: this.side === 'right'}">
         <div>
           <h2 class="placement">{{label}}</h2>
           <div class="positions">
             <p v-for="(p, index) in positions" :key="index">{{ p }}</p>
           </div>
-          <div :class="{collapsed: !isExpanded, expanded: isExpanded}">
+          <div :class="{collapsed: !this.isExpanded, expanded: this.isExpanded}">
             <p v-for="(paragraph, index) in description" :key="index">
               {{ paragraph }}<br><br>
             </p>
