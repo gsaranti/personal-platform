@@ -97,29 +97,19 @@
   .collapsed {
     max-height: 130px;
     overflow: hidden;
-    animation: collapseText 1s;
-    -webkit-animation: collapseText 1s;
-    -moz-animation: collapseText 1s;
-    -o-animation: collapseText 1s;
-    -ms-animation: collapseText 1s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
+    animation: collapseText 1s forwards;
+    -webkit-animation: collapseText 1s forwards;
+    -moz-animation: collapseText 1s forwards;
+    -o-animation: collapseText 1s forwards;
+    -ms-animation: collapseText 1s forwards;
   }
 
   .expanded {
-    animation: expandText 1s;
-    -webkit-animation: expandText 1s;
-    -moz-animation: expandText 1s;
-    -o-animation: expandText 1s;
-    -ms-animation: expandText 1s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
+    animation: expandText 1s forwards;
+    -webkit-animation: expandText 1s forwards;
+    -moz-animation: expandText 1s forwards;
+    -o-animation: expandText 1s forwards;
+    -ms-animation: expandText 1s forwards;
   }
 
   .dots {
@@ -160,29 +150,19 @@
   }
 
   .smallDown {
-    animation: reverseSpin .5s;
-    -webkit-animation: reverseSpin .5s;
-    -moz-animation: reverseSpin .5s;
-    -o-animation: reverseSpin .5s;
-    -ms-animation: reverseSpin .5s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
+    animation: reverseSpin .5s forwards;
+    -webkit-animation: reverseSpin .5s forwards;
+    -moz-animation: reverseSpin .5s forwards;
+    -o-animation: reverseSpin .5s forwards;
+    -ms-animation: reverseSpin .5s forwards;
   }
 
   .smallUp {
-    animation: spin .5s;
-    -webkit-animation: spin .5s;
-    -moz-animation: spin .5s;
-    -o-animation: spin .5s;
-    -ms-animation: spin .5s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
+    animation: spin .5s forwards;
+    -webkit-animation: spin .5s forwards;
+    -moz-animation: spin .5s forwards;
+    -o-animation: spin .5s forwards;
+    -ms-animation: spin .5s forwards;
   }
 
   @media (min-width: 1000px) {
@@ -406,113 +386,92 @@
 
   @keyframes spin {
     0% {
-      transform: rotate(45deg);
-      margin-top: 3px;
+      transform: rotate(45deg) translate(0, 0);
     }
     100% {
-      transform: rotate(225deg);
-      margin-top: 7px;
+      transform: rotate(225deg) translate(-3px, -3px);
     }
   }
 
   @-moz-keyframes spin {
     0% {
-      -moz-transform: rotate(45deg);
-      margin-top: 3px;
+      -moz-transform: rotate(45deg) translate(0, 0);
 
     }
     100% {
-      -moz-transform: rotate(225deg);
-      margin-top: 7px;
+      -moz-transform: rotate(225deg) translate(-3px, -3px);
     }
   }
 
   @-webkit-keyframes spin {
     0% {
-      -webkit-transform: rotate(45deg);
-      margin-top: 3px;
+      -webkit-transform: rotate(45deg) translate(0, 0);
     }
     100% {
-      -webkit-transform: rotate(225deg);
-      margin-top: 7px;
+      -webkit-transform: rotate(225deg) translate(-3px, -3px);
     }
   }
 
   @-o-keyframes spin {
     0% {
-      -o-transform: rotate(45deg);
-      margin-top: 3px;
+      -o-transform: rotate(45deg) translate(0, 0);
     }
     100% {
-      -o-transform: rotate(225deg);
-      margin-top: 7px;
+      -o-transform: rotate(225deg) translate(-3px, -3px);
     }
   }
 
   @-ms-keyframes spin {
     0% {
-      -ms-transform: rotate(45deg);
-      margin-top: 3px;
+      -ms-transform: rotate(45deg) translate(0, 0);
     }
     100% {
-      -ms-transform: rotate(225deg);
-      margin-top: 7px;
+      -ms-transform: rotate(225deg) translate(-3px, -3px);
     }
   }
 
   @keyframes reverseSpin {
     0% {
-      transform: rotate(225deg);
-      margin-top: 7px;
-
+      transform: rotate(225deg) translate(-3px, -3px);
     }
     100% {
-      transform: rotate(45deg);
-      margin-top: 3px;
+      transform: rotate(45deg) translate(0, 0);
     }
   }
 
   @-moz-keyframes reverseSpin {
     0% {
-      -moz-transform: rotate(225deg);
-      margin-top: 7px;
+      -moz-transform: rotate(225deg) translate(-3px, -3px);
     }
     100% {
-      -moz-transform: rotate(45deg);
-      margin-top: 3px;
+      -moz-transform: rotate(45deg) translate(0, 0);
     }
   }
 
   @-webkit-keyframes reverseSpin {
     0% {
-      -webkit-transform: rotate(225deg);
-      margin-top: 7px;
+      -webkit-transform: rotate(225deg) translate(-3px, -3px);
     }
     100% {
-      -webkit-transform: rotate(45deg);
-      margin-top: 3px;
+      -webkit-transform: rotate(45deg) translate(0, 0);
     }
   }
 
   @-o-keyframes reverseSpin {
     0% {
-      -o-transform: rotate(225deg);
-      margin-top: 7px;
+      -o-transform: rotate(225deg) translate(-3px, -3px);
     }
     100% {
-      -o-transform: rotate(45deg);
-      margin-top: 3px;
+      -o-transform: rotate(45deg) translate(0, 0);
     }
   }
 
   @-ms-keyframes reverseSpin {
     0% {
-      -ms-transform: rotate(225deg);
-      margin-top: 7px;
+      -ms-transform: rotate(225deg) translate(-3px, -3px);
     }
     100% {
-      -ms-transform: rotate(45deg);
-      margin-top: 3px;
+      -ms-transform: rotate(45deg) translate(0, 0);
     }
   }
 </style>

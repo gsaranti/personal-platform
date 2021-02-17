@@ -1,6 +1,6 @@
 <template>
   <div v-bind:class="{intro: backgroundLoaded, introBeforeLoad: !backgroundLoaded}">
-    <div v-bind:class="{'beforeLoad': !backgroundLoaded}">
+    <div v-if="backgroundLoaded">
       <p v-bind:class="{'signature': backgroundLoaded}">George Sarantinos</p>
       <a href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
         <v-img class="socialLogo linkedIn" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
@@ -30,18 +30,18 @@
         </v-list>
       </v-menu>
     </div>
-    <div v-bind:class="{'animated-title': backgroundLoaded, 'beforeLoad': !backgroundLoaded}">
-      <div v-bind:class="{'text-top': backgroundLoaded}">
+    <div v-if="backgroundLoaded" class="animated-title">
+      <div class="text-top">
         <div>
           <span style="margin-right: 135px">Hi there,</span>
           <span>My name is George</span>
         </div>
       </div>
-      <div v-bind:class="{'text-bottom': backgroundLoaded}">
+      <div class="text-bottom">
         <div>Get to know me!</div>
       </div>
     </div>
-    <div :class="{'downButtonIntro': backgroundLoaded, 'beforeLoad': !backgroundLoaded}">
+    <div v-if="backgroundLoaded" class="downButtonIntro">
       <div v-on:click="callAutoScroll('.experienceScroll')" class="downButton">
         <i class="arrow down"></i>
       </div>
@@ -89,63 +89,94 @@
 </script>
 
 <style>
-  @keyframes fadeIn {
+  @keyframes backgroundFadeIn {
     0% {
       filter: blur(5px);
-      visibility: visible;
     }
     100% {
       filter: blur(0);
-      visibility: visible;
+    }
+  }
+
+  @-moz-keyframes backgroundFadeIn {
+    0% {
+      filter: blur(5px);
+    }
+    100% {
+      filter: blur(0);
+    }
+  }
+
+  @-webkit-keyframes backgroundFadeIn {
+    0% {
+      filter: blur(5px);
+    }
+    100% {
+      filter: blur(0);
+    }
+  }
+
+  @-o-keyframes backgroundFadeIn {
+    0% {
+      filter: blur(5px);
+    }
+    100% {
+      filter: blur(0);
+    }
+  }
+
+  @-ms-keyframes backgroundFadeIn {
+    0% {
+      filter: blur(5px);
+    }
+    100% {
+      filter: blur(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 
   @-moz-keyframes fadeIn {
     0% {
-      filter: blur(5px);
-      visibility: visible;
+      opacity: 0;
     }
     100% {
-      filter: blur(0);
-      visibility: visible;
+      opacity: 1
     }
   }
 
   @-webkit-keyframes fadeIn {
     0% {
-      filter: blur(5px);
-      visibility: visible;
+      opacity: 0;
     }
     100% {
-      filter: blur(0);
-      visibility: visible;
+      opacity: 1;
     }
   }
 
   @-o-keyframes fadeIn {
     0% {
-      filter: blur(5px);
-      visibility: visible;
+      opacity: 0;
     }
     100% {
-      filter: blur(0);
-      visibility: visible;
+      opacity: 1;
     }
   }
 
   @-ms-keyframes fadeIn {
     0% {
-      filter: blur(5px);
-      visibility: visible;
+      opacity: 0;
     }
     100% {
-      filter: blur(0);
-      visibility: visible;
+      opacity: 1;
     }
-  }
-
-  .beforeLoad {
-    visibility: hidden;
   }
 
   .introBeforeLoad {
@@ -173,15 +204,15 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    animation: fadeIn ease 2s;
-    -webkit-animation: fadeIn ease 2s;
-    -moz-animation: fadeIn ease 2s;
-    -o-animation: fadeIn ease 2s;
-    -ms-animation: fadeIn ease 2s;
+    animation: backgroundFadeIn 2s;
+    -webkit-animation: backgroundFadeIn 2s;
+    -moz-animation: backgroundFadeIn 2s;
+    -o-animation: backgroundFadeIn 2s;
+    -ms-animation: backgroundFadeIn 2s;
   }
 
   .dropDownMenu {
-    visibility: hidden;
+    opacity: 0;
     position: fixed;
     z-index: 2;
     cursor: pointer;
@@ -196,16 +227,11 @@
     align-items: center;
     justify-content: center;
     float: left;
-    animation: fadeIn ease 1.5s forwards;
-    -webkit-animation: fadeIn ease 1.5s forwards;
-    -moz-animation: fadeIn ease 1.5s forwards;
-    -o-animation: fadeIn ease 1.5s forwards;
-    -ms-animation: fadeIn ease 1.5s forwards;
-    animation-delay: 3s;
-    -webkit-animation-delay: 3s;
-    -moz-animation-delay: 3s;
-    -o-animation-delay: 3s;
-    -ms-animation-delay: 3s;
+    animation: fadeIn 1.5s forwards 3s;
+    -webkit-animation: fadeIn 1.5s forwards 3s;
+    -moz-animation: fadeIn 1.5s forwards 3s;
+    -o-animation: fadeIn 1.5s forwards 3s;
+    -ms-animation: fadeIn 1.5s forwards 3s;
   }
 
   .bar1, .bar2, .bar3 {
@@ -237,7 +263,7 @@
   }
 
   .signature {
-    visibility: hidden;
+    opacity: 0;
     color: ghostwhite;
     font-family: "Sacramento", sans-serif;
     font-size: 35px;
@@ -245,40 +271,25 @@
     margin-top: 10px;
     margin-right: 25px;
     white-space: nowrap;
-    animation: fadeIn ease 1.5s;
-    -webkit-animation: fadeIn ease 1.5s;
-    -moz-animation: fadeIn ease 1.5s;
-    -o-animation: fadeIn ease 1.5s;
-    -ms-animation: fadeIn ease 1.5s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    animation-delay: 3s;
-    -webkit-animation-delay: 3s;
-    -moz-animation-delay: 3s;
-    -o-animation-delay: 3s;
-    -ms-animation-delay: 3s;
+    animation: fadeIn 1.5s;
+    -webkit-animation: fadeIn 1.5s forwards 3s;
+    -moz-animation: fadeIn 1.5s forwards 3s;
+    -o-animation: fadeIn 1.5s forwards 3s;
+    -ms-animation: fadeIn 1.5s forwards 3s;
   }
 
   .socialLogo {
-    visibility: hidden;
+    opacity: 0;
     width: 25px;
     height: 25px;
     margin-top: 22px;
     margin-right: 10px;
     float: right;
-    animation: fadeIn ease 1.5s forwards;
-    -webkit-animation: fadeIn ease 1.5s forwards;
-    -moz-animation: fadeIn ease 1.5s forwards;
-    -o-animation: fadeIn ease 1.5s forwards;
-    -ms-animation: fadeIn ease 1.5s forwards;
-    animation-delay: 3s;
-    -webkit-animation-delay: 3s;
-    -moz-animation-delay: 3s;
-    -o-animation-delay: 3s;
-    -ms-animation-delay: 3s;
+    animation: fadeIn 1.5s forwards 3s;
+    -webkit-animation: fadeIn 1.5s forwards 3s;
+    -moz-animation: fadeIn 1.5s forwards 3s;
+    -o-animation: fadeIn 1.5s forwards 3s;
+    -ms-animation: fadeIn 1.5s forwards 3s;
   }
 
   @keyframes showTopText {
@@ -403,21 +414,11 @@
   }
 
   .animated-title > div.text-top div {
-    animation: showTopText 1s;
-    -webkit-animation: showTopText 1s;
-    -moz-animation: showTopText 1s;
-    -o-animation: showTopText 1s;
-    -ms-animation: showTopText 1s;
-    animation-delay: 1s;
-    -webkit-animation-delay: 1s;
-    -moz-animation-delay: 1s;
-    -o-animation-delay: 1s;
-    -ms-animation-delay: 1s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
+    animation: showTopText 1s forwards 1s;
+    -webkit-animation: showTopText 1s forwards 1s;
+    -moz-animation: showTopText 1s forwards 1s;
+    -o-animation: showTopText 1s forwards 1s;
+    -ms-animation: showTopText 1s forwards 1s;
     transform: translate(0, 100%);
     -webkit-transform: translate(0, 100%);
     -moz-transform: translate(0, 100%);
@@ -435,21 +436,11 @@
   }
 
   .animated-title > div.text-bottom div {
-    animation: showBottomText 0.5s;
-    -webkit-animation: showBottomText 0.5s;
-    -moz-animation: showBottomText 0.5s;
-    -o-animation: showBottomText 0.5s;
-    -ms-animation: showBottomText 0.5s;
-    animation-delay: 2.25s;
-    -webkit-animation-delay: 2.25s;
-    -moz-animation-delay: 2.25s;
-    -o-animation-delay: 2.25s;
-    -ms-animation-delay: 2.25s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
+    animation: showBottomText 0.5s forwards 2.25s;
+    -webkit-animation: showBottomText 0.5s forwards 2.25s;
+    -moz-animation: showBottomText 0.5s forwards 2.25s;
+    -o-animation: showBottomText 0.5s forwards 2.25s;
+    -ms-animation: showBottomText 0.5s forwards 2.25s;
     top: 0;
     transform: translate(0, -100%);
     -webkit-transform: translate(0, -100%);
@@ -589,22 +580,12 @@
   }
 
   .downButtonIntro {
-    visibility: hidden;
-    animation: fadeIn ease 1.5s;
-    -webkit-animation: fadeIn ease 1.5s;
-    -moz-animation: fadeIn ease 1.5s;
-    -o-animation: fadeIn ease 1.5s;
-    -ms-animation: fadeIn ease 1.5s;
-    animation-delay: 3s;
-    -webkit-animation-delay: 3s;
-    -moz-animation-delay: 3s;
-    -o-animation-delay: 3s;
-    -ms-animation-delay: 3s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards 3s;
+    -webkit-animation: fadeIn 1.5s forwards 3s;
+    -moz-animation: fadeIn 1.5s forwards 3s;
+    -o-animation: fadeIn 1.5s forwards 3s;
+    -ms-animation: fadeIn 1.5s forwards 3s;
   }
 
   .downButton {
