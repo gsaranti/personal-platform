@@ -107,11 +107,11 @@
 
   .expanded {
     will-change: max-height;
-    animation: expandText 1s forwards;
-    -webkit-animation: expandText 1s forwards;
-    -moz-animation: expandText 1s forwards;
-    -o-animation: expandText 1s forwards;
-    -ms-animation: expandText 1s forwards;
+    animation: expandText 1.5s forwards;
+    -webkit-animation: expandText 1.5s forwards;
+    -moz-animation: expandText 1.5s forwards;
+    -o-animation: expandText 1.5s forwards;
+    -ms-animation: expandText 1.5s forwards;
   }
 
   .dots {
