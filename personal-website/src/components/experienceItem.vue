@@ -98,20 +98,20 @@
     max-height: 130px;
     overflow: hidden;
     will-change: max-height;
-    animation: collapseText 1s forwards;
-    -webkit-animation: collapseText 1s forwards;
-    -moz-animation: collapseText 1s forwards;
-    -o-animation: collapseText 1s forwards;
-    -ms-animation: collapseText 1s forwards;
+    animation: collapseText ease-out 1s forwards;
+    -webkit-animation: collapseText ease-out 1s forwards;
+    -moz-animation: collapseText ease-out 1s forwards;
+    -o-animation: collapseText ease-out 1s forwards;
+    -ms-animation: collapseText ease-out 1s forwards;
   }
 
   .expanded {
     will-change: max-height;
-    animation: expandText 1.5s forwards;
-    -webkit-animation: expandText 1.5s forwards;
-    -moz-animation: expandText 1.5s forwards;
-    -o-animation: expandText 1.5s forwards;
-    -ms-animation: expandText 1.5s forwards;
+    animation: expandText ease-out 1.5s forwards;
+    -webkit-animation: expandText ease-out 1.5s forwards;
+    -moz-animation: expandText ease-out 1.5s forwards;
+    -o-animation: expandText ease-out 1.5s forwards;
+    -ms-animation: expandText ease-out 1.5s forwards;
   }
 
   .dots {
