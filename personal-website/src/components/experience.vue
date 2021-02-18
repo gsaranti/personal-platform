@@ -19,9 +19,8 @@
                       'unique project that my team and I built was our multilinear service, which ' +
                       'generates 24/7 HLS and DASH linear streams and accompanying electronic ' +
                       'programming guides. By doing so, Red Bull TV now offers multiple linear stream ' +
-                      'channels along with VOD and live streams. Along with this, I helped build the ' +
-                      'metadata and stream localization features for Red Bull TV, improving the ' +
-                      'content served to numerous regions.',
+                      'channels. Along with this, I helped build the metadata and stream localization ' +
+                      'features for Red Bull TV, improving the content served to numerous regions.',
                       'Want to learn more about what I’ve worked on at Red Bull Media House (ETL' +
                       ' systems, leaderboard services, data migrations, and more!)? Connect with me ' +
                       'on LinkedIn! Let’s chat.'
@@ -36,8 +35,9 @@
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_350,h_170/v1609570109/LMU1_t6sf4w.png"
                     label="Loyola Marymount University"
                     :description="[
-                      'I\'ll never take for granted my four years at LMU.',
-                      'Through small class sizes I was able to have more in person time with my ' +
+                      'I\'ll never take for granted my four years at LMU. Always sunny and close to the ' +
+                      'beach, who could ask for more?',
+                      'Through small class sizes I was able to have substantial in person time with my ' +
                       'professors, allowing me to build relationships with them. This not only helped ' +
                       'improve my understanding of the material, but made for conversations with them to ' +
                       'be easy going and fun. I find this to be a core reason for my enjoyment of ' +
@@ -46,9 +46,9 @@
                       'service organization. With the other members we worked together to perform ' +
                       'service at different placements around the LA area for the promotion of social ' +
                       'justice. We often found ourselves engaged in difficult conversations regarding ' +
-                      'complicated social topics, which pushed me to think critically about the systemic' +
+                      'complicated social topics, which pushed me to think critically about the systemic ' +
                       'injustice around the world.',
-                      'I could go on about my time at LMU, but in the end it was the experiences I had ' +
+                      'I could go on about my time at LMU, but in the end it was the experiences I had, ' +
                       'friends I made, and skills I gained that helped catapult me to where I am today'
                     ]"
                     :expand="true"
