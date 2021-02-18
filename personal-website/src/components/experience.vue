@@ -36,14 +36,20 @@
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_350,h_170/v1609570109/LMU1_t6sf4w.png"
                     label="Loyola Marymount University"
                     :description="[
-                      'My time at Red Bull Media House has been incredible. Being able to work with' +
-                      ' a group of experienced, driven individuals who show passion for what they do ' +
-                      'both in and out of the office inspires me on a daily basis.',
-                      'After proving my abilities to the team leadership, I was promoted from a junior' +
-                      ' Software Engineer to Software Engineer at the beginning of 2019. Over the past ' +
-                      'two plus years I’ve worked on the backend engineering team, building and ' +
-                      'maintaining the services that power the Red Bull TV and Servus TV streaming ' +
-                      'services and Red Bull AR App.'
+                      'I\'ll never take for granted my four years at LMU.',
+                      'Through small class sizes I was able to have more in person time with my ' +
+                      'professors, allowing me to build relationships with them. This not only helped ' +
+                      'improve my understanding of the material, but made for conversations with them to ' +
+                      'be easy going and fun. I find this to be a core reason for my enjoyment of ' +
+                      'software engineering today.',
+                      'Outside of the classroom I was lucky enough to be a member of the Ignatians ' +
+                      'service organization. With the other members we worked together to perform ' +
+                      'service at different placements around the LA area for the promotion of social ' +
+                      'justice. We often found ourselves engaged in difficult conversations regarding ' +
+                      'complicated social topics, which pushed me to think critically about the systemic' +
+                      'injustice around the world.',
+                      'I could go on about my time at LMU, but in the end it was the experiences I had ' +
+                      'friends I made, and skills I gained that helped catapult me to where I am today'
                     ]"
                     :expand="true"
                     :positions="[

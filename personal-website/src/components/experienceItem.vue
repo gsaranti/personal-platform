@@ -17,8 +17,8 @@
               {{ paragraph }}<br><br>
             </p>
           </div>
-          <p v-if="!isExpanded" class="dots">...</p>
-          <div v-on:click="expandText" :class="{expandButtonUp: isExpanded, expandButton: !isExpanded}">
+          <p v-if="!isExpanded && expand" class="dots">...</p>
+          <div v-if="expand" v-on:click="expandText" :class="{expandButtonUp: this.isExpanded, expandButton: !this.isExpanded}">
             <i class="smallArrow smallDown" v-if="!isExpanded"></i>
             <i class="smallArrow smallUp" v-if="isExpanded"></i>
           </div>
@@ -97,6 +97,7 @@
   .collapsed {
     max-height: 130px;
     overflow: hidden;
+    will-change: max-height;
     animation: collapseText 1s forwards;
     -webkit-animation: collapseText 1s forwards;
     -moz-animation: collapseText 1s forwards;
@@ -105,6 +106,7 @@
   }
 
   .expanded {
+    will-change: max-height;
     animation: expandText 1s forwards;
     -webkit-animation: expandText 1s forwards;
     -moz-animation: expandText 1s forwards;
@@ -299,7 +301,7 @@
       max-height: 130px;
     }
     100% {
-      max-height: 1000px;
+      max-height: 800px;
     }
   }
 
@@ -308,7 +310,7 @@
       max-height: 130px;
     }
     100% {
-      max-height: 1000px;
+      max-height: 800px;
     }
   }
 
@@ -317,7 +319,7 @@
       max-height: 130px;
     }
     100% {
-      max-height: 1000px;
+      max-height: 800px;
     }
   }
 
@@ -326,7 +328,7 @@
       max-height: 130px;
     }
     100% {
-      max-height: 1000px;
+      max-height: 800px;
     }
   }
 
@@ -335,13 +337,13 @@
       max-height: 130px;
     }
     100% {
-      max-height: 1000px;
+      max-height: 800px;
     }
   }
 
   @keyframes collapseText {
     0% {
-      max-height: 1000px;
+      max-height: 800px;
     }
     100% {
       max-height: 130px;
@@ -350,7 +352,7 @@
 
   @-moz-keyframes collapseText {
     0% {
-      max-height: 1000px;
+      max-height: 800px;
     }
     100% {
       max-height: 130px;
@@ -359,7 +361,7 @@
 
   @-webkit-keyframes collapseText {
     0% {
-      max-height: 1000px;
+      max-height: 800px;
     }
     100% {
       max-height: 130px;
@@ -368,7 +370,7 @@
 
   @-o-keyframes collapseText {
     0% {
-      max-height: 1000px;
+      max-height: 800px;
     }
     100% {
       max-height: 130px;
@@ -377,7 +379,7 @@
 
   @-ms-keyframes collapseText {
     0% {
-      max-height: 1000px;
+      max-height: 800px;
     }
     100% {
       max-height: 130px;
