@@ -32,28 +32,19 @@
       </div>
       <div class="collage">
         <div class="imageRow">
-          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612501041/book_zpjxm6.heic"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612501041/book_zpjxm6.heic"/>
-          <v-img class="tall" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1611365602/walk_gjbscw.jpg"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365602/walk_gjbscw.jpg"/>
-          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1611365590/wine_kwzdsl.jpg"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365590/wine_kwzdsl.jpg"/>
+          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1612501041/book_zpjxm6.heic" alt=""/>
+          <img class="tall" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1611365602/walk_gjbscw.jpg" alt=""/>
+          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1611365590/wine_kwzdsl.jpg" alt=""/>
         </div>
         <div class="imageRow">
-          <v-img class="tall" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1611365609/look_evj1cv.jpg"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365609/look_evj1cv.jpg"/>
-          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1611365569/ski_sh2b91.jpg"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1611365569/ski_sh2b91.jpg"/>
-          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612501030/henry_tsler1.jpg"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612501030/henry_tsler1.jpg"/>
+          <img class="tall" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1611365609/look_evj1cv.jpg" alt=""/>
+          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1611365569/ski_sh2b91.jpg" alt=""/>
+          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1612501030/henry_tsler1.jpg" alt=""/>
         </div>
         <div class="imageRow">
-          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612750132/ferry_nbn0lt.jpg"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750132/ferry_nbn0lt.jpg"/>
-          <v-img class="tall" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612750137/bike_pvbf3n.jpg"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750137/bike_pvbf3n.jpg"/>
-          <v-img class="long" lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto/v1612750125/fam-ski_lojnwq.jpg"
-                 src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1612750125/fam-ski_lojnwq.jpg"/>
+          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1612750132/ferry_nbn0lt.jpg" alt=""/>
+          <img class="tall" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1612750137/bike_pvbf3n.jpg" alt=""/>
+          <img class="long" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto/v1612750125/fam-ski_lojnwq.jpg" alt=""/>
         </div>
       </div>
     </div>

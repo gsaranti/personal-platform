@@ -61,6 +61,7 @@
       return {
         backgroundLoaded: false,
         backgroundImage: new Image(),
+        backgroundImageBlur: new Image(),
         items: [
           { title: 'Home', scrollTo: '.introScroll' },
           { title: 'Experience', scrollTo: '.experienceScroll' },
@@ -70,7 +71,8 @@
       }
     },
     created() {
-      this.backgroundImage.src = "https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_auto,f_auto,e_sharpen:100,e_brightness_hsb:-10/v1609018153/2020-11-06_12.37.49_h3ayue.jpg";
+      this.backgroundImage.src = "https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_30,f_auto,e_brightness_hsb:-10/v1614740118/seaside_v2_glcgfr.jpg";
+      this.backgroundImageBlur = "https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,e_brightness_hsb:-10/v1614739938/seaside_zrasdz.jpg";
     },
     mounted() {
       const self = this;
@@ -186,7 +188,7 @@
     left: 0;
     position: absolute;
     filter: blur(5px);
-    background: url(https://res.cloudinary.com/df1dpirbp/image/upload/q_1,f_auto,e_brightness_hsb:-10/v1609018153/2020-11-06_12.37.49_h3ayue.jpg) no-repeat center center;
+    background: url(https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,e_brightness_hsb:-10/v1614739938/seaside_zrasdz.jpg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -199,7 +201,7 @@
     top: 0;
     left: 0;
     position: absolute;
-    background: url(https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_auto,f_auto,e_sharpen:100,e_brightness_hsb:-10/v1609018153/2020-11-06_12.37.49_h3ayue.jpg) no-repeat center center;
+    background: url(https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_30,f_auto,e_brightness_hsb:-10/v1614740118/seaside_v2_glcgfr.jpg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
