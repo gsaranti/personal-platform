@@ -185,7 +185,7 @@
     top: 0;
     left: 0;
     position: absolute;
-    filter: blur(5px);
+    filter: blur(12px);
     background: url(https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,e_brightness_hsb:-10/v1614834825/seaside_blur_v5_y7uohh.jpg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
