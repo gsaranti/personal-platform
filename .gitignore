@@ -1,2 +1,4 @@
 # Google App Engine generated folder
 appengine-generated/
+*personal-platform-service-account.json*
+*node_modules*
