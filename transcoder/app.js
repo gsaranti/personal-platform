@@ -11,49 +11,64 @@ const contant = require('./src/constant');
 
 async function transcode() {
   try {
-    const videoFileNamesDoc = await db.getVideoTranscodeList();
-    if (!videoFileNamesDoc) {
-      throw error.firestoreDocumentNotFound;
-    }
-    console.log('Retrieved video transcode list');
+    let videoFileNames = await getVideoFileNames();
+    console.log('Retrieved video transcode backlog');
 
-    const videoFileNames = _.get(videoFileNamesDoc, 'filenames', []);
+    while (videoFileNames.length) {
+      for (const videoFileName of videoFileNames) {
+        const videoFile = await gs.getVideoFile(videoFileName);
+        console.log(`${videoFileName} retrieved from google storage`);
 
-    for (const videoFileName of videoFileNames) {
-      const videoFile = await gs.getVideoFile(videoFileName);
-      console.log(`${videoFileName} retrieved from google storage`);
+        const transcodeProcess = new Promise((resolve, reject) => {
+          tmp.dir(async function _tempDirCreated(err, path, unsafeCleanup) {
+            if (err) throw err;
 
-      tmp.dir(async function _tempDirCreated(err, path, unsafeCleanup) {
-        if (err) throw err;
+            const videoFilePath = `${path}/${videoFileName}`;
 
-        const videoFilePath = `${path}/${videoFileName}`;
+            await writeToFolder(videoFilePath, videoFile);
+            console.log(`${videoFileName} successfully written to tmp directory`);
 
-        await writeToFolder(videoFilePath, videoFile);
-        console.log(`${videoFileName} successfully written to tmp directory`);
+            await runFfmpeg(path, videoFilePath, videoFileName);
 
-        await runFfmpeg(path, videoFilePath, videoFileName);
+            const transcodedFileNames = await getTranscodedFileNames(path);
 
-        const transcodedFileNames = await getTranscodedFileNames(path);
+            const gsFolderName = _.get(videoFileName.split("."), '[0]');
+            if (!gsFolderName) {
+              throw error.buildGsFolderNameError(videoFileName);
+            }
 
-        const gsFolderName = _.get(videoFileName.split("."), '[0]');
-        if (!gsFolderName) {
-          throw error.buildGsFolderNameError(videoFileName);
-        }
+            for (const transcodedFileName of transcodedFileNames) {
+              if (transcodedFileName !== videoFileName) {
+                const transcodedFilePath = `${path}/${transcodedFileName}`;
+                await gs.uploadTranscodedFiles(transcodedFilePath, transcodedFileName, gsFolderName);
+              }
+            }
 
-        for (const transcodedFileName of transcodedFileNames) {
-          if (transcodedFileName !== videoFileName) {
-            const transcodedFilePath = `${path}/${transcodedFileName}`;
-            await gs.uploadTranscodedFiles(transcodedFilePath, transcodedFileName, gsFolderName);
-          }
-        }
+            unsafeCleanup();
+            await db.removeFromVideoTranscodeList(videoFileName);
+            console.log(`${videoFileName} removed from transcode backlog`);
+            console.log(`Process completed for ${videoFileName}`);
+            resolve();
+          });
+        });
 
-        unsafeCleanup();
-        console.log(`Process completed for ${videoFileName}`);
-      });
+        await transcodeProcess;
+      }
+
+      videoFileNames = getVideoFileNames();
     }
   } catch (err) {
     console.error(err.toString());
   }
+}
+
+async function getVideoFileNames() {
+  const videoFileNamesDoc = await db.getVideoTranscodeList();
+  if (!videoFileNamesDoc) {
+    throw error.firestoreDocumentNotFound;
+  }
+
+  return _.get(videoFileNamesDoc, 'filenames', []);
 }
 
 async function writeToFolder(filePath, data) {
@@ -111,4 +126,6 @@ async function getTranscodedFileNames(path) {
   });
 }
 
-transcode();
+transcode().then(() => {
+  console.log("All video transcode processes completed")
+});

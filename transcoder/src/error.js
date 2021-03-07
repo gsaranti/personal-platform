@@ -28,11 +28,18 @@ function buildGsFolderNameError(videoName) {
   return error;
 }
 
+function firestoreRemoveVideoFileNameError(videoFileName) {
+  const error = new Error(`Error removing ${videoFileName} from the transcode backlog`);
+  error.status = 500;
+  return error;
+}
+
 module.exports = {
-  firestoreTranscodeRetrievalError: firestoreTranscodeRetrievalError,
-  firestoreDocumentNotFound:        firestoreDocumentNotFound,
-  gsRetrievalError:                 gsRetrievalError,
-  directoryWriteError:              directoryWriteError,
-  getFileNamesError:                getFileNamesError,
-  buildGsFolderNameError:           buildGsFolderNameError
+  firestoreTranscodeRetrievalError:  firestoreTranscodeRetrievalError,
+  firestoreDocumentNotFound:         firestoreDocumentNotFound,
+  gsRetrievalError:                  gsRetrievalError,
+  directoryWriteError:               directoryWriteError,
+  getFileNamesError:                 getFileNamesError,
+  buildGsFolderNameError:            buildGsFolderNameError,
+  firestoreRemoveVideoFileNameError: firestoreRemoveVideoFileNameError
 };

@@ -14,7 +14,9 @@ if (fs.existsSync('./../personal-platform-service-account.json')) {
   admin.initializeApp();
 }
 
-const db = admin.firestore();
+const db         = admin.firestore();
+const FieldValue = admin.firestore.FieldValue;
+
 db.settings({
   timestampsInSnapshots: true
 });
@@ -34,6 +36,20 @@ async function getVideoTranscodeList() {
   }
 }
 
+async function removeFromVideoTranscodeList(videoFileName) {
+  try {
+    await db
+      .collection('transcodes')
+      .doc('backlog')
+      .update({
+        filenames: FieldValue.arrayRemove(videoFileName)
+      });
+  } catch (err) {
+    throw error.firestoreRemoveVideoFileNameError(videoFileName);
+  }
+}
+
 module.exports = {
-  getVideoTranscodeList: getVideoTranscodeList
+  getVideoTranscodeList:        getVideoTranscodeList,
+  removeFromVideoTranscodeList: removeFromVideoTranscodeList
 };
