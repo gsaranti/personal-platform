@@ -32,7 +32,7 @@ async function getVideoTranscodeList() {
       return doc.data();
     }
   } catch (err) {
-    throw error.firestoreTranscodeRetrievalError;
+    console.error('Error retrieving video transcode list from Firestore');
   }
 }
 

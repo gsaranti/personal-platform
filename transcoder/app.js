@@ -10,19 +10,26 @@ const error   = require('./src/error');
 const contant = require('./src/constant');
 
 async function transcode() {
-  try {
-    let videoFileNames = await getVideoFileNames();
-    console.log('Retrieved video transcode backlog');
+  let videoFileNames = await getVideoFileNames();
+  console.log('Retrieved video transcode backlog');
 
-    while (videoFileNames.length) {
-      for (const videoFileName of videoFileNames) {
-        const videoFile = await gs.getVideoFile(videoFileName);
-        console.log(`${videoFileName} retrieved from google storage`);
+  while (videoFileNames.length) {
+    for (const videoFileName of videoFileNames) {
+      const videoFile = await gs.getVideoFile(videoFileName);
 
-        const transcodeProcess = new Promise((resolve, reject) => {
-          tmp.dir(async function _tempDirCreated(err, path, unsafeCleanup) {
-            if (err) throw err;
+      if (!videoFile) {
+        continue;
+      }
+      console.log(`${videoFileName} retrieved from google storage`);
 
+      const transcodeProcess = new Promise((resolve) => {
+        tmp.dir(async function _tempDirCreated(err, path, unsafeCleanup) {
+          if (err) {
+            console.error(err.toString());
+            return resolve();
+          }
+
+          try {
             const videoFilePath = `${path}/${videoFileName}`;
 
             await writeToFolder(videoFilePath, videoFile);
@@ -34,7 +41,9 @@ async function transcode() {
 
             const gsFolderName = _.get(videoFileName.split("."), '[0]');
             if (!gsFolderName) {
-              throw error.buildGsFolderNameError(videoFileName);
+              console.error(`Error creating folder name for ${videoFileName}`);
+              unsafeCleanup();
+              return resolve();
             }
 
             for (const transcodedFileName of transcodedFileNames) {
@@ -44,30 +53,28 @@ async function transcode() {
               }
             }
 
-            unsafeCleanup();
             await db.removeFromVideoTranscodeList(videoFileName);
+            unsafeCleanup();
+
             console.log(`${videoFileName} removed from transcode backlog`);
             console.log(`Process completed for ${videoFileName}`);
             resolve();
-          });
+          } catch (err) {
+            unsafeCleanup();
+            console.error(err.toString());
+          }
         });
+      });
 
-        await transcodeProcess;
-      }
-
-      videoFileNames = getVideoFileNames();
+      await transcodeProcess;
     }
-  } catch (err) {
-    console.error(err.toString());
+
+    videoFileNames = getVideoFileNames();
   }
 }
 
 async function getVideoFileNames() {
   const videoFileNamesDoc = await db.getVideoTranscodeList();
-  if (!videoFileNamesDoc) {
-    throw error.firestoreDocumentNotFound;
-  }
-
   return _.get(videoFileNamesDoc, 'filenames', []);
 }
 
@@ -75,7 +82,7 @@ async function writeToFolder(filePath, data) {
   return new Promise((resolve, reject) => {
     fs.writeFile(filePath, data, function(err) {
       if (err) {
-        reject(error.directoryWriteError(filePath));
+        return reject(error.directoryWriteError(filePath));
       }
       resolve();
     });
@@ -96,7 +103,7 @@ function runFfmpeg(path, videoFilePath, videoFileName) {
     });
 
     proc.stderr.on('end', function () {
-      console.log(`${videoFileName} transcoded process complete`);
+      console.log(`${videoFileName} transcode process complete`);
     });
 
     proc.stderr.on('exit', function () {
@@ -114,7 +121,7 @@ async function getTranscodedFileNames(path) {
   return new Promise((resolve, reject) => {
     fs.readdir(path, (err, files) => {
       if (err) {
-        reject(error.getFileNamesError(path));
+        return reject(error.getFileNamesError(path));
       }
 
       const fileNames = [];
@@ -126,6 +133,10 @@ async function getTranscodedFileNames(path) {
   });
 }
 
-transcode().then(() => {
-  console.log("All video transcode processes completed")
-});
+transcode()
+  .then(() => {
+    console.log("All video transcode processes completed")
+  })
+  .catch((err) => {
+    console.log(err.toString());
+  });

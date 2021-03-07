@@ -1,8 +1,6 @@
 const {Storage} = require('@google-cloud/storage');
 const storage   = new Storage();
 
-const error = require('./error');
-
 const bucketId    = 'george-personal-website-212820.appspot.com';
 
 async function getVideoFile(fileName) {
@@ -14,7 +12,7 @@ async function getVideoFile(fileName) {
 
     return data[0];
   } catch (err) {
-    throw error.gsRetrievalError(fileName);
+    console.error(`Error retrieving ${fileName} from google storage`);
   }
 }
 
