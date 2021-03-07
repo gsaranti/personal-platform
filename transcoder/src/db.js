@@ -1,6 +1,8 @@
 const admin = require('firebase-admin');
 const fs    = require('fs');
 
+const error = require('./error');
+
 if (fs.existsSync('./../personal-platform-service-account.json')) {
   const serviceAccount = require('../../personal-platform-service-account.json');
   console.log("local dev");
@@ -28,7 +30,7 @@ async function getVideoTranscodeList() {
       return doc.data();
     }
   } catch (err) {
-    console.error('Error retrieving video transcode list from Firestore');
+    throw error.firestoreTranscodeRetrievalError;
   }
 }
 
