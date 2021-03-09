@@ -23,7 +23,7 @@ async function transcode() {
       const tmpDirectoryPath = `./${tmpDirectoryName}`;
       try {
         await createTmpDirectory(tmpDirectoryPath);
-        console.log('Temporary directory created');
+        console.log(`Temporary directory created: ${tmpDirectoryPath}`);
       } catch (err) {
         console.error(err.toString());
         continue;
@@ -49,6 +49,7 @@ async function transcode() {
           const encodedFilePath = `${tmpDirectoryPath}/${encodedFileName}`;
           await gs.uploadEncodedFiles(encodedFilePath, encodedFileName, tmpDirectoryName);
         }
+        console.log('Encoded files successfully uploaded to google storage');
       } catch (err) {
         console.error(err.toString());
       }
