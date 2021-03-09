@@ -14,6 +14,9 @@ async function transcode() {
 
   while (videoFileNames.length) {
     for (const videoFileName of videoFileNames) {
+      await db.removeFromVideoTranscodeList(videoFileName);
+      console.log(`${videoFileName} removed from transcode backlog`);
+
       const tmpDirectoryName = _.get(videoFileName.split("."), '[0]');
       if (!tmpDirectoryName) {
         console.error(`Error creating directory name for ${videoFileName}`);
@@ -61,8 +64,6 @@ async function transcode() {
         console.error(err.toString())
       }
 
-      await db.removeFromVideoTranscodeList(videoFileName);
-      console.log(`${videoFileName} removed from transcode backlog`);
       console.log(`Process completed for ${videoFileName}`);
     }
 
@@ -79,7 +80,7 @@ async function createTmpDirectory(directoryPath) {
   return new Promise((resolve, reject) => {
     fs.mkdir(directoryPath, function(err) {
       if (err) {
-        return reject(error.directoryCreationError());
+        return reject(error.directoryCreationError(directoryPath));
       }
       resolve();
     })

@@ -1,4 +1,4 @@
-const firestoreTranscodeRetrievalError = new Error('Error retrieving video transcode list from Firestore');
+const firestoreTranscodeRetrievalError = new Error('Error retrieving video transcode backlog from Firestore');
 firestoreTranscodeRetrievalError.status = 500;
 
 const firestoreDocumentNotFound = new Error('Firestore transcode document does not exist');
