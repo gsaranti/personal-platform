@@ -16,18 +16,18 @@ async function getVideoFile(fileName) {
   }
 }
 
-async function uploadEncodedFiles(filePath, fileName, folderName) {
+async function uploadEncodedFiles(filePathInfo) {
   try {
     await storage
       .bucket(bucketId)
-      .upload(filePath, {
-        destination: `${folderName}/${fileName}`,
+      .upload(filePathInfo.path, {
+        destination: filePathInfo.storage_path,
         metadata: {
           cacheControl: 'public, max-age: 43200'
         }
       });
   } catch (err) {
-    console.error(`error uploading ${fileName} to google storage`);
+    console.error(`error uploading ${filePathInfo.name} to google storage`);
   }
 }
 

@@ -23,10 +23,17 @@ async function transcode() {
         continue;
       }
 
-      const tmpDirectoryPath = `./${tmpDirectoryName}`;
+      const tmpDirectoryPath       = `./${tmpDirectoryName}`;
+      const renditionDirectoryInfo = getRenditionDirectoryInfo(tmpDirectoryPath);
+
       try {
         await createTmpDirectory(tmpDirectoryPath);
         console.log(`Temporary directory created: ${tmpDirectoryPath}`);
+
+        for (const path of Object.values(renditionDirectoryInfo)) {
+          await createTmpDirectory(path);
+          console.log(`Rendition directory created: ${path}`);
+        }
       } catch (err) {
         console.error(err.toString());
         continue;
@@ -46,12 +53,16 @@ async function transcode() {
 
         await runFfmpeg(tmpDirectoryPath, videoFilePath, videoFileName);
 
-        const encodedFileNames = await getEncodedFileNames(tmpDirectoryPath, videoFileName);
-
-        for (const encodedFileName of encodedFileNames) {
-          const encodedFilePath = `${tmpDirectoryPath}/${encodedFileName}`;
-          await gs.uploadEncodedFiles(encodedFilePath, encodedFileName, tmpDirectoryName);
+        const encodedFilePaths = [];
+        for (const rendition of contant.renditions) {
+          const renditionFilePaths = await getEncodedFilePaths(renditionDirectoryInfo, tmpDirectoryName, rendition);
+          encodedFilePaths.push(...renditionFilePaths);
         }
+
+        for (const encodedFilePath of encodedFilePaths) {
+          await gs.uploadEncodedFiles(encodedFilePath);
+        }
+
         console.log('Encoded files successfully uploaded to google storage');
       } catch (err) {
         console.error(err.toString());
@@ -137,22 +148,34 @@ function runFfmpeg(tmpDirectoryPath, videoFilePath, videoFileName) {
   });
 }
 
-async function getEncodedFileNames(tmpDirectoryPath, videoFileName) {
+async function getEncodedFilePaths(renditionDirectoryInfo, tmpDirectoryName, rendition) {
   return new Promise((resolve, reject) => {
-    fs.readdir(tmpDirectoryPath, (err, files) => {
+    const renditionDirectoryPath = renditionDirectoryInfo[rendition];
+
+    fs.readdir(renditionDirectoryPath, (err, files) => {
       if (err) {
-        return reject(error.getFileNamesError(tmpDirectoryPath));
+        return reject(error.getFileNamesError(renditionDirectoryPath));
       }
 
-      const fileNames = [];
+      const encodedFilePaths = [];
       files.forEach(file => {
-        if (file !== videoFileName) {
-          fileNames.push(file);
-        }
+        encodedFilePaths.push({
+          path: `${renditionDirectoryPath}/${file}`,
+          storage_path: `${tmpDirectoryName}/${rendition}/${file}`,
+          name: file
+        });
       });
-      resolve(fileNames);
+      resolve(encodedFilePaths);
     });
   });
+}
+
+function getRenditionDirectoryInfo(tmpDirectoryPath) {
+  const pathInfo = {};
+  for (const rendition of contant.renditions) {
+    pathInfo[rendition] = `${tmpDirectoryPath}/${rendition}`
+  }
+  return pathInfo;
 }
 
 transcode()
