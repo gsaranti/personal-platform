@@ -16,7 +16,7 @@ async function getVideoFile(fileName) {
   }
 }
 
-async function uploadTranscodedFiles(filePath, fileName, folderName) {
+async function uploadEncodedFiles(filePath, fileName, folderName) {
   try {
     await storage
       .bucket(bucketId)
@@ -32,6 +32,6 @@ async function uploadTranscodedFiles(filePath, fileName, folderName) {
 }
 
 module.exports = {
-  getVideoFile:          getVideoFile,
-  uploadTranscodedFiles: uploadTranscodedFiles
+  getVideoFile:       getVideoFile,
+  uploadEncodedFiles: uploadEncodedFiles
 };

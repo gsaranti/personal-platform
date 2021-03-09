@@ -1,4 +1,4 @@
-function getFfmpegArgs(videoFilePath, path) {
+function getFfmpegArgs(videoFilePath, tmpDirectoryPath) {
   return [
     '-hide_banner',
     '-y',
@@ -18,7 +18,7 @@ function getFfmpegArgs(videoFilePath, path) {
     '-maxrate', '856k',
     '-bufsize', '1200k',
     '-b:a', '96k',
-    `${path}/360p.m3u8`
+    `${tmpDirectoryPath}/360p.m3u8`
   ];
 }
 

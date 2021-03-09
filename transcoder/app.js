@@ -2,7 +2,6 @@
 
 const _   = require('lodash');
 const fs  = require('fs');
-const tmp = require('tmp');
 
 const db      = require('./src/db');
 const gs      = require('./src/gstorage');
@@ -15,58 +14,55 @@ async function transcode() {
 
   while (videoFileNames.length) {
     for (const videoFileName of videoFileNames) {
-      const videoFile = await gs.getVideoFile(videoFileName);
+      const tmpDirectoryName = _.get(videoFileName.split("."), '[0]');
+      if (!tmpDirectoryName) {
+        console.error(`Error creating directory name for ${videoFileName}`);
+        continue;
+      }
 
+      const tmpDirectoryPath = `./${tmpDirectoryName}`;
+      try {
+        await createTmpDirectory(tmpDirectoryPath);
+        console.log('Temporary directory created');
+      } catch (err) {
+        console.error(err.toString());
+        continue;
+      }
+
+      const videoFile = await gs.getVideoFile(videoFileName);
       if (!videoFile) {
         continue;
       }
       console.log(`${videoFileName} retrieved from google storage`);
 
-      const transcodeProcess = new Promise((resolve) => {
-        tmp.dir(async function _tempDirCreated(err, path, unsafeCleanup) {
-          if (err) {
-            console.error(err.toString());
-            return resolve();
-          }
+      try {
+        const videoFilePath = `${tmpDirectoryPath}/${videoFileName}`;
 
-          try {
-            const videoFilePath = `${path}/${videoFileName}`;
+        await writeToDirectory(videoFilePath, videoFile);
+        console.log(`${videoFileName} successfully written to tmp directory`);
 
-            await writeToFolder(videoFilePath, videoFile);
-            console.log(`${videoFileName} successfully written to tmp directory`);
+        await runFfmpeg(tmpDirectoryPath, videoFilePath, videoFileName);
 
-            await runFfmpeg(path, videoFilePath, videoFileName);
+        const encodedFileNames = await getEncodedFileNames(tmpDirectoryPath, videoFileName);
 
-            const transcodedFileNames = await getTranscodedFileNames(path);
+        for (const encodedFileName of encodedFileNames) {
+          const encodedFilePath = `${tmpDirectoryPath}/${encodedFileName}`;
+          await gs.uploadEncodedFiles(encodedFilePath, encodedFileName, tmpDirectoryName);
+        }
+      } catch (err) {
+        console.error(err.toString());
+      }
 
-            const gsFolderName = _.get(videoFileName.split("."), '[0]');
-            if (!gsFolderName) {
-              console.error(`Error creating folder name for ${videoFileName}`);
-              unsafeCleanup();
-              return resolve();
-            }
+      try {
+        await deleteTmpDirectory(tmpDirectoryPath);
+        console.log('Temporary directory deleted');
+      } catch (err) {
+        console.error(err.toString())
+      }
 
-            for (const transcodedFileName of transcodedFileNames) {
-              if (transcodedFileName !== videoFileName) {
-                const transcodedFilePath = `${path}/${transcodedFileName}`;
-                await gs.uploadTranscodedFiles(transcodedFilePath, transcodedFileName, gsFolderName);
-              }
-            }
-
-            await db.removeFromVideoTranscodeList(videoFileName);
-            unsafeCleanup();
-
-            console.log(`${videoFileName} removed from transcode backlog`);
-            console.log(`Process completed for ${videoFileName}`);
-            resolve();
-          } catch (err) {
-            unsafeCleanup();
-            console.error(err.toString());
-          }
-        });
-      });
-
-      await transcodeProcess;
+      await db.removeFromVideoTranscodeList(videoFileName);
+      console.log(`${videoFileName} removed from transcode backlog`);
+      console.log(`Process completed for ${videoFileName}`);
     }
 
     videoFileNames = getVideoFileNames();
@@ -78,7 +74,18 @@ async function getVideoFileNames() {
   return _.get(videoFileNamesDoc, 'filenames', []);
 }
 
-async function writeToFolder(filePath, data) {
+async function createTmpDirectory(directoryPath) {
+  return new Promise((resolve, reject) => {
+    fs.mkdir(directoryPath, function(err) {
+      if (err) {
+        return reject(error.directoryCreationError());
+      }
+      resolve();
+    })
+  });
+}
+
+async function writeToDirectory(filePath, data) {
   return new Promise((resolve, reject) => {
     fs.writeFile(filePath, data, function(err) {
       if (err) {
@@ -89,11 +96,22 @@ async function writeToFolder(filePath, data) {
   });
 }
 
-function runFfmpeg(path, videoFilePath, videoFileName) {
-  console.log(`Starting transcode process for ${videoFileName}`);
+async function deleteTmpDirectory(directoryPath) {
+  return new Promise((resolve, reject) => {
+    fs.rmdir(directoryPath, { recursive: true }, function(err) {
+      if (err) {
+        return reject(error.directoryDeletionError(directoryPath));
+      }
+      resolve();
+    })
+  });
+}
+
+function runFfmpeg(tmpDirectoryPath, videoFilePath, videoFileName) {
+  console.log(`Starting encoding process for ${videoFileName}`);
   const spawn = require('child_process').spawn;
 
-  const args = contant.getFfmpegArgs(videoFilePath, path);
+  const args = contant.getFfmpegArgs(videoFilePath, tmpDirectoryPath);
 
   return new Promise((resolve) => {
     const proc = spawn('ffmpeg', args);
@@ -103,7 +121,7 @@ function runFfmpeg(path, videoFilePath, videoFileName) {
     });
 
     proc.stderr.on('end', function () {
-      console.log(`${videoFileName} transcode process complete`);
+      console.log(`${videoFileName} encode process complete`);
     });
 
     proc.stderr.on('exit', function () {
@@ -117,16 +135,18 @@ function runFfmpeg(path, videoFilePath, videoFileName) {
   });
 }
 
-async function getTranscodedFileNames(path) {
+async function getEncodedFileNames(tmpDirectoryPath, videoFileName) {
   return new Promise((resolve, reject) => {
-    fs.readdir(path, (err, files) => {
+    fs.readdir(tmpDirectoryPath, (err, files) => {
       if (err) {
-        return reject(error.getFileNamesError(path));
+        return reject(error.getFileNamesError(tmpDirectoryPath));
       }
 
       const fileNames = [];
       files.forEach(file => {
-        fileNames.push(file);
+        if (file !== videoFileName) {
+          fileNames.push(file);
+        }
       });
       resolve(fileNames);
     });
