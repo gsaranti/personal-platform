@@ -23,14 +23,14 @@ async function transcode() {
         continue;
       }
 
-      const tmpDirectoryPath       = `./${tmpDirectoryName}`;
-      const renditionDirectoryInfo = getRenditionDirectoryInfo(tmpDirectoryPath);
+      const tmpDirectoryPath        = `./${tmpDirectoryName}`;
+      const renditionDirectoryPaths = getRenditionDirectoryPaths(tmpDirectoryPath);
 
       try {
         await createTmpDirectory(tmpDirectoryPath);
         console.log(`Temporary directory created: ${tmpDirectoryPath}`);
 
-        for (const path of Object.values(renditionDirectoryInfo)) {
+        for (const path of Object.values(renditionDirectoryPaths)) {
           await createTmpDirectory(path);
           console.log(`Rendition directory created: ${path}`);
         }
@@ -53,14 +53,14 @@ async function transcode() {
 
         await runFfmpeg(tmpDirectoryPath, videoFilePath, videoFileName);
 
-        const encodedFilePaths = [];
+        const encodedFileInfo = [];
         for (const rendition of contant.renditions) {
-          const renditionFilePaths = await getEncodedFilePaths(renditionDirectoryInfo, tmpDirectoryName, rendition);
-          encodedFilePaths.push(...renditionFilePaths);
+          const renditionFilePaths = await getEncodedFilePaths(renditionDirectoryPaths, tmpDirectoryName, rendition);
+          encodedFileInfo.push(...renditionFilePaths);
         }
 
-        for (const encodedFilePath of encodedFilePaths) {
-          await gs.uploadEncodedFiles(encodedFilePath);
+        for (const fileInfo of encodedFileInfo) {
+          await gs.uploadEncodedFiles(fileInfo);
         }
 
         console.log('Encoded files successfully uploaded to google storage');
@@ -148,9 +148,9 @@ function runFfmpeg(tmpDirectoryPath, videoFilePath, videoFileName) {
   });
 }
 
-async function getEncodedFilePaths(renditionDirectoryInfo, tmpDirectoryName, rendition) {
+async function getEncodedFilePaths(renditionDirectoryPaths, tmpDirectoryName, rendition) {
   return new Promise((resolve, reject) => {
-    const renditionDirectoryPath = renditionDirectoryInfo[rendition];
+    const renditionDirectoryPath = renditionDirectoryPaths[rendition];
 
     fs.readdir(renditionDirectoryPath, (err, files) => {
       if (err) {
@@ -170,7 +170,7 @@ async function getEncodedFilePaths(renditionDirectoryInfo, tmpDirectoryName, ren
   });
 }
 
-function getRenditionDirectoryInfo(tmpDirectoryPath) {
+function getRenditionDirectoryPaths(tmpDirectoryPath) {
   const pathInfo = {};
   for (const rendition of contant.renditions) {
     pathInfo[rendition] = `${tmpDirectoryPath}/${rendition}`
