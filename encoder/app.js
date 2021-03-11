@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const _   = require('lodash');
-const fs  = require('fs');
+const _     = require('lodash');
+const fs    = require('fs');
+const axios = require('axios');
 
 const db      = require('./src/db');
 const gs      = require('./src/gstorage');
@@ -180,7 +181,12 @@ function getRenditionDirectoryPaths(tmpDirectoryPath) {
 
 transcode()
   .then(() => {
-    console.log("All video transcode processes completed")
+    console.log("All video transcode processes completed");
+    axios.post(contant.stopUrl).then(() => {
+      console.log("Stopping GCE instance");
+    }).catch((err) => {
+      console.log(err.toString());
+    });
   })
   .catch((err) => {
     console.log(err.toString());

@@ -70,14 +70,17 @@ function getFfmpegArgs(videoFilePath, tmpDirectoryPath) {
   ];
 }
 
-let renditions = [
+const renditions = [
   '360p',
   '480p',
   '720p',
   '1080p'
 ];
 
+const stopUrl = 'https://compute.googleapis.com/compute/v1/projects/george-personal-website-212820/zones/us-west3-a/instances/encoder/stop';
+
 module.exports = {
   getFfmpegArgs: getFfmpegArgs,
-  renditions:    renditions
+  renditions:    renditions,
+  stopUrl:       stopUrl
 };
