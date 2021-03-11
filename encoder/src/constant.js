@@ -77,10 +77,7 @@ const renditions = [
   '1080p'
 ];
 
-const stopUrl = 'https://compute.googleapis.com/compute/v1/projects/george-personal-website-212820/zones/us-west3-a/instances/encoder/stop';
-
 module.exports = {
   getFfmpegArgs: getFfmpegArgs,
-  renditions:    renditions,
-  stopUrl:       stopUrl
+  renditions:    renditions
 };

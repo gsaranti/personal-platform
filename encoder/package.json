@@ -9,8 +9,8 @@
   "author": "George Sarantinos",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/compute": "^2.4.3",
     "@google-cloud/storage": "^5.8.1",
-    "axios": "^0.21.1",
     "firebase-admin": "^9.5.0",
     "lodash": "^4.17.21"
   }

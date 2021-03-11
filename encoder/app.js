@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
-const _     = require('lodash');
-const fs    = require('fs');
-const axios = require('axios');
+const _       = require('lodash');
+const fs      = require('fs');
+const Compute = require('@google-cloud/compute');
 
 const db      = require('./src/db');
 const gs      = require('./src/gstorage');
 const error   = require('./src/error');
 const contant = require('./src/constant');
+
+const compute = new Compute();
+const zone    = compute.zone('us-west3-a');
+const vm      = zone.vm('encoder');
 
 async function transcode() {
   let videoFileNames = await getVideoFileNames();
@@ -182,8 +186,8 @@ function getRenditionDirectoryPaths(tmpDirectoryPath) {
 transcode()
   .then(() => {
     console.log("All video transcode processes completed");
-    axios.post(contant.stopUrl).then(() => {
-      console.log("Stopping GCE instance");
+    vm.stop().then(function(data) {
+      console.log("Stopping GCE instance")
     }).catch((err) => {
       console.log(err.toString());
     });
