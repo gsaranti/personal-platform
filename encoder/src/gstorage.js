@@ -1,12 +1,13 @@
 const {Storage} = require('@google-cloud/storage');
 const storage   = new Storage();
 
-const bucketId    = 'george-personal-website-212820.appspot.com';
+const uploadBucketId   = 'george-personal-website-212820.appspot.com';
+const downloadBucketId = 'staging.george-personal-website-212820.appspot.com';
 
 async function getVideoFile(fileName) {
   try {
     const data = await storage
-      .bucket(bucketId)
+      .bucket(downloadBucketId)
       .file(fileName)
       .download();
 
@@ -19,7 +20,7 @@ async function getVideoFile(fileName) {
 async function uploadEncodedFiles(filePathInfo) {
   try {
     await storage
-      .bucket(bucketId)
+      .bucket(uploadBucketId)
       .upload(filePathInfo.path, {
         destination: filePathInfo.storage_path,
         metadata: {
