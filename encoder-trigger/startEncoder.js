@@ -9,11 +9,12 @@ const zone    = compute.zone('us-west3-a');
 const vm      = zone.vm('encoder');
 
 async function startEncoder(gsData) {
-  const videoName = _.get(gsData, 'objectId');
+  const videoName = _.get(gsData, 'name');
   if (!videoName) {
     console.error('No video name found');
     return;
   }
+  console.log(`Received message for ${videoName}`);
 
   try {
     await db.upsertFileName(videoName);
