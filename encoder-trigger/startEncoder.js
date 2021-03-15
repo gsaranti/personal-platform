@@ -29,7 +29,9 @@ async function startEncoder(gsData) {
     return;
   }
 
-  const encoderStatus = _.get(encoder, 'status', '');
+  const encoderStatus = _.get(encoder, 'metadata.status', '');
+  console.log(`Encoder VM status: ${encoderStatus}`);
+
   if (constant.runningVmStates.includes(encoderStatus)) {
     console.log('Encoder VM is already running');
     return;
