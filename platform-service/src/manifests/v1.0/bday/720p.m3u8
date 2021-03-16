@@ -1,0 +1,10 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:5
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-PLAYLIST-TYPE:VOD
+#EXTINF:4.804800,
+https://storage.googleapis.com/george-personal-website-212820.appspot.com/bday/720p/720p0.ts
+#EXTINF:0.667333,
+https://storage.googleapis.com/george-personal-website-212820.appspot.com/bday/720p/720p1.ts
+#EXT-X-ENDLIST

@@ -47,7 +47,6 @@ function createDirectory(directoryPath) {
 }
 
 function writeToDirectory(filePath, data) {
-  console.log("PATH ", filePath);
   return new Promise((resolve, reject) => {
     fs.writeFile(__dirname + filePath, data, function(err) {
       if (err) {
