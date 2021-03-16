@@ -23,8 +23,8 @@ router.get('/:version/:id/:rendition/playlist.m3u8', async function(req, res, ne
 
   try {
     const method = versionFactory.getMethod(version, 'getMediaManifest');
-    const masterPlaylist = await method(version, videoId, rendition);
-    res.set('Content-Type', 'application/x-mpegURL').send(masterPlaylist);
+    const mediaPlaylist = await method(version, videoId, rendition);
+    res.set('Content-Type', 'application/x-mpegURL').send(mediaPlaylist);
   } catch (err) {
     next(err);
   }
