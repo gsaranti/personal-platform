@@ -28,6 +28,7 @@ async function getMasterManifest(id, format, muxingType, version) {
       throw error.masterManifestNotFound(id);
     }
   }
+  throw error.videoNotFound(id);
 }
 
 async function getMediaManifest(id, format, muxingType, rendition) {
