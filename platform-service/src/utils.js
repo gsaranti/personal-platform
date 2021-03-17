@@ -19,7 +19,7 @@ async function buildVideoDirectoryStructure() {
 
   for (const format of formats) {
     for (const type of muxingTypes) {
-      await createDirectory(`manifest/${format}/${type}`);
+      await createDirectory(`/manifests/${format}/${type}`);
     }
   }
 }
@@ -42,7 +42,7 @@ async function writeToDirectory(filePath, data) {
 
 async function checkLocalFiles(filePath) {
   try {
-    return fs.readFile(__dirname + filePath, 'utf8');
+    return await fs.readFile(__dirname + filePath, 'utf8');
   } catch (err) {
     if (err.code === 'ENOENT') {
       return;

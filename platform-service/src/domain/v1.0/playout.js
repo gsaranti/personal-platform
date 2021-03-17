@@ -14,7 +14,7 @@ async function getMasterManifest(id, format, muxingType, version) {
     }
 
     const videoData = await db.getVideoData(id);
-    if (videoData) {
+    if (!videoData) {
       throw error.videoNotFound(id);
     }
 

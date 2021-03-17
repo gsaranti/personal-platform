@@ -54,7 +54,7 @@ async function getVideoData(id) {
   try {
     const doc = await db
       .collection('transcodes')
-      .collection('videos')
+      .doc('videos')
       .collection(id)
       .doc('meta')
       .get();

@@ -13,15 +13,7 @@ class MasterManifest {
   }
 
   getRenditions() {
-    return Object.keys(_.get(this.videoData, 'renditions', {}));
-  }
-
-  getBandwidth(rendition) {
-    return _.get(this.videoData, `${rendition}.bandwidth`);
-  }
-
-  getResolution(rendition) {
-    return _.get(this.videoData, `${rendition}.resolution`);
+    return _.get(this.videoData, 'renditions', []);
   }
 
   getFormats() {
@@ -44,9 +36,10 @@ class MasterManifest {
     const domain   = config.GAE_SERVICE ? config.MANIFEST_DOMAIN : config.LOCAL_MANIFEST_DOMAIN;
 
     const renditions = this.getRenditions();
-    for (const rendition of renditions) {
-      const bandwidth  = this.getBandwidth(rendition);
-      const resolution = this.getResolution(rendition);
+    for (const renditionObj of renditions) {
+      const rendition  = _.get(renditionObj, 'rendition');
+      const bandwidth  = _.get(renditionObj, 'bandwidth');
+      const resolution = _.get(renditionObj, 'resolution');
 
       const stream = [
         `#EXT-X-STREAM-INF:BANDWIDTH=${bandwidth},RESOLUTION=${resolution}`,
