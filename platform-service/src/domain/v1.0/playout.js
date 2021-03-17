@@ -22,7 +22,7 @@ async function getMasterManifest(id, format, muxingType, version) {
 
     if (masterManifest.verifyManifestRequest()) {
       const final = masterManifest.build();
-      await utils.writeToDirectory(`/manifests/${format}/${muxingType}/${id}.m3u8`, final);
+      await utils.writeToDirectory(manifestPath, final);
       return final;
     } else {
       throw error.masterManifestNotFound(id);
@@ -32,8 +32,8 @@ async function getMasterManifest(id, format, muxingType, version) {
 
 async function getMediaManifest(id, format, muxingType, rendition) {
   if (config.PUBLIC_VIDEOS.includes(id)) {
-    const localManifestPath = `/manifests/${format}/${muxingType}/${id}${rendition}.m3u8`;
-    const manifest          = await utils.checkLocalFiles(localManifestPath);
+    const manifestPath = `/manifests/${format}/${muxingType}/${id}${rendition}.m3u8`;
+    const manifest     = await utils.checkLocalFiles(manifestPath);
     if (manifest) {
       return manifest;
     }
@@ -42,8 +42,10 @@ async function getMediaManifest(id, format, muxingType, rendition) {
     const gsManifest = await gstorage.getFile(gsFilePath);
     if (gsManifest) {
       const mediaManifest = configureMediaManifest(gsManifest, id, rendition);
-      await utils.writeToDirectory(localManifestPath, mediaManifest);
+      await utils.writeToDirectory(manifestPath, mediaManifest);
       return mediaManifest;
+    } else {
+      throw error.mediaManifestNotFound(id);
     }
   }
 }

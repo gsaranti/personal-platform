@@ -34,11 +34,18 @@ function masterManifestNotFound(id) {
   return err;
 }
 
+function mediaManifestNotFound(id) {
+  const err  = new Error(`Media manifest not found for ${id}`);
+  err.status = 404;
+  return err;
+}
+
 module.exports = {
   versionError:           versionError,
   setPublicVideosError:   setPublicVideosError,
   getTranscodeMetaError:  getTranscodeMetaError,
   fileCheckError:         fileCheckError,
   videoNotFound:          videoNotFound,
-  masterManifestNotFound: masterManifestNotFound
+  masterManifestNotFound: masterManifestNotFound,
+  mediaManifestNotFound:  mediaManifestNotFound
 };

@@ -1,4 +1,4 @@
-const _        = require('lodash');
+const _ = require('lodash');
 
 const constant = require('../../constant');
 const config   = require('../../config');
