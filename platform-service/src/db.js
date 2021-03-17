@@ -1,6 +1,8 @@
 const admin = require('firebase-admin');
 const fs    = require('fs');
 
+const error = require('./error');
+
 if (fs.existsSync('./../personal-platform-service-account.json')) {
   const serviceAccount = require('../../personal-platform-service-account.json');
   console.log("local dev");
@@ -29,10 +31,44 @@ async function getPublicVideos() {
       return doc.data();
     }
   } catch (err) {
-    console.error(`Error retrieving public videos: ${err.toString()}`);
+    throw error.setPublicVideosError(err);
+  }
+}
+
+async function getTranscodeMeta() {
+  try {
+    const doc = await db
+      .collection('transcodes')
+      .doc('meta')
+      .get();
+
+    if (doc.exists) {
+      return doc.data();
+    }
+  } catch (err) {
+    throw error.getTranscodeMetaError(err);
+  }
+}
+
+async function getVideoData(id) {
+  try {
+    const doc = await db
+      .collection('transcodes')
+      .collection('videos')
+      .collection(id)
+      .doc('meta')
+      .get();
+
+    if (doc.exists) {
+      return doc.data();
+    }
+  } catch (err) {
+    console.error(`Error getting video data for ${id}: ${err.toString()}`);
   }
 }
 
 module.exports = {
-  getPublicVideos: getPublicVideos
+  getPublicVideos:  getPublicVideos,
+  getTranscodeMeta: getTranscodeMeta,
+  getVideoData:     getVideoData
 };

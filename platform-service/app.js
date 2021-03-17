@@ -11,7 +11,15 @@ const app = express();
 
 const utils = require('./src/utils');
 utils.setPublicVideos().then(() => {
-  console.log('Set public videos');
+  console.log('Public videos set');
+}).catch((err) => {
+  console.error(err.toString());
+});
+
+utils.buildVideoDirectoryStructure().then(() => {
+  console.log('Video directory structure built');
+}).catch((err) => {
+  console.error(err.toString());
 });
 
 app.set('views', path.join(__dirname, 'views'));

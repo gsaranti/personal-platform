@@ -10,7 +10,8 @@ async function getFile(fileName) {
       .file(fileName)
       .download();
 
-    return data[0];
+    const buffer = data[0];
+    return buffer.toString();
   } catch (err) {
     console.error(`Error retrieving ${fileName} from google storage`);
   }

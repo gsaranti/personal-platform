@@ -4,20 +4,41 @@ function versionError(version) {
   return err;
 }
 
+function setPublicVideosError(error) {
+  const err  = new Error(`Error retrieving public videos: ${error.toString()}`);
+  err.status = 500;
+  return err;
+}
+
+function getTranscodeMetaError(error) {
+  const err  = new Error(`Error retrieving transcode meta: ${error.toString()}`);
+  err.status = 500;
+  return err;
+}
+
 function fileCheckError(path, error) {
   const err  = new Error(`Error retrieving local file ${path}: ${error.toString()}`);
   err.status = 500;
   return err;
 }
 
-function writeToDirectoryError(path) {
-  const error = new Error(`Error writing file to ${path}`);
-  error.status = 500;
-  return error;
+function videoNotFound(id) {
+  const err  = new Error(`${id} not found`);
+  err.status = 404;
+  return err;
+}
+
+function masterManifestNotFound(id) {
+  const err  = new Error(`Master manifest not found for ${id}`);
+  err.status = 404;
+  return err;
 }
 
 module.exports = {
-  versionError:          versionError,
-  fileCheckError:        fileCheckError,
-  writeToDirectoryError: writeToDirectoryError
+  versionError:           versionError,
+  setPublicVideosError:   setPublicVideosError,
+  getTranscodeMetaError:  getTranscodeMetaError,
+  fileCheckError:         fileCheckError,
+  videoNotFound:          videoNotFound,
+  masterManifestNotFound: masterManifestNotFound
 };
