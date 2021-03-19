@@ -56,7 +56,7 @@ async function checkLocalFiles(filePath) {
 }
 
 async function subscribeToPublicVideosUpdateTopic() {
-  const subscriptionName = uuidv4();
+  const subscriptionName = `platform-service-${uuidv4()}`;
   const options          = {
     "expirationPolicy": {
       "ttl": {
