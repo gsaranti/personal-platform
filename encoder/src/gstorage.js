@@ -2,7 +2,7 @@ const {Storage} = require('@google-cloud/storage');
 const storage   = new Storage();
 
 const uploadBucketId   = 'george-personal-website-212820.appspot.com';
-const downloadBucketId = 'staging.george-personal-website-212820.appspot.com';
+const downloadBucketId = 'video-staging-bucket';
 
 async function getVideoFile(fileName) {
   try {
