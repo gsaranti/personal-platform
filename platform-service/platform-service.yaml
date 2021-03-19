@@ -1,0 +1,7 @@
+service: platform-service
+runtime: nodejs
+env: standard
+
+env_variables:
+  PUBLIC_VIDEOS_UPDATE_TOPIC: "projects/george-personal-website-212820/topics/public-videos-update"
+  MANIFEST_DOMAIN: "https://api.georgesarantinos.com"

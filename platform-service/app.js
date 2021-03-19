@@ -22,6 +22,8 @@ utils.buildVideoDirectoryStructure().then(() => {
   console.error(err.toString());
 });
 
+utils.subscribeToPublicVideosUpdateTopic().then();
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
