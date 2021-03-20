@@ -9,6 +9,8 @@ const error  = require('./error');
 
 const pubSubClient = new PubSub();
 
+const BASE_PATH = config.GAE_SERVICE ? '/tmp' : __dirname;
+
 async function setPublicVideos() {
   const publicVideosDoc = await db.getPublicVideos();
   config.PUBLIC_VIDEOS  = _.get(publicVideosDoc, 'videoNames', []);
@@ -30,7 +32,7 @@ async function buildVideoDirectoryStructure() {
 
 async function createDirectory(directoryPath) {
   try {
-    await fs.mkdir(__dirname + directoryPath, { recursive: true });
+    await fs.mkdir(BASE_PATH + directoryPath, { recursive: true });
   } catch (err) {
     console.error(`Error building directory ${directoryPath}: ${err.toString()}`);
   }
@@ -38,7 +40,7 @@ async function createDirectory(directoryPath) {
 
 async function writeToDirectory(filePath, data) {
   try {
-    await fs.writeFile(__dirname + filePath, data);
+    await fs.writeFile(BASE_PATH + filePath, data);
   } catch (err) {
     console.error(`Error writing file to ${filePath}`);
   }
@@ -46,7 +48,7 @@ async function writeToDirectory(filePath, data) {
 
 async function checkLocalFiles(filePath) {
   try {
-    return await fs.readFile(__dirname + filePath, 'utf8');
+    return await fs.readFile(BASE_PATH + filePath, 'utf8');
   } catch (err) {
     if (err.code === 'ENOENT') {
       return;
