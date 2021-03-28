@@ -3,11 +3,13 @@ const express      = require('express');
 const path         = require('path');
 const cookieParser = require('cookie-parser');
 const logger       = require('morgan');
+const cors         = require('cors');
 
 const indexRouter   = require('./routes/index');
 const playoutRouter = require('./routes/playout');
 
 const app = express();
+app.use(cors());
 
 const utils = require('./src/utils');
 utils.setPublicVideos().then(() => {
