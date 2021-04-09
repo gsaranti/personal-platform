@@ -10,10 +10,13 @@
         </p>
         <br>
         <a href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
-          <v-img class="contactSocialLogo logoLeft" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
+          <v-img class="contactSocialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
+        </a>
+        <a href="https://github.com/gsaranti" target="_blank">
+          <v-img class="contactSocialLogo centerLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1618011051/github_v1.png"/>
         </a>
         <a href="https://www.instagram.com/george_sarantinos/" target="_blank">
-          <v-img class="contactSocialLogo logoRight" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
+          <v-img class="contactSocialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
         </a>
         <div class="contactInfo">
           <p class="fullName">George Sarantinos</p>
@@ -90,12 +93,9 @@
     display: inline-block;
   }
 
-  .logoLeft {
-    margin-right: 5px;
-  }
-
-  .logoRight {
-    margin-left: 5px;
+  .centerLogo {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .contactInfo {
@@ -105,5 +105,12 @@
 
   .fullName {
     font-weight: bold;
+  }
+
+  @media (max-width: 550px) {
+    .contactSocialLogo {
+      width: 70px;
+      height: 70px;
+    }
   }
 </style>

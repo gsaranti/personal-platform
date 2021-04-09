@@ -3,7 +3,10 @@
     <div v-if="backgroundLoaded">
       <p v-bind:class="{'signature': backgroundLoaded}">George Sarantinos</p>
       <a href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
-        <v-img class="socialLogo linkedIn" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
+        <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
+      </a>
+      <a href="https://github.com/gsaranti" target="_blank">
+        <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1618011051/github_v1.png"/>
       </a>
       <a href="https://www.instagram.com/george_sarantinos/" target="_blank">
         <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
