@@ -97,7 +97,8 @@
     position: relative;
     overflow: hidden;
     padding-top: 30px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
+    background: #FBFAF5;
   }
 
   .projectsLabel {
@@ -107,6 +108,7 @@
     margin-right: 35%;
     margin-left: 35%;
     margin-bottom: 25px;
+    font-size: 30px;
   }
 
   .projectsLabel:before,

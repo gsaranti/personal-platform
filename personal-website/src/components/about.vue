@@ -101,8 +101,8 @@
     width: 650px;
     line-height: 1.5;
     padding: 30px 65px;
-    background-color: #DAAD86;
-    border-left: 5px solid #659DBD;
+    background-color: #D8D7CC;
+    border-left: 5px solid #84A9D1;
     height: 770px;
     position: relative;
     z-index: 1;
@@ -111,7 +111,7 @@
   .collage {
     position: relative;
     z-index: -1;
-    background-color: #659DBD;
+    background-color: #84A9D1;
     height: 770px;
     width: 100vw;
   }
@@ -148,7 +148,7 @@
 
   .aboutLabelWrapper {
     padding-top: 25px;
-    background-color: #DAAD86;
+    background-color: #D8D7CC;
   }
 
   .imageRow {

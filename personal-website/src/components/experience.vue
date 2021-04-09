@@ -100,7 +100,7 @@
   .experience {
     margin-top: 100vh;
     padding-top: 30px;
-    background: white;
+    background: #FBFAF5;
   }
 
   .label {
@@ -110,6 +110,7 @@
     margin-right: 30%;
     margin-left: 30%;
     margin-bottom: 40px;
+    font-size: 30px;
   }
 
   .label:before,

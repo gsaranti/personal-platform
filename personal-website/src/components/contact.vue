@@ -58,7 +58,7 @@
 
 <style>
   .contactSection {
-    background-color: #B1AFB9;
+    background-color: #68685A;
     color: ghostwhite;
     position: relative;
     padding-bottom: 30px;

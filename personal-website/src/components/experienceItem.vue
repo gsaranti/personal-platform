@@ -167,11 +167,11 @@
 
   @media (min-width: 1000px) {
     .itemExpanded {
-      margin-bottom: 30px;
+      padding-bottom: 30px;
     }
 
     .itemCollapsed {
-      margin-bottom: 70px;
+      padding-bottom: 70px;
     }
 
     .imageHolderLeft {
@@ -215,11 +215,11 @@
 
   @media (max-width: 1000px) {
     .itemExpanded {
-      margin-bottom: 10px;
+      padding-bottom: 10px;
     }
 
     .itemCollapsed {
-      margin-bottom: 40px;
+      padding-bottom: 40px;
     }
 
     .imageHolderLeft {
