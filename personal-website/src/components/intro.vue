@@ -65,6 +65,7 @@
           { title: 'Home', scrollTo: '.introScroll' },
           { title: 'Experience', scrollTo: '.experienceScroll' },
           { title: 'About Me', scrollTo: '.aboutScroll' },
+          { title: 'Projects', scrollTo: '.projectsScroll' },
           { title: 'Contact', scrollTo: '.contactScroll' }
         ]
       }

@@ -3,6 +3,7 @@
     <intro class="introScroll" :autoScroll="autoScroll.bind('arg1')"/>
     <experience class="experienceScroll"/>
     <about class="aboutScroll"/>
+    <projects class="projectsScroll"/>
     <contact class="contactScroll"/>
   </div>
 </template>
@@ -12,6 +13,7 @@
   import intro from "../components/intro";
   import experience from "../components/experience";
   import about from "../components/about";
+  import projects from "../components/projects";
   import contact from "../components/contact";
 
   export default {
@@ -20,6 +22,7 @@
       intro,
       experience,
       about,
+      projects,
       contact
     },
     created() {
@@ -41,6 +44,9 @@
   }
 
   .aboutScroll {
+  }
+
+  .projectsScroll {
   }
 
   .contactScroll {

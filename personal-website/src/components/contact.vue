@@ -29,7 +29,7 @@
   import _ from "lodash";
 
   export default {
-    name: 'experience',
+    name: 'contact',
     components: {},
     data: () => {
       return {
