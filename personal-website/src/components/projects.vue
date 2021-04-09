@@ -173,8 +173,8 @@
     }
 
     .projectDescription {
-      margin-left: 75px;
-      margin-right: 75px;
+      margin-left: 50px;
+      margin-right: 50px;
     }
   }
 
@@ -194,6 +194,22 @@
       margin-top: 20px;
       justify-content: center;
       display: inline-block;
+    }
+
+    .projectsLabel {
+      margin-right: 25%;
+      margin-left: 25%;
+      font-size: 23px;
+    }
+
+    .projectsLabel:before {
+      right: 0.5em;
+      margin-left: -50%;
+    }
+
+    .projectsLabel:after {
+      left: 0.5em;
+      margin-right: -50%;
     }
   }
 </style>

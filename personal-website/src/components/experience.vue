@@ -139,6 +139,7 @@
       border-bottom: 1px solid black;
       margin-right: 24%;
       margin-left: 24%;
+      font-size: 23px;
     }
 
     .label:before {
