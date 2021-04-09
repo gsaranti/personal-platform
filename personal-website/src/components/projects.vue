@@ -77,7 +77,7 @@
             const rect = el.getBoundingClientRect();
             self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 200;
             if (self.isVisible) {
-              // self.$refs.transcodeProjectPlayer.player.play();
+              self.$refs.transcodeProjectPlayer.player.play();
             }
           }
         }
