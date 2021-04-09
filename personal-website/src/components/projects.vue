@@ -29,7 +29,7 @@
         </div>
         <div class="detailButtons">
           <v-btn class="detailButton" elevation="2">Learn More</v-btn>
-          <v-btn style="display: block" elevation="2">View On GitHub</v-btn>
+          <v-btn style="display: block" elevation="2" @click="openGithub">View On GitHub</v-btn>
         </div>
       </div>
     </div>
@@ -75,12 +75,15 @@
         return function () {
           if (!self.isVisible) {
             const rect = el.getBoundingClientRect();
-            self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 200;
+            self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 150;
             if (self.isVisible) {
               self.$refs.transcodeProjectPlayer.player.play();
             }
           }
         }
+      },
+      openGithub() {
+        window.open("https://github.com/gsaranti/personal-platform");
       }
     }
   }
