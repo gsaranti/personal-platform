@@ -1,0 +1,6 @@
+[
+  {
+    "origin": ["http://localhost:8080", "https://georgesarantinos.com"],
+    "method": ["GET"]
+  }
+]
