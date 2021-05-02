@@ -55,7 +55,7 @@
           fluid: true,
           sources: [
             {
-              src: "https://api.georgesarantinos.com/playout/v1.0/luke/hls3/ts/master.m3u8",
+              src: "https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/master.m3u8",
               type: "application/x-mpegURL",
               limitRenditionByPlayerDimensions: false
             }

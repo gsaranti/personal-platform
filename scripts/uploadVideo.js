@@ -4,7 +4,7 @@ const {Storage} = require('@google-cloud/storage');
 
 const storage   = new Storage();
 
-if (fs.existsSync('./personal-platform-service-account.json')) {
+if (fs.existsSync('./../personal-platform-service-account.json')) {
   const serviceAccount = require('../personal-platform-service-account.json');
   console.log("local dev");
   admin.initializeApp({
@@ -63,7 +63,7 @@ async function uploadVideo() {
     await storage
       .bucket(downloadBucketId)
       .upload(path, {
-        destination: `./${name}`
+        destination: `${name}.mp4`
       });
 }
 
