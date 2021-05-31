@@ -1,6 +1,8 @@
 <template>
   <div data-app>
-    <intro class="introScroll" :autoScroll="autoScroll.bind('arg1')"/>
+    <navigation :autoScroll="autoScroll.bind('arg1')" :background-loaded="backgroundLoaded"
+                :navigation-drop-down="true" :go-back="false"/>
+    <intro class="introScroll" :autoScroll="autoScroll.bind('arg1')" :background-loaded="backgroundLoaded"/>
     <experience class="experienceScroll"/>
     <about class="aboutScroll"/>
     <projects class="projectsScroll"/>
@@ -10,6 +12,7 @@
 
 <script>
   import smoothscroll from 'smoothscroll-polyfill';
+  import navigation from "./Navigation";
   import intro from "../components/intro";
   import experience from "../components/experience";
   import about from "../components/about";
@@ -19,18 +22,37 @@
   export default {
     name: 'home',
     components: {
+      navigation,
       intro,
       experience,
       about,
       projects,
       contact
     },
+    data: () => {
+      return {
+        backgroundLoaded: false,
+        backgroundImage: new Image()
+      }
+    },
     created() {
+      this.backgroundImage.src = "https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_auto,f_auto,e_brightness_hsb:-10/v1614833766/seaside_v5_abc.jpg";
       smoothscroll.polyfill();
+    },
+    mounted() {
+      const self = this;
+      this.backgroundImage.onload = function () {
+        self.backgroundLoaded = true;
+      };
     },
     methods: {
       autoScroll(selector) {
-        this.$el.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
+        if (window.innerWidth > 600) {
+          const y = this.$el.querySelector(selector).getBoundingClientRect().top + window.pageYOffset - 55;
+          window.scrollTo({top: y, behavior: 'smooth'});
+        } else {
+          this.$el.querySelector(selector).scrollIntoView({behavior: 'smooth'});
+        }
       }
     }
   }

@@ -1,11 +1,13 @@
 <template>
   <div class="projectDescriptionSection">
+    <navigation class="navBar" :background-loaded="true" :navigation-drop-down="false" :go-back="true"/>
+    <v-btn @click="$router.go(-1)" class="backNavButton" dark>&#8592; back to projects</v-btn>
     <h1 class="projectHeader">Video Transcode System and Streaming Service</h1>
     <div class="architecture">
       <img class="diagram" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1619928436/Transcode_Pipeline_dqdeyp.png" alt=""/>
     </div>
     <div class="projectOverview">
-      <h2 class="transcoderSytem">Video Transcode System</h2>
+      <h2 class="transcoderSystem">Video Transcode System</h2>
       <p>
         This system is made up of multiple pieces that form a pipeline for transcoding
         videos from common formats, such as mp4 and mov, to a format that allows for adaptive
@@ -159,9 +161,13 @@
 </template>
 
 <script>
+  import navigation from "./Navigation";
+
   export default {
     name: 'project',
-    components: {},
+    components: {
+      navigation
+    },
     data: () => {
       return {
 
@@ -180,8 +186,18 @@
     background-color: #FBFAF5;
   }
 
+  .navBar {}
+
+  .backNavButton {
+    position: fixed;
+    display: block;
+    margin-left: 10px;
+    margin-top: 9px;
+    z-index: 3;
+  }
+
   .projectHeader {
-    padding-top: 20px;
+    padding-top: 80px;
     margin-bottom: 20px;
   }
 
@@ -218,7 +234,7 @@
     margin-bottom: 40px;
   }
 
-  .transcoderSytem {
+  .transcoderSystem {
     margin-bottom: 25px;
     margin-top: 15px;
   }
@@ -280,7 +296,22 @@
       margin-left: 50px;
       margin-right: 50px;
     }
+
+    .diagram {
+      width: 60vw;
+    }
   }
+
+  @media (max-width: 600px) {
+    .navBar {
+      display: none;
+    }
+
+    .projectHeader {
+      padding-top: 60px;
+    }
+  }
+
 
   @media (max-width: 500px) {
     .architecture {
@@ -291,6 +322,10 @@
     .projectOverview {
       margin-left: 25px;
       margin-right: 25px;
+    }
+
+    .diagram {
+      width: 75vw;
     }
   }
 </style>
