@@ -1,5 +1,5 @@
 <template>
-  <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
+  <div :class="{baseItem: !animate, visibleItem: (animate && isVisible), hiddenItem: !isVisible}">
     <div :class="{itemCollapsed: !this.isExpanded, itemExpanded: this.isExpanded}">
       <div :class="{imageHolderLeft: this.side === 'left', imageHolderRight: this.side === 'right'}">
         <v-lazy>
@@ -12,7 +12,7 @@
           <div class="positions">
             <p v-for="(p, index) in positions" :key="index">{{ p }}</p>
           </div>
-          <div :class="{collapsed: !this.isExpanded, expanded: this.isExpanded}">
+          <div :class="{startCollapsed: !expandInitiated, collapsed: (!this.isExpanded && expandInitiated), expanded: (this.isExpanded && expandInitiated)}">
             <p v-for="(paragraph, index) in description" :key="index">
               {{ paragraph }}<br><br>
             </p>
@@ -46,7 +46,8 @@
     data: () => {
       return {
         isExpanded: false,
-        isVisible: false
+        isVisible: false,
+        expandInitiated: false
       }
     },
     mounted() {
@@ -57,6 +58,7 @@
     },
     methods: {
       expandText() {
+        this.expandInitiated = true;
         this.isExpanded = !this.isExpanded;
       },
       onVisibilityChange(el) {
@@ -67,6 +69,11 @@
             self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
           }
         }
+      }
+    },
+    computed: {
+      animate() {
+        return this.$store.state.animate;
       }
     }
   }
@@ -92,6 +99,11 @@
     font-style: italic;
     font-weight: bold;
     margin-bottom: 5px;
+  }
+
+  .startCollapsed {
+    max-height: 130px;
+    overflow: hidden;
   }
 
   .collapsed {

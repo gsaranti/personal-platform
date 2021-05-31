@@ -1,6 +1,6 @@
 <template>
   <div class="contactSection">
-    <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
+    <div :class="{baseItem: !animate, visibleItem: (animate && isVisible), hiddenItem: !isVisible}">
       <h1 class="contactLabel">Contact</h1>
       <h3 class="contactSubheading">I'm always excited to meet new people!</h3>
       <div class="contactText">
@@ -54,6 +54,11 @@
             self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
           }
         }
+      }
+    },
+    computed: {
+      animate() {
+        return this.$store.state.animate;
       }
     }
   }

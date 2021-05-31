@@ -19,5 +19,12 @@ export default new Router({
       name: 'project',
       component: Project
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (to.name === 'project') {
+      return { x: 0, y: 0 }
+    } else if (savedPosition) {
+      return savedPosition
+    }
+  }
 })

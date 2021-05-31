@@ -1,6 +1,6 @@
 <template>
   <div class="projectsSection">
-    <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
+    <div :class="{baseItem: !animate, visibleItem: (animate && isVisible), hiddenItem: !isVisible}">
       <h2 class="projectsLabel">Projects</h2>
       <div class="transcodePlayer">
         <player ref="transcodeProjectPlayer" :options="videoOptions"/>
@@ -84,6 +84,11 @@
       },
       openGithub() {
         window.open("https://github.com/gsaranti/personal-platform");
+      }
+    },
+    computed: {
+      animate() {
+        return this.$store.state.animate;
       }
     }
   }
