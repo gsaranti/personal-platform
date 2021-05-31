@@ -32,7 +32,7 @@
                     ]"
     />
     <experienceItem side="right"
-                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_350,h_170/v1609570109/LMU1_t6sf4w.png"
+                    imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_350,h_150/v1609570109/LMU1_t6sf4w.png"
                     label="Loyola Marymount University"
                     :description="[
                       'I\'ll never take for granted my four years at LMU. Always sunny and close to the ' +
