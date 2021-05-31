@@ -76,8 +76,8 @@
 
 <style>
   .navigationFadeIn {
-    background-color: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 0 3px rgba(0,0,0, 10);
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 5px rgba(0,0,0,10);
     height: 55px;
     width: 100vw;
     z-index: 3;
@@ -93,8 +93,8 @@
   }
 
   .navigation {
-    background-color: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 0 3px rgba(0,0,0, 10);
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 5px rgba(0,0,0,10);
     height: 55px;
     width: 100vw;
     z-index: 3;
