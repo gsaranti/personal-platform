@@ -52,6 +52,9 @@
   .contactScroll {
   }
 
+  .baseItem {
+  }
+
   .visibleItem {
     animation: fadeInUp 1s ease forwards;
     -moz-animation: fadeInUp 1s ease forwards;

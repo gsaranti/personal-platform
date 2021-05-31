@@ -1,7 +1,7 @@
 <template>
     <div class="aboutSection">
       <div class="aboutMe">
-        <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
+        <div :class="{baseItem: !animate, visibleItem: (animate && isVisible), hiddenItem: !isVisible}">
         <div class="aboutLabelWrapper">
           <h2 class="aboutLabel">About Me</h2>
         </div>
@@ -86,6 +86,11 @@
             self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50;
           }
         }
+      }
+    },
+    computed: {
+      animate() {
+        return this.$store.state.animate;
       }
     }
   }

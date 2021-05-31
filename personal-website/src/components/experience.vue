@@ -1,6 +1,6 @@
 <template>
   <div class="experience">
-    <div :class="{visibleItem: isVisible, hiddenItem: !isVisible}">
+    <div :class="{baseItem: !animate, visibleItem: (animate && isVisible), hiddenItem: !isVisible}">
       <h2 class="label">The Path So Far...</h2>
     </div>
     <experienceItem side="left"
@@ -91,6 +91,11 @@
             self.isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
           }
         }
+      }
+    },
+    computed: {
+      animate() {
+        return this.$store.state.animate;
       }
     }
   }
