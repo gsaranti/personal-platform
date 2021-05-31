@@ -11,16 +11,17 @@
         videos from common formats, such as mp4 and mov, to a format that allows for adaptive
         bitrate streaming.
       </p>
-      <h3 class="subDescription">Let's dive into how the process starts</h3>
+      <h3 class="subDescription">Transcode Initiation</h3>
       <p>
         A transcode process starts when a video is uploaded to the "Raw Videos" google
-        storage bucket. This is currently done through a script ran on my machine. This script also
-        saves a set of meta data to Firestore that is later used for video playout after the transcode process.
+        storage bucket. This is currently done through a locally ran script. Along with the
+        video upload, this script also saves a set of metadata to Firestore that is later used
+        for video playout after the transcode process.
       </p>
       <p>
-      When the video upload is complete, a message is published on the "video-uploads"
-      pub/sub topic, which triggers the "Encoder Trigger" cloud function. This cloud function performs
-      the following tasks:
+        When the video upload is complete, a message is published on the "video-uploads"
+        Pub/Sub topic, which triggers the "Encoder Trigger" cloud function. This cloud function performs
+        the following tasks:
       </p>
       <div class="numberedList">
         <ol>
@@ -29,7 +30,7 @@
             spinning up, the encoder is started via the Compute Engine SDK.</li>
         </ol>
       </div>
-      <h3 class="subDescription">Now for the transcode process</h3>
+      <h3 class="subDescription">Transcode Process</h3>
       <p>
         The encoder is a Node.js program that runs on a Compute Engine Virtual Machine. Once the VM
         has spun up, the transcode backlog list is requested from Firestore. For each video file name
@@ -43,7 +44,9 @@
         video file names in the list, the VM spins itself down.
       </p>
       <h2 class="streamingServiceSystem">Streaming Service</h2>
-      <p>After a video has been transcoded, it can then be served to my website through the streaming service.
+      <p>
+        After a video has been transcoded, it can then be served to a client, such as my website, through
+        the streaming service.
       </p>
       <h3 class="subDescription">Content Control</h3>
       <p>
@@ -51,18 +54,18 @@
         feature. For a video to be streamed it's name must be included in the "public videos" list.
         This list is stored both in Firestore and on each Platform Service instance (we'll dive more into this
         service later). When a video name is added to the list in Firestore, the "Update Public Videos" Firestore
-        function is triggered and publishes a message on the "public-video-update" pub/sub topic. Each instance
+        function is triggered and publishes a message on the "public-videos-update" Pub/Sub topic. Each instance
         of the Platform Service is subscribed to this topic; therefore, when a message is received, the instance
         can update the local list.
       </p>
-      <h3 class="subDescription">Video Requests to the Platform Service</h3>
+      <h3 class="subDescription">Video Playout</h3>
       <p>
         The Platform Service is an Express application running on Google App Engine that handles video requests.
         The initial api request for a video has the following path structure:
       </p>
       <div class="exampleBlock">
         <p>
-          /playout/:version/:id/:format/:muxingType/master.m3u8
+          /playout/:version/:id/:format/:muxingType/master.m3u8 &nbsp; &nbsp; &nbsp; &nbsp;
         </p>
       </div>
       <p>Let's go over the path parameters:</p>
@@ -74,14 +77,16 @@
           <li><b>muxingType:</b> The segment container format</li>
         </ul>
       </div>
-      <p>
-      Currently, only the HLS (HTTP Live Streaming) protocol is supported, but my goal is to implement DASH (Dynamic
-      Adaptive Streaming) playout in the future. Furthermore, the transcode process only outputs ts segments. I
-      plan on supporting fragmented mp4s as well.
-      </p>
+      <div class="warningBlock">
+        <p>
+          Currently, only the HLS (HTTP Live Streaming) protocol is supported, but my goal is to implement DASH
+          (Dynamic Adaptive Streaming) playout in the future. Furthermore, the transcode process only outputs
+          ts segments. I plan on supporting fragmented mp4s as well.
+        </p>
+      </div>
       <p>
       When the the request above is made, the Platform Service assembles the master manifest for the video.
-      To do this, the meta data for the requested video is retrieved from Firestore. This data includes
+      To do this, the metadata for the requested video is retrieved from Firestore. This data includes
       the available renditions, muxing types, and streaming formats. The path parameter values of the request
       must be included in the metadata for a manifest to be created. Otherwise, a 404 is returned.
       </p>
@@ -90,7 +95,7 @@
         <div class="exampleBlock">
           <p class="exampleBlockTitle"><b>Request:</b></p>
           <p>
-            https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/master.m3u8
+            https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/master.m3u8 &nbsp; &nbsp; &nbsp; &nbsp;
           </p>
         </div>
         <div class="exampleBlock">
@@ -103,7 +108,7 @@
             #EXT-X-STREAM-INF:BANDWIDTH=1400000,RESOLUTION=842x480<br>
             https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/480p/playlist.m3u8<br>
             #EXT-X-STREAM-INF:BANDWIDTH=2800000,RESOLUTION=1280x720<br>
-            https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/720p/playlist.m3u8<br>
+            https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/720p/playlist.m3u8 &nbsp; &nbsp; &nbsp; &nbsp;<br>
             #EXT-X-STREAM-INF:BANDWIDTH=5000000,RESOLUTION=1920x1080<br>
             https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/1080p/playlist.m3u8
           </p>
@@ -119,11 +124,11 @@
         All segments are requested directly from Google Cloud Storage. Performant segment response times are
         important for quality video playout, such as preventing buffering. Fortunately, Cloud Storage behaves
         like a Content Delivery Network (CDN) when stored data is publicly readable. This is the case for the
-        video segments in my system; therefore, they are cached in the Cloud Storage network.
+        video segments in this system; therefore, they are cached in the Cloud Storage network.
       </p>
       <h3 class="subDescription">Make a request yourself</h3>
       <p>
-        Want to see everything that's been described in action? Here's hoe to do it! If you would like to
+        Want to see everything that's been described in action? Here's how to do it! If you would like to
         actually play a video, request the following url in the Safari browser:
       </p>
       <div class="exampleBlock">
@@ -131,9 +136,9 @@
       </div>
       <p>
         This request will return the HLS format, which is supported by Safari. When the browser receives the
-        master manifest, it will automatically know to play the video in the native Safari player. Go ahead and
-        open th browser developer tools as well. If you inspect the network, you will be able to see the media
-        manifests and segments being requests, as well as the player performing rendition switching based on
+        master manifest, it will automatically play the video in the native Safari player. Go ahead and
+        open the browser developer tools as well. If you inspect the network, you will be able to see the media
+        manifests and segments being requested, as well as the player performing rendition switching based on
         the available bandwidth.
       </p>
       <p>
@@ -246,14 +251,19 @@
     color: #0d47a1;
     background-color: #E2F4FE;
     overflow: auto;
+    white-space: nowrap;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
   }
 
-  .exampleBlock p {
-    margin-left: 20px;
-    margin-bottom: 0;
+  .warningBlock {
+    color: saddlebrown;
+    background-color: #FDEFE3;
+    overflow: auto;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
   }
 
   .exampleBlockTitle {
@@ -291,6 +301,11 @@
   }
 
   .exampleBlock p {
+    margin-left: 20px;
+    margin-bottom: 0;
+  }
+
+  .warningBlock p {
     margin-left: 20px;
     margin-bottom: 0;
   }
