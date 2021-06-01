@@ -76,7 +76,7 @@
 
 <style>
   .navigationFadeIn {
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(104, 104, 90, 0.5);
     box-shadow: 0 0 5px rgba(0,0,0,10);
     height: 55px;
     width: 100vw;
@@ -93,7 +93,7 @@
   }
 
   .navigation {
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(104, 104, 90, 0.5);
     box-shadow: 0 0 5px rgba(0,0,0,10);
     height: 55px;
     width: 100vw;
@@ -108,19 +108,27 @@
     cursor: pointer;
     width: 55px;
     height: 55px;
-    border-right: 1px solid ghostwhite;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.2s;
+  }
+
+  .dropDownMenu:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   .bar1, .bar2, .bar3 {
     width: 30px;
     height: 3px;
     background-color: ghostwhite;
-    margin: 4px 0;
-    transition: 0.4s;
+    margin: 5px 0;
+    transition: 0.2s;
     border-radius: 50px;
+  }
+
+  .dropDownMenu:hover .bar1, .dropDownMenu:hover .bar3 {
+    margin: 7px 0;
   }
 
   .change .bar1 {
