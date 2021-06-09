@@ -7,6 +7,7 @@ const cors         = require('cors');
 
 const indexRouter   = require('./routes/index');
 const playoutRouter = require('./routes/playout');
+const pingRouter    = require('./routes/ping');
 
 const app = express();
 app.use(cors());
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/playout', playoutRouter);
+app.use('/ping', pingRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

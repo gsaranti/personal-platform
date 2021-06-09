@@ -1,0 +1,5 @@
+cron:
+- description: "keep instance alive"
+  url: "/ping/keep-alive"
+  schedule: every 10 minutes
+  target: platform-service
