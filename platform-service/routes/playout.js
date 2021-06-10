@@ -12,7 +12,10 @@ router.get('/:version/:id/:format/:muxingType/master.m3u8', async function(req, 
   try {
     const method = versionFactory.getMethod(version, 'getMasterManifest');
     const masterPlaylist = await method(id, format, muxingType, version);
-    res.set('Content-Type', 'application/x-mpegURL').send(masterPlaylist);
+    res.set({
+      'Content-Type': 'application/x-mpegURL',
+      'Cache-Control': 'public, max-age=3600'
+    }).send(masterPlaylist);
   } catch (err) {
     next(err);
   }
@@ -28,7 +31,10 @@ router.get('/:version/:id/:format/:muxingType/:rendition/playlist.m3u8', async f
   try {
     const method = versionFactory.getMethod(version, 'getMediaManifest');
     const mediaPlaylist = await method(id, format, muxingType, rendition);
-    res.set('Content-Type', 'application/x-mpegURL').send(mediaPlaylist);
+    res.set({
+      'Content-Type': 'application/x-mpegURL',
+      'Cache-Control': 'public, max-age=3600'
+    }).send(mediaPlaylist);
   } catch (err) {
     next(err);
   }
