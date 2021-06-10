@@ -183,7 +183,7 @@
 
 <style>
   .projectDescriptionSection {
-    background-color: #FBFAF5;
+    background-color: #f8f6ed;
   }
 
   .navBar {}
@@ -275,7 +275,7 @@
 
   .warningBlock {
     color: saddlebrown;
-    background-color: #FDEFE3;
+    background-color: #f8f6ed;
     overflow: auto;
     border-radius: 5px;
     padding: 15px;
@@ -302,7 +302,7 @@
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     .navBar {
       display: none;
     }

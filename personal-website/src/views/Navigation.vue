@@ -1,15 +1,19 @@
 <template>
   <div v-if="backgroundLoaded || !animate" :class="{navigationFadeIn: animate, navigation: !animate}">
-    <p :class="{signatureBack: goBack, signature: navigationDropDown}">George Sarantinos</p>
-    <a :class="{socialLogoContainer: goBack}" href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
-      <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
-    </a>
-    <a :class="{socialLogoContainer: goBack}" href="https://github.com/gsaranti" target="_blank">
-      <v-img class="socialLogo invert" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1618011051/github_v1.png"/>
-    </a>
-    <a :class="{socialLogoContainer: goBack}" href="https://www.instagram.com/george_sarantinos/" target="_blank">
-      <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
-    </a>
+    <div class="rightSection">
+      <p :class="{signatureBack: goBack, signature: navigationDropDown}">George Sarantinos</p>
+      <div class="socialLogoBlock">
+        <a :class="{socialLogoContainer: goBack}" href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
+          <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
+        </a>
+        <a :class="{socialLogoContainer: goBack}" href="https://github.com/gsaranti" target="_blank">
+          <v-img class="socialLogo invert" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1618011051/github_v1.png"/>
+        </a>
+        <a :class="{socialLogoContainer: goBack}" href="https://www.instagram.com/george_sarantinos/" target="_blank">
+          <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
+        </a>
+      </div>
+    </div>
     <v-menu v-if="navigationDropDown">
       <template v-slot:activator="{ on, attrs }">
         <div class="dropDownMenu" v-bind="attrs" v-on="on">
@@ -157,7 +161,7 @@
     float: right;
     margin-top: 9px;
     margin-right: 30px;
-    margin-left: 15px;
+    margin-left: 10px;
     white-space: nowrap;
   }
 
@@ -168,7 +172,7 @@
     float: right;
     margin-top: 9px;
     margin-right: 30px;
-    margin-left: 15px;
+    margin-left: 10px;
     white-space: nowrap;
   }
 
@@ -186,90 +190,103 @@
     filter: invert(1);
   }
 
-  @media (max-width: 600px) {
-    .navigationFadeIn {
-      background-color: transparent;
-      box-shadow: none;
-      z-index: 3;
-      top: 0;
-      left: 0;
-      position: absolute;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards 3s;
-      -webkit-animation: fadeIn 1.5s forwards 3s;
-      -moz-animation: fadeIn 1.5s forwards 3s;
-      -o-animation: fadeIn 1.5s forwards 3s;
-      -ms-animation: fadeIn 1.5s forwards 3s;
-    }
+  /*@media (max-width: 600px) {*/
+  /*  .navigationFadeIn {*/
+  /*    background-color: transparent;*/
+  /*    box-shadow: none;*/
+  /*    z-index: 3;*/
+  /*    top: 0;*/
+  /*    left: 0;*/
+  /*    position: absolute;*/
+  /*    opacity: 0;*/
+  /*    animation: fadeIn 1.5s forwards 3s;*/
+  /*    -webkit-animation: fadeIn 1.5s forwards 3s;*/
+  /*    -moz-animation: fadeIn 1.5s forwards 3s;*/
+  /*    -o-animation: fadeIn 1.5s forwards 3s;*/
+  /*    -ms-animation: fadeIn 1.5s forwards 3s;*/
+  /*  }*/
 
-    .navigation {
-      background-color: transparent;
-      box-shadow: none;
-      z-index: 3;
-      top: 0;
-      left: 0;
-      position: absolute;
-    }
+  /*  .navigation {*/
+  /*    background-color: transparent;*/
+  /*    box-shadow: none;*/
+  /*    z-index: 3;*/
+  /*    top: 0;*/
+  /*    left: 0;*/
+  /*    position: absolute;*/
+  /*  }*/
 
-    .signature {
-      color: ghostwhite;
-      font-family: 'Avenir', Helvetica, Arial, sans-serif;
-      font-size: 28px;
-      float: right;
-      margin-top: 15px;
-      margin-right: 25px;
-      white-space: nowrap;
-    }
+  /*  .signature {*/
+  /*    color: ghostwhite;*/
+  /*    font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
+  /*    font-size: 28px;*/
+  /*    float: right;*/
+  /*    margin-top: 15px;*/
+  /*    margin-right: 25px;*/
+  /*    white-space: nowrap;*/
+  /*  }*/
 
-    .signatureBack {
-      display: none;
-    }
+  /*  .signatureBack {*/
+  /*    display: none;*/
+  /*  }*/
 
-    .socialLogo {
-      width: 25px;
-      height: 25px;
-      float: right;
-      margin-top: 22px;
-      margin-right: 10px;
-    }
+  /*  .socialLogo {*/
+  /*    width: 25px;*/
+  /*    height: 25px;*/
+  /*    float: right;*/
+  /*    margin-top: 22px;*/
+  /*    margin-right: 10px;*/
+  /*  }*/
 
-    .socialLogoContainer {
-      display: none;
-    }
+  /*  .socialLogoContainer {*/
+  /*    display: none;*/
+  /*  }*/
 
-    .dropDownMenu {
-      position: fixed;
-      z-index: 2;
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      margin-top: 15px;
-      margin-left: 15px;
-      border-radius: 30%;
-      border: 1px solid ghostwhite;
-      background-color: rgba(104, 104, 90, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      float: left;
-    }
+  /*  .dropDownMenu {*/
+  /*    position: fixed;*/
+  /*    z-index: 2;*/
+  /*    cursor: pointer;*/
+  /*    width: 50px;*/
+  /*    height: 50px;*/
+  /*    margin-top: 15px;*/
+  /*    margin-left: 15px;*/
+  /*    border-radius: 30%;*/
+  /*    border: 1px solid ghostwhite;*/
+  /*    background-color: rgba(104, 104, 90, 0.5);*/
+  /*    display: flex;*/
+  /*    align-items: center;*/
+  /*    justify-content: center;*/
+  /*    float: left;*/
+  /*  }*/
 
-    .invert {
-      filter: invert(0);
-    }
-  }
+  /*  .invert {*/
+  /*    filter: invert(0);*/
+  /*  }*/
+  /*}*/
 
   @media (max-width: 500px) {
-    .signature {
-      font-size: 22px;
+    .rightSection {
+      display: block;
+      float: right;
       margin-right: 20px;
-      margin-left: 5px;
+    }
+
+    .signature {
+      font-size: 25px;
+      margin-top: 10px;
+      margin-right: 0;
+    }
+
+    .socialLogoBlock {
+      margin-right: 0;
     }
 
     .socialLogo {
-      width: 20px;
-      height: 20px;
-      margin-top: 20px;
+      width: 22px;
+      height: 22px;
+      margin-top: 3px;
+      margin-left: 15px;
+      margin-right: 0;
+      display: inline;
     }
   }
 </style>
