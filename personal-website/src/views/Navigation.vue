@@ -152,23 +152,23 @@
 
   .signature {
     color: ghostwhite;
-    font-family: "Sacramento", sans-serif;
-    font-size: 30px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-size: 28px;
     float: right;
-    margin-top: 6px;
-    margin-right: 35px;
-    margin-left: 20px;
+    margin-top: 9px;
+    margin-right: 30px;
+    margin-left: 15px;
     white-space: nowrap;
   }
 
   .signatureBack {
     color: ghostwhite;
-    font-family: "Sacramento", sans-serif;
-    font-size: 30px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-size: 28px;
     float: right;
-    margin-top: 6px;
-    margin-right: 35px;
-    margin-left: 20px;
+    margin-top: 9px;
+    margin-right: 30px;
+    margin-left: 15px;
     white-space: nowrap;
   }
 
@@ -213,10 +213,10 @@
 
     .signature {
       color: ghostwhite;
-      font-family: "Sacramento", sans-serif;
-      font-size: 35px;
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      font-size: 28px;
       float: right;
-      margin-top: 10px;
+      margin-top: 15px;
       margin-right: 25px;
       white-space: nowrap;
     }
@@ -261,7 +261,7 @@
 
   @media (max-width: 500px) {
     .signature {
-      font-size: 30px;
+      font-size: 22px;
       margin-right: 20px;
     }
 

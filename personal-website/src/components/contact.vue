@@ -73,20 +73,19 @@
   }
 
   .contactLabel {
-    font-family: "Archivo-Bold", sans-serif;
+    font-weight: bolder;
     font-size: 50px;
     padding-top: 20px;
   }
   
   .contactSubheading {
-    font-family: "Archivo-Semibold", sans-serif;
+    font-weight: bold;
     margin-top: 10px;
     margin-left: 30px;
     margin-right: 30px;
   }
 
   .contactText {
-    font-family: "Archivo-Medium", sans-serif;
     margin-top: 10px;
     margin-left: 30px;
     margin-right: 30px;

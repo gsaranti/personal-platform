@@ -3,7 +3,7 @@
     <div v-if="backgroundLoaded" class="animated-title">
       <div class="text-top">
         <div>
-          <span style="margin-right: 135px">Hi there,</span>
+          <span style="margin-right: 145px">Hi there,</span>
           <span>My name is George</span>
         </div>
       </div>
@@ -218,7 +218,8 @@
 
   .animated-title {
     color: ghostwhite;
-    font-family: "Baloo2-Medium", sans-serif;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
     margin-top: 50vh;
     margin-left: 45vw;
     margin-right: 5vw;
