@@ -51,6 +51,10 @@
         videoOptions: {
           autoplay: false,
           controls: true,
+          controlBar: {
+            fullscreenToggle: false
+          },
+          playsinline: true,
           muted: true,
           fluid: true,
           sources: [

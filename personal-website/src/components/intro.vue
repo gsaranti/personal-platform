@@ -4,7 +4,7 @@
       <div class="text-top">
         <div>
           <span style="margin-right: 145px">Hi there,</span>
-          <span>My name is George</span>
+          <span class="text-middle">My name is George</span>
         </div>
       </div>
       <div class="text-bottom">
@@ -226,27 +226,27 @@
     white-space: nowrap;
   }
 
-  @media (max-width: 550px) {
+  @media (max-width: 750px) {
     .animated-title {
-      margin-left: 35vw;
+      margin-left: 30vw;
     }
   }
 
-  @media (max-height: 600px) {
+  @media (max-height: 750px) {
     .animated-title {
-      margin-top: 40vh;
+      margin-top: 50vh;
     }
   }
 
   @media (max-height: 500px) {
     .animated-title {
-      margin-top: 30vh;
+      margin-top: 40vh;
     }
   }
 
   @media (max-height: 400px) {
     .animated-title {
-      margin-top: 0;
+      margin-top: 30vh;
     }
   }
 
@@ -256,7 +256,7 @@
     }
   }
 
-  @media (max-height: 250px) {
+  @media (max-height: 170px) {
     .animated-title {
       visibility: hidden;
     }
@@ -533,8 +533,43 @@
     }
 
     .animated-title {
-      margin-left: 25vw;
-      margin-top: 47vh;
+      margin-left: 20vw;
+      margin-top: 50vh;
+      word-spacing: -10px;
+    }
+
+    @media (max-height: 750px) {
+      .animated-title {
+        margin-top: 50vh;
+      }
+    }
+
+    @media (max-height: 500px) {
+      .animated-title {
+        margin-top: 40vh;
+      }
+    }
+
+    @media (max-height: 400px) {
+      .animated-title {
+        margin-top: 30vh;
+      }
+    }
+
+    @media (max-height: 350px) {
+      .downButton {
+        visibility: hidden;
+      }
+    }
+
+    @media (max-height: 170px) {
+      .animated-title {
+        visibility: hidden;
+      }
+    }
+
+    .text-middle {
+      margin-right: 20px;
     }
   }
 </style>

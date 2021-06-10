@@ -247,7 +247,7 @@
       margin-left: 15px;
       border-radius: 30%;
       border: 1px solid ghostwhite;
-      background-color: rgba(192,192,192, 0.7);
+      background-color: rgba(104, 104, 90, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -263,6 +263,7 @@
     .signature {
       font-size: 22px;
       margin-right: 20px;
+      margin-left: 5px;
     }
 
     .socialLogo {
