@@ -190,80 +190,48 @@
     filter: invert(1);
   }
 
-  /*@media (max-width: 600px) {*/
-  /*  .navigationFadeIn {*/
-  /*    background-color: transparent;*/
-  /*    box-shadow: none;*/
-  /*    z-index: 3;*/
-  /*    top: 0;*/
-  /*    left: 0;*/
-  /*    position: absolute;*/
-  /*    opacity: 0;*/
-  /*    animation: fadeIn 1.5s forwards 3s;*/
-  /*    -webkit-animation: fadeIn 1.5s forwards 3s;*/
-  /*    -moz-animation: fadeIn 1.5s forwards 3s;*/
-  /*    -o-animation: fadeIn 1.5s forwards 3s;*/
-  /*    -ms-animation: fadeIn 1.5s forwards 3s;*/
-  /*  }*/
+  @media (max-width: 600px) {
+    .navigationFadeIn {
+      background-color: transparent;
+      box-shadow: none;
+      z-index: 3;
+      top: 0;
+      left: 0;
+      position: absolute;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards 3s;
+      -webkit-animation: fadeIn 1.5s forwards 3s;
+      -moz-animation: fadeIn 1.5s forwards 3s;
+      -o-animation: fadeIn 1.5s forwards 3s;
+      -ms-animation: fadeIn 1.5s forwards 3s;
+    }
 
-  /*  .navigation {*/
-  /*    background-color: transparent;*/
-  /*    box-shadow: none;*/
-  /*    z-index: 3;*/
-  /*    top: 0;*/
-  /*    left: 0;*/
-  /*    position: absolute;*/
-  /*  }*/
+    .navigation {
+      background-color: transparent;
+      box-shadow: none;
+      z-index: 3;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
 
-  /*  .signature {*/
-  /*    color: ghostwhite;*/
-  /*    font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-  /*    font-size: 28px;*/
-  /*    float: right;*/
-  /*    margin-top: 15px;*/
-  /*    margin-right: 25px;*/
-  /*    white-space: nowrap;*/
-  /*  }*/
+    .dropDownMenu {
+      position: fixed;
+      z-index: 2;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      margin-top: 15px;
+      margin-left: 15px;
+      border-radius: 30%;
+      border: 1px solid ghostwhite;
+      background-color: rgba(104, 104, 90, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      float: left;
+    }
 
-  /*  .signatureBack {*/
-  /*    display: none;*/
-  /*  }*/
-
-  /*  .socialLogo {*/
-  /*    width: 25px;*/
-  /*    height: 25px;*/
-  /*    float: right;*/
-  /*    margin-top: 22px;*/
-  /*    margin-right: 10px;*/
-  /*  }*/
-
-  /*  .socialLogoContainer {*/
-  /*    display: none;*/
-  /*  }*/
-
-  /*  .dropDownMenu {*/
-  /*    position: fixed;*/
-  /*    z-index: 2;*/
-  /*    cursor: pointer;*/
-  /*    width: 50px;*/
-  /*    height: 50px;*/
-  /*    margin-top: 15px;*/
-  /*    margin-left: 15px;*/
-  /*    border-radius: 30%;*/
-  /*    border: 1px solid ghostwhite;*/
-  /*    background-color: rgba(104, 104, 90, 0.5);*/
-  /*    display: flex;*/
-  /*    align-items: center;*/
-  /*    justify-content: center;*/
-  /*    float: left;*/
-  /*  }*/
-
-  /*  .invert {*/
-  /*    filter: invert(0);*/
-  /*  }*/
-  /*}*/
-
-  @media (max-width: 500px) {
     .rightSection {
       display: block;
       float: right;
@@ -276,8 +244,16 @@
       margin-right: 0;
     }
 
+    .signatureBack {
+      display: none;
+    }
+
     .socialLogoBlock {
       margin-right: 0;
+    }
+
+    .socialLogoContainer {
+      display: none;
     }
 
     .socialLogo {
@@ -287,6 +263,10 @@
       margin-left: 15px;
       margin-right: 0;
       display: inline;
+    }
+
+    .invert {
+      filter: invert(0);
     }
   }
 </style>
