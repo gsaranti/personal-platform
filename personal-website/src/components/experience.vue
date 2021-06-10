@@ -1,7 +1,7 @@
 <template>
   <div class="experience">
     <div :class="{baseItem: !animate, visibleItem: (animate && isVisible), hiddenItem: !isVisible}">
-      <h2 class="label">The Path So Far...</h2>
+      <h2 class="label">The Path So Far</h2>
     </div>
     <experienceItem side="left"
                     imgUrl="https://res.cloudinary.com/df1dpirbp/image/upload/w_400,h_250/v1609373485/redbull_wr7wps.png"
@@ -105,7 +105,7 @@
   .experience {
     margin-top: 100vh;
     padding-top: 30px;
-    background: #FBFAF5;
+    background: #f8f6ed;
   }
 
   .label {
@@ -139,21 +139,39 @@
     margin-right: -50%;
   }
 
-  @media (max-width: 575px) {
+  @media (max-width: 800px) {
     .label {
-      border-bottom: 1px solid black;
-      margin-right: 24%;
-      margin-left: 24%;
-      font-size: 23px;
+      margin-right: 22%;
+      margin-left: 22%;
+      margin-bottom: 30px;
     }
 
     .label:before {
-      right: 2em;
+      right: 0.5em;
       margin-left: -50%;
     }
 
     .label:after {
-      left: 2em;
+      left: 0.5em;
+      margin-right: -50%;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .label {
+      margin-right: 20%;
+      margin-left: 20%;
+      margin-bottom: 30px;
+      font-size: 23px;
+    }
+
+    .label:before {
+      right: 0.5em;
+      margin-left: -50%;
+    }
+
+    .label:after {
+      left: 0.5em;
       margin-right: -50%;
     }
   }

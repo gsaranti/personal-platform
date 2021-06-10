@@ -5,7 +5,7 @@
       <h3 class="contactSubheading">I'm always excited to meet new people!</h3>
       <div class="contactText">
         <p>
-          Want to learn more about my background in Software and/or collaborate on an innovative project?
+          Want to learn more about my background in software and/or collaborate on an innovative project?
           Feel free to reach out to me!
         </p>
         <br>
@@ -98,8 +98,8 @@
   }
 
   .centerLogo {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 
   .contactInfo {

@@ -134,7 +134,9 @@
         actually play a video, request the following url in the Safari browser:
       </p>
       <div class="exampleBlock">
-        <p>https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/master.m3u8</p>
+        <p>
+          https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/master.m3u8 &nbsp; &nbsp; &nbsp; &nbsp;
+        </p>
       </div>
       <p>
         This request will return the HLS format, which is supported by Safari. When the browser receives the
@@ -183,7 +185,8 @@
 
 <style>
   .projectDescriptionSection {
-    background-color: #FBFAF5;
+    background-color: #f8f6ed;
+    padding-bottom: 40px;
   }
 
   .navBar {}
@@ -231,7 +234,6 @@
     border-radius: 2px;
     margin-left: 100px;
     margin-right: 100px;
-    margin-bottom: 40px;
   }
 
   .transcoderSystem {
@@ -302,7 +304,7 @@
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     .navBar {
       display: none;
     }
@@ -342,6 +344,7 @@
 
   .warningBlock p {
     margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 0;
   }
 </style>
