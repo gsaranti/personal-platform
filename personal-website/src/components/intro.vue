@@ -1,38 +1,5 @@
 <template>
-  <div v-bind:class="{intro: backgroundLoaded, introBeforeLoad: !backgroundLoaded}">
-    <div v-if="backgroundLoaded">
-      <p v-bind:class="{'signature': backgroundLoaded}">George Sarantinos</p>
-      <a href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
-        <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
-      </a>
-      <a href="https://github.com/gsaranti" target="_blank">
-        <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1618011051/github_v1.png"/>
-      </a>
-      <a href="https://www.instagram.com/george_sarantinos/" target="_blank">
-        <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613411113/insta_cwhbqk.png"/>
-      </a>
-      <v-menu>
-        <template v-slot:activator="{ on, attrs }">
-          <div class="dropDownMenu" v-bind="attrs" v-on="on">
-            <div>
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
-          </div>
-        </template>
-        <v-list rounded style="z-index: 2">
-          <v-list-item
-                  v-for="(item, index) in items"
-                  :key="index"
-                  @click="callAutoScroll(item.scrollTo)"
-                  link
-          >
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </div>
+  <div :class="{intro: backgroundLoaded, introBeforeLoad: !backgroundLoaded}">
     <div v-if="backgroundLoaded" class="animated-title">
       <div class="text-top">
         <div>
@@ -58,29 +25,8 @@
     components: {
     },
     props: {
-      autoScroll: Function
-    },
-    data: () => {
-      return {
-        backgroundLoaded: false,
-        backgroundImage: new Image(),
-        items: [
-          { title: 'Home', scrollTo: '.introScroll' },
-          { title: 'Experience', scrollTo: '.experienceScroll' },
-          { title: 'About Me', scrollTo: '.aboutScroll' },
-          { title: 'Projects', scrollTo: '.projectsScroll' },
-          { title: 'Contact', scrollTo: '.contactScroll' }
-        ]
-      }
-    },
-    created() {
-      this.backgroundImage.src = "https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_auto,f_auto,e_brightness_hsb:-10/v1614833766/seaside_v5_abc.jpg";
-    },
-    mounted() {
-      const self = this;
-      this.backgroundImage.onload = function () {
-        self.backgroundLoaded = true;
-      };
+      autoScroll: Function,
+      backgroundLoaded: Boolean
     },
     methods: {
       callAutoScroll(selector) {
@@ -213,87 +159,6 @@
     -moz-animation: backgroundFadeIn 2s;
     -o-animation: backgroundFadeIn 2s;
     -ms-animation: backgroundFadeIn 2s;
-  }
-
-  .dropDownMenu {
-    opacity: 0;
-    position: fixed;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    margin-top: 15px;
-    margin-left: 15px;
-    border-radius: 30%;
-    border: 1px solid ghostwhite;
-    background-color: rgba(192,192,192, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    float: left;
-    animation: fadeIn 1.5s forwards 3s;
-    -webkit-animation: fadeIn 1.5s forwards 3s;
-    -moz-animation: fadeIn 1.5s forwards 3s;
-    -o-animation: fadeIn 1.5s forwards 3s;
-    -ms-animation: fadeIn 1.5s forwards 3s;
-  }
-
-  .bar1, .bar2, .bar3 {
-    width: 30px;
-    height: 3px;
-    background-color: ghostwhite;
-    margin: 4px 0;
-    transition: 0.4s;
-    border-radius: 50px;
-  }
-
-  .change .bar1 {
-    transform: rotate(-45deg) translate(-9px, 6px);
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-    -moz-transform: rotate(-45deg) translate(-9px, 6px);
-    -o-transform: rotate(-45deg) translate(-9px, 6px);
-    -ms-transform: rotate(-45deg) translate(-9px, 6px);
-
-  }
-
-  .change .bar2 {opacity: 0;}
-
-  .change .bar3 {
-    transform: rotate(45deg) translate(-8px, -8px);
-    -webkit-transform: rotate(45deg) translate(-8px, -8px);
-    -moz-transform: rotate(45deg) translate(-8px, -8px);
-    -o-transform: rotate(45deg) translate(-8px, -8px);
-    -ms-transform: rotate(45deg) translate(-8px, -8px);
-  }
-
-  .signature {
-    opacity: 0;
-    color: ghostwhite;
-    font-family: "Sacramento", sans-serif;
-    font-size: 35px;
-    float: right;
-    margin-top: 10px;
-    margin-right: 25px;
-    white-space: nowrap;
-    animation: fadeIn 1.5s;
-    -webkit-animation: fadeIn 1.5s forwards 3s;
-    -moz-animation: fadeIn 1.5s forwards 3s;
-    -o-animation: fadeIn 1.5s forwards 3s;
-    -ms-animation: fadeIn 1.5s forwards 3s;
-  }
-
-  .socialLogo {
-    opacity: 0;
-    width: 25px;
-    height: 25px;
-    margin-top: 22px;
-    margin-right: 10px;
-    float: right;
-    animation: fadeIn 1.5s forwards 3s;
-    -webkit-animation: fadeIn 1.5s forwards 3s;
-    -moz-animation: fadeIn 1.5s forwards 3s;
-    -o-animation: fadeIn 1.5s forwards 3s;
-    -ms-animation: fadeIn 1.5s forwards 3s;
   }
 
   @keyframes showTopText {
@@ -664,17 +529,6 @@
 
     .intro {
       background-position: left 35% center;
-    }
-
-    .signature {
-      font-size: 30px;
-      margin-right: 10px;
-    }
-
-    .socialLogo {
-      width: 20px;
-      height: 20px;
-      margin-top: 20px;
     }
 
     .animated-title {
