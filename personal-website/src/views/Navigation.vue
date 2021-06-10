@@ -2,7 +2,7 @@
   <div v-if="backgroundLoaded || !animate" :class="{navigationFadeIn: animate, navigation: !animate}">
     <div class="rightSection">
       <p :class="{signatureBack: goBack, signature: navigationDropDown}">George Sarantinos</p>
-      <div class="socialLogoBlock">
+      <div>
         <a :class="{socialLogoContainer: goBack}" href="https://www.linkedin.com/in/george-sarantinos-106857b5/" target="_blank">
           <v-img class="socialLogo" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1613450422/linkedIn_yrfzuo.png"/>
         </a>
@@ -246,10 +246,6 @@
 
     .signatureBack {
       display: none;
-    }
-
-    .socialLogoBlock {
-      margin-right: 0;
     }
 
     .socialLogoContainer {
