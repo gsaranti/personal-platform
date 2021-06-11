@@ -292,9 +292,7 @@
     }
 
     .image {
-      transform: scale(.85, .85) translate(-50%, -50%);
-      left: 42.5%;
-      top: 42.5%;
+      max-width: 90%
     }
 
     .expanded {
