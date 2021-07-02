@@ -1,7 +1,7 @@
 <template>
   <div class="projectDescriptionSection">
     <navigation class="navBar" :background-loaded="true" :navigation-drop-down="false" :go-back="true"/>
-    <v-btn @click="routeBack" class="backNavButton" dark>&#8592; {{buttonText}}</v-btn>
+    <v-btn @click="routeBack" class="backNavButton" dark>&#8592; home</v-btn>
     <h1 class="projectHeader">Video Transcode System and Streaming Service</h1>
     <div class="architecture">
       <img class="diagram" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1619928436/Transcode_Pipeline_dqdeyp.png" alt=""/>
@@ -177,26 +177,14 @@
       }
     },
     mounted() {
-      if (!this.visitedHome) {
-        this.buttonText = "back";
-      }
       this.$store.commit('setAnimate', false);
     },
     methods: {
       routeBack() {
-        if (this.visitedHome) {
-          this.$router.go(-1);
-        } else {
-          this.$router.push({name: 'home'});
-        }
+        this.$router.push({name: 'home'});
       },
       linkGithub() {
         window.open("https://github.com/gsaranti/personal-platform");
-      }
-    },
-    computed: {
-      visitedHome() {
-        return this.$store.state.visitedHome;
       }
     }
   }

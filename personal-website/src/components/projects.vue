@@ -90,7 +90,6 @@
         window.open("https://github.com/gsaranti/personal-platform");
       },
       routeToProjectDocumentation() {
-        this.$store.commit('setVisitedHome', true);
         this.$router.push({ name: 'project' });
       }
     },

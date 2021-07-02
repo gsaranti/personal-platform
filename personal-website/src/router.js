@@ -6,7 +6,7 @@ import store from "./store";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -22,12 +22,21 @@ export default new Router({
     }
   ],
   scrollBehavior (to, from, savedPosition) {
-    if (to.name === 'project') {
+    if (to.name === 'project' || (to.name === 'home' && !store.state.homeScrollY)) {
       return {x: 0, y: 0};
-    } else if (to.name === 'home' && !store.state.visitedHome) {
-      return {x: 0, y: 0};
+    } else if (to.name === 'home' && store.state.homeScrollY) {
+      return {x: 0, y: store.state.homeScrollY};
     } else if (savedPosition) {
       return savedPosition;
     }
   }
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if (from.name === 'home') {
+    store.commit('setHomeScrollY', window.scrollY);
+  }
+  next();
+});
+
+export default router;

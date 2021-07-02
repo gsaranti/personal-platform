@@ -6,15 +6,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     animate: true,
-    visitedHome: false
+    homeScrollY: undefined
   },
   mutations: {
     setAnimate(state, data) {
       state.animate = data;
     },
-    setVisitedHome(state, data) {
-      state.visitedHome = data;
-    }
+    setHomeScrollY(state, data) {
+      state.homeScrollY = data;
+    },
   },
   actions: {}
 })
