@@ -40,6 +40,7 @@
       smoothscroll.polyfill();
     },
     mounted() {
+      this.$store.commit('setVisitedHome', true);
       const self = this;
       this.backgroundImage.onload = function () {
         self.backgroundLoaded = true;
