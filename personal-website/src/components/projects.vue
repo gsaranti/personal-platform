@@ -28,7 +28,7 @@
           </ul>
         </div>
         <div class="detailButtons">
-          <v-btn class="detailButton" elevation="2" @click="$router.push({ name: 'project' })">Learn More</v-btn>
+          <v-btn class="detailButton" elevation="2" @click="routeToProjectDocumentation">Learn More</v-btn>
           <v-btn style="display: block" elevation="2" @click="openGithub">View On GitHub</v-btn>
         </div>
       </div>
@@ -88,6 +88,10 @@
       },
       openGithub() {
         window.open("https://github.com/gsaranti/personal-platform");
+      },
+      routeToProjectDocumentation() {
+        this.$store.commit('setVisitedHome', true);
+        this.$router.push({ name: 'project' });
       }
     },
     computed: {
