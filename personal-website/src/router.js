@@ -15,7 +15,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/video-transcode-system',
+      path: '/transcode-streaming-systems',
       name: 'project',
       component: Project
     }

@@ -7,6 +7,7 @@
       <img class="diagram" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1619928436/Transcode_Pipeline_dqdeyp.png" alt=""/>
     </div>
     <div class="projectOverview">
+      <v-btn style="display: block" elevation="2" @click="linkGithub">View On GitHub</v-btn>
       <h2 class="transcoderSystem">Video Transcode System</h2>
       <p>
         This system is made up of multiple pieces that form a pipeline for transcoding
@@ -188,6 +189,9 @@
         } else {
           this.$router.push({name: 'home'});
         }
+      },
+      linkGithub() {
+        window.open("https://github.com/gsaranti/personal-platform");
       }
     },
     computed: {
