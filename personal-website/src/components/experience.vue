@@ -44,12 +44,12 @@
                       'software engineering today.',
                       'Outside of the classroom I was lucky enough to be a member of the Ignatians ' +
                       'service organization. With the other members we worked together to perform ' +
-                      'service at different placements around the LA area for the promotion of social ' +
-                      'justice. We often found ourselves engaged in difficult conversations regarding ' +
-                      'complicated social topics, which pushed me to think critically about the systemic ' +
-                      'injustice around the world.',
+                      'service at different placements around the LA area. Each member brought a ' +
+                      'different background and set of experiences to the group, and we often found ' +
+                      'ourselves engaged in difficult conversations regarding complicated social topics. ' +
+                      'All of this pushed me to think critically about the world I live in.',
                       'I could go on about my time at LMU, but in the end it was the experiences I had, ' +
-                      'friends I made, and skills I gained that helped catapult me to where I am today'
+                      'friends I made, and skills I gained that helped catapult me to where I am today.'
                     ]"
                     :expand="true"
                     :positions="[
