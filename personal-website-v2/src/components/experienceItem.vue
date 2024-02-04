@@ -117,4 +117,12 @@ export default {
     max-width: 90%
   }
 }
+
+@media (max-width: 375px) {
+  .experience-item {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
 </style>
