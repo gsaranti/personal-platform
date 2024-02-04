@@ -2,9 +2,9 @@
   <div class="projects-section">
     <div :class="{ 'base-item': !animate, 'visible-item': (animate && isVisible), 'hidden-item': !isVisible }">
       <h2 class="projects-label">Projects</h2>
-<!--      <div class="transcode-player">-->
-<!--        <player ref="transcodeProjectPlayer" :options="videoOptions"/>-->
-<!--      </div>-->
+      <div class="transcode-player">
+        <player ref="transcodeProjectPlayer" :options="videoOptions"/>
+      </div>
       <h2 class="project-title">Video Transcode System <br> and Streaming Service</h2>
       <p class="project-description">
         This project provides the capability to transcode video and stream it across
