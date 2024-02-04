@@ -1,20 +1,20 @@
 <template>
-  <div class="projectDescriptionSection">
-    <navigation class="navBar" :background-loaded="true" :navigation-drop-down="false" :go-back="true"/>
-    <v-btn @click="routeBack" class="backNavButton" dark>&#8592; home</v-btn>
-    <h1 class="projectHeader">Video Transcode System and Streaming Service</h1>
+  <div class="project-description-section">
+    <navigation class="nav-bar" :background-loaded="true" :navigation-drop-down="false" :go-back="true"/>
+    <v-btn @click="routeBack" class="back-nav-button" dark>&#8592; home</v-btn>
+    <h1 class="project-header">Video Transcode System and Streaming Service</h1>
     <div class="architecture">
       <img class="diagram" src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto/v1619928436/Transcode_Pipeline_dqdeyp.png" alt=""/>
     </div>
-    <div class="projectOverview">
+    <div class="project-overview">
       <v-btn style="display: block" elevation="2" @click="linkGithub">View On GitHub</v-btn>
-      <h2 class="transcoderSystem">Video Transcode System</h2>
+      <h2 class="transcoder-system">Video Transcode System</h2>
       <p>
         This system is made up of multiple pieces that form a pipeline for transcoding
         videos from common formats, such as mp4 and mov, to a format that allows for adaptive
         bitrate streaming.
       </p>
-      <h3 class="subDescription">Transcode Initiation</h3>
+      <h3 class="sub-description">Transcode Initiation</h3>
       <p>
         A transcode process starts when a video is uploaded to the "Raw Videos" google
         storage bucket. This is currently done through a locally ran script. Along with the
@@ -26,14 +26,14 @@
         Pub/Sub topic, which triggers the "Encoder Trigger" cloud function. This cloud function performs
         the following tasks:
       </p>
-      <div class="numberedList">
+      <div class="numbered-list">
         <ol>
           <li>Saves the video file name to a transcode backlog list in Firestore.</li>
           <li>Checks the state of the encoder. If the encoder is not already running or
             spinning up, the encoder is started via the Compute Engine SDK.</li>
         </ol>
       </div>
-      <h3 class="subDescription">Transcode Process</h3>
+      <h3 class="sub-description">Transcode Process</h3>
       <p>
         The encoder is a Node.js program that runs on a Compute Engine Virtual Machine. Once the VM
         has spun up, the transcode backlog list is requested from Firestore. For each video file name
@@ -46,12 +46,12 @@
         to make sure no more videos have been uploaded to the "Raw Videos" storage bucket. If there are no new
         video file names in the list, the VM spins itself down.
       </p>
-      <h2 class="streamingServiceSystem">Streaming Service</h2>
+      <h2 class="streaming-service-system">Streaming Service</h2>
       <p>
         After a video has been transcoded, it can then be served to a client, such as my website, through
         the streaming service.
       </p>
-      <h3 class="subDescription">Content Control</h3>
+      <h3 class="sub-description">Content Control</h3>
       <p>
         In order to control what content I would like made available to the internet, I implemented a video status
         feature. For a video to be streamed it's name must be included in the "public videos" list.
@@ -61,18 +61,18 @@
         of the Platform Service is subscribed to this topic; therefore, when a message is received, the instance
         can update the local list.
       </p>
-      <h3 class="subDescription">Video Playout</h3>
+      <h3 class="sub-description">Video Playout</h3>
       <p>
         The Platform Service is an Express application running on Google App Engine that handles video requests.
         The initial api request for a video has the following path structure:
       </p>
-      <div class="exampleBlock">
+      <div class="example-block">
         <p>
           /playout/:version/:id/:format/:muxingType/master.m3u8 &nbsp; &nbsp; &nbsp; &nbsp;
         </p>
       </div>
       <p>Let's go over the path parameters:</p>
-      <div class="bulletList">
+      <div class="bullet-list">
         <ul>
           <li><b>version:</b> The api version</li>
           <li><b>id:</b> The video id</li>
@@ -80,7 +80,7 @@
           <li><b>muxingType:</b> The segment container format</li>
         </ul>
       </div>
-      <div class="warningBlock">
+      <div class="warning-block">
         <p>
           Currently, only the HLS (HTTP Live Streaming) protocol is supported, but my goal is to implement DASH
           (Dynamic Adaptive Streaming) playout in the future. Furthermore, the transcode process only outputs
@@ -95,14 +95,14 @@
       </p>
       <p>Here is an example:</p>
       <div>
-        <div class="exampleBlock">
-          <p class="exampleBlockTitle"><b>Request:</b></p>
+        <div class="example-block">
+          <p class="example-block-title"><b>Request:</b></p>
           <p>
             https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/master.m3u8 &nbsp; &nbsp; &nbsp; &nbsp;
           </p>
         </div>
-        <div class="exampleBlock">
-          <p class="exampleBlockTitle"><b>Response:</b></p>
+        <div class="example-block">
+          <p class="example-block-title"><b>Response:</b></p>
           <p>
             #EXTM3U<br>
             #EXT-X-VERSION:3<br>
@@ -129,12 +129,12 @@
         like a Content Delivery Network (CDN) when stored data is publicly readable. This is the case for the
         video segments in this system; therefore, they are cached in the Cloud Storage network.
       </p>
-      <h3 class="subDescription">Make a request yourself</h3>
+      <h3 class="sub-description">Make a request yourself</h3>
       <p>
         Want to see everything that's been described in action? Here's how to do it! If you would like to
         actually play a video, request the following url in the Safari browser:
       </p>
-      <div class="exampleBlock">
+      <div class="example-block">
         <p>
           https://api.georgesarantinos.com/playout/v1.0/george/hls3/ts/master.m3u8 &nbsp; &nbsp; &nbsp; &nbsp;
         </p>
@@ -151,8 +151,8 @@
         download the master manifest instead of playing the video. You can then use the urls in the master manifest
         to download the media manifests as well.
       </p>
-      <h2 class="futureFeatures">Future Features</h2>
-      <div class="bulletList">
+      <h2 class="future-features">Future Features</h2>
+      <div class="bullet-list">
         <ul>
           <li>Implement HLS5 and Dash playout</li>
           <li>Implement fmp4 segments</li>
@@ -173,7 +173,7 @@ export default {
   },
   data: () => {
     return {
-      buttonText: "back to projects"
+      buttonText: 'back to projects'
     }
   },
   mounted() {
@@ -184,21 +184,21 @@ export default {
       this.$router.push({name: 'home'});
     },
     linkGithub() {
-      window.open("https://github.com/gsaranti/personal-platform");
+      window.open('https://github.com/gsaranti/personal-platform');
     }
   }
 }
 </script>
 
 <style>
-.projectDescriptionSection {
+.project-description-section {
   background-color: #f8f6ed;
   padding-bottom: 40px;
 }
 
-.navBar {}
+.nav-bar {}
 
-.backNavButton {
+.back-nav-button {
   position: fixed;
   display: block;
   margin-left: 10px;
@@ -206,13 +206,14 @@ export default {
   z-index: 3;
 }
 
-.projectHeader {
+.project-header {
   text-align: center;
   padding-top: 80px;
   margin-bottom: 20px;
 }
 
 .architecture {
+  text-align: center;
   background-color: #add8e6;
   box-shadow: 0 0 5px rgba(0,0,0,.5);
   -webkit-box-shadow: 0 0 5px rgba(0,0,0,.5);
@@ -226,11 +227,10 @@ export default {
 }
 
 .diagram {
-  display: block;
   width: 50vw;
 }
 
-.projectOverview {
+.project-overview {
   text-align: left;
   border: 1px solid white;
   padding: 20px;
@@ -245,36 +245,36 @@ export default {
   margin-right: 100px;
 }
 
-.transcoderSystem {
+.transcoder-system {
   margin-bottom: 25px;
   margin-top: 15px;
 }
 
-.streamingServiceSystem {
+.streaming-service-system {
   margin-bottom: 25px;
   margin-top: 45px;
 }
 
-.futureFeatures {
+.future-features {
   margin-top: 45px;
   margin-bottom: 25px;
 }
 
-.subDescription {
+.sub-description {
   margin-bottom: 20px;
 }
 
-.numberedList {
+.numbered-list {
   margin-left: 50px;
   margin-bottom: 20px;
 }
 
-.bulletList {
+.bullet-list {
   margin-left: 40px;
   margin-bottom: 20px;
 }
 
-.exampleBlock {
+.example-block {
   color: #0d47a1;
   background-color: #E2F4FE;
   overflow: auto;
@@ -284,7 +284,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.warningBlock {
+.warning-block {
   color: saddlebrown;
   background-color: #FDEFE3;
   overflow: auto;
@@ -293,7 +293,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.exampleBlockTitle {
+.example-block-title {
   margin-bottom: 10px;
 }
 
@@ -303,7 +303,7 @@ export default {
     margin-right: 50px;
   }
 
-  .projectOverview {
+  .project-overview {
     margin-left: 50px;
     margin-right: 50px;
   }
@@ -314,11 +314,11 @@ export default {
 }
 
 @media (max-width: 650px) {
-  .navBar {
+  .nav-bar {
     display: none;
   }
 
-  .projectHeader {
+  .project-header {
     padding-top: 60px;
   }
 }
@@ -330,7 +330,7 @@ export default {
     margin-right: 25px;
   }
 
-  .projectOverview {
+  .project-overview {
     margin-left: 25px;
     margin-right: 25px;
   }
@@ -346,12 +346,12 @@ p {
   margin-bottom: 20px;
 }
 
-.exampleBlock p {
+.example-block p {
   margin-left: 20px;
   margin-bottom: 0;
 }
 
-.warningBlock p {
+.warning-block p {
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 0;
