@@ -1,33 +1,33 @@
 <template>
   <div data-app>
-<!--    <navigation :autoScroll="autoScroll.bind('arg1')" :background-loaded="backgroundLoaded"-->
-<!--                :navigation-drop-down="true" :go-back="false"/>-->
-    <intro class="introScroll" :autoScroll="autoScroll.bind('arg1')" :background-loaded="backgroundLoaded"/>
-<!--    <experience class="experienceScroll"/>-->
-<!--    <about class="aboutScroll"/>-->
-<!--    <projects class="projectsScroll"/>-->
-<!--    <contact class="contactScroll"/>-->
+    <navigation :autoScroll="autoScroll.bind('arg1')" :background-loaded="backgroundLoaded"
+                :navigation-drop-down="true" :go-back="false"/>
+    <intro class="intro-scroll" :autoScroll="autoScroll.bind('arg1')" :background-loaded="backgroundLoaded"/>
+    <experience class="experience-scroll"/>
+    <about class="about-scroll"/>
+    <projects class="projects-scroll"/>
+    <contact class="contact-scroll"/>
   </div>
 </template>
 
 <script>
-import smoothscroll from 'smoothscroll-polyfill';
-// import navigation from "./Navigation";
+import smoothscroll from "smoothscroll-polyfill";
+import navigation from "./Navigation.vue";
 import intro from "../components/intro.vue";
-// import experience from "../components/experience";
-// import about from "../components/about";
-// import projects from "../components/projects";
-// import contact from "../components/contact";
+import experience from "../components/experience.vue";
+import about from "../components/about.vue";
+import projects from "../components/projects.vue";
+import contact from "../components/contact.vue";
 
 export default {
   name: 'home',
   components: {
-    // navigation,
+    navigation,
     intro,
-    // experience,
-    // about,
-    // projects,
-    // contact
+    experience,
+    about,
+    projects,
+    contact
   },
   data: () => {
     return {
@@ -36,7 +36,7 @@ export default {
     }
   },
   created() {
-    this.backgroundImage.src = "https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_auto,f_auto,e_brightness_hsb:-10/v1614833766/seaside_v5_abc.jpg";
+    this.backgroundImage.src = 'https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_auto,f_auto,e_brightness_hsb:-10/v1614833766/seaside_v5_abc.jpg';
     smoothscroll.polyfill();
   },
   mounted() {
@@ -59,25 +59,25 @@ export default {
 </script>
 
 <style>
-.introScroll {
+.intro-scroll {
 }
 
-.experienceScroll {
+.experience-scroll {
 }
 
-.aboutScroll {
+.about-scroll {
 }
 
-.projectsScroll {
+.projects-scroll {
 }
 
-.contactScroll {
+.contact-scroll {
 }
 
-.baseItem {
+.base-item {
 }
 
-.visibleItem {
+.visible-item {
   animation: fadeInUp 1s ease forwards;
   -moz-animation: fadeInUp 1s ease forwards;
   -webkit-animation: fadeInUp 1s ease forwards;
@@ -85,7 +85,7 @@ export default {
   -ms-animation: fadeInUp 1s ease forwards;
 }
 
-.hiddenItem {
+.hidden-item {
   opacity: 0;
 }
 

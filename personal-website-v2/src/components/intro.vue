@@ -13,7 +13,7 @@
         </div>
       </div>
       <div v-if="backgroundLoaded" class="down-button-intro">
-        <div v-on:click="callAutoScroll('.experienceScroll')" class="down-button">
+        <div v-on:click="callAutoScroll('.experience-scroll')" class="down-button">
           <i class="arrow"></i>
         </div>
       </div>
@@ -131,6 +131,15 @@ export default {
   }
 }
 
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
+body {
+  position: relative;
+}
+
 .intro-before-load {
   width: 100vw;
   height: 100vh;
@@ -171,6 +180,11 @@ export default {
   position: absolute;
   bottom: 0;
   margin-bottom: 10vh;
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
 }
 
 .title {
@@ -179,18 +193,7 @@ export default {
   margin-left: 45vw;
   margin-right: 5vw;
   white-space: nowrap;
-  animation: fadeIn 2s;
-  -webkit-animation: fadeIn 2s;
-  -moz-animation: fadeIn 2s;
-  -o-animation: fadeIn 2s;
-  -ms-animation: fadeIn 2s;
 }
-
-/*@media (max-width: 750px) {*/
-/*  .title {*/
-/*    margin-left: 30vw;*/
-/*  }*/
-/*}*/
 
 .title > div {
   height: 100%;
@@ -210,6 +213,7 @@ export default {
 
 .title > div.title-top {
   border-bottom: 3px solid ghostwhite;
+  width: 50vw;
   top: 0;
 }
 
@@ -414,6 +418,24 @@ export default {
   -ms-transform: rotate(45deg);
 }
 
+@media (max-height: 275px) {
+  .down-button {
+    display: none;
+  }
+}
+
+@media (max-height: 175px) {
+  .title {
+    display: none;
+  }
+}
+
+@media (max-width: 625px) {
+  .title > div.title-top {
+    width: 100%;
+  }
+}
+
 @media (max-width: 600px) {
   .intro-before-load {
     background-position: left 35% center;
@@ -425,42 +447,7 @@ export default {
 
   .title {
     margin-left: 20vw;
-    margin-top: 50vh;
     word-spacing: -10px;
-  }
-
-  @media (max-height: 750px) {
-    .title {
-      margin-top: 50vh;
-    }
-  }
-
-  @media (max-height: 500px) {
-    .title {
-      margin-top: 40vh;
-    }
-  }
-
-  @media (max-height: 400px) {
-    .title {
-      margin-top: 30vh;
-    }
-  }
-
-  @media (max-height: 350px) {
-    .down-button {
-      visibility: hidden;
-    }
-  }
-
-  @media (max-height: 170px) {
-    .title {
-      visibility: hidden;
-    }
-  }
-
-  .title-middle {
-    margin-right: 20px;
   }
 }
 </style>
