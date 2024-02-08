@@ -28,17 +28,10 @@
         </div>
 
         <p>
-          When I look back on how I landed in the field of software engineering, I often reflect
-          on the things I've always enjoyed doing. Getting in a good day at the mountain skiing,
-          learning a new song on the guitar, or documenting random events of my life through short
-          form videos are all activities that I grew up loving to do.
-        </p>
-        <br>
-        <p>
-          I find that I am attracted to the challenging nature of these things. There is
-          persistence needed to build my skill and problem solving is always involved. What's my
-          best line down a difficult ski run? How much longer do I need to practice to perfect this
-          song? How should I edit this part of the video to keep the viewer entertained?
+          I am a software engineer with over five years of experience building premium video streaming
+          platforms. Throughout my career, I've honed my analytical and restorative skills to architect
+          and develop complex systems for video manifest and metadata delivery, cache eviction, ETL
+          pipelines, and more.
         </p>
 
         <div class="image-row">
@@ -63,19 +56,10 @@
         </div>
 
         <p>
-          Although as a software engineer I ask different questions, my mindset is in a similar state.
-          Software engineering is challenging, takes persistence, and at it's core is problem solving.
-          This is what I love about the work I do.
-        </p>
-        <br>
-        <p>
-          But let's not be too analytical here! Outside of the office you'll find me enjoying the
-          outdoors, whether that's exploring the city I'm in or heading out for a weekend in the
-          mountains. More often than not music is involved. That usually means a jam session on
-          the piano or guitar, or possibly blasting some good old Seattle grunge in the car. But
-          in the end, what makes all of these things better is when I get to do them with my friends
-          and family! They're the people that keep me going, keep me laughing, and keep me loving
-          life.
+          Outside of the office you'll find me enjoying the outdoors, whether that's exploring the city
+          I'm in or heading out for a weekend in the mountains. More often than not music is involved.
+          That usually means a jam session on the piano or guitar, or possibly blasting some good old Seattle
+          grunge in the car.
         </p>
 
         <div class="image-row">
