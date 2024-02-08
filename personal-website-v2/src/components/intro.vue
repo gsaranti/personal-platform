@@ -147,6 +147,7 @@ body {
   left: 0;
   position: absolute;
   filter: blur(12px);
+  box-shadow: 0 0 5px rgba(0,0,0,10);
   background: url(https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,e_brightness_hsb:-10/v1614834825/seaside_blur_v5_y7uohh.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -161,6 +162,7 @@ body {
   left: 0;
   position: absolute;
   background: url(https://res.cloudinary.com/df1dpirbp/image/upload/g_auto,q_auto,f_auto,e_brightness_hsb:-10/v1614833766/seaside_v5_abc.jpg) no-repeat center center;
+  box-shadow: 0 0 5px rgba(0,0,0,10);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
