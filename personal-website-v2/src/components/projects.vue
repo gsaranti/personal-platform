@@ -113,6 +113,9 @@ ul {
   padding-top: 30px;
   padding-bottom: 30px;
   background: #f8f6ed;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0,0,0,10);
 }
 
 .projects-label {

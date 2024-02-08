@@ -143,6 +143,9 @@ export default {
 <style>
 .about-section {
   overflow: hidden;
+  z-index: 2;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0,0,0,10);
 }
 
 .about-me {

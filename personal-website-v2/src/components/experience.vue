@@ -73,6 +73,9 @@ export default {
   padding-bottom: 10px;
   padding-top: 30px;
   background: #f8f6ed;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0,0,0,10);
 }
 
 .label {

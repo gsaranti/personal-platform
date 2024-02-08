@@ -24,7 +24,7 @@
           </div>
         </div>
       </template>
-      <v-list rounded style="z-index: 2">
+      <v-list rounded style="z-index: 6">
         <v-list-item
             v-for="(item, index) in items"
             :key="index"
@@ -84,7 +84,7 @@ export default {
   box-shadow: 0 0 5px rgba(0,0,0,10);
   height: 55px;
   width: 100vw;
-  z-index: 3;
+  z-index: 7;
   top: 0;
   left: 0;
   position: fixed;
@@ -100,7 +100,7 @@ export default {
   box-shadow: 0 0 5px rgba(0,0,0,10);
   height: 55px;
   width: 100vw;
-  z-index: 3;
+  z-index: 7;
   top: 0;
   left: 0;
   position: fixed;
@@ -195,7 +195,7 @@ export default {
   .navigation-fade-in {
     background-color: transparent;
     box-shadow: none;
-    z-index: 3;
+    z-index: 7;
     top: 0;
     left: 0;
     position: absolute;
@@ -209,7 +209,7 @@ export default {
   .navigation {
     background-color: transparent;
     box-shadow: none;
-    z-index: 3;
+    z-index: 7;
     top: 0;
     left: 0;
     position: absolute;
@@ -217,7 +217,7 @@ export default {
 
   .drop-down-menu {
     position: fixed;
-    z-index: 2;
+    z-index: 6;
     cursor: pointer;
     width: 50px;
     height: 50px;
