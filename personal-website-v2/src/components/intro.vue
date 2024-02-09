@@ -193,7 +193,8 @@ body {
 
 .title {
   color: ghostwhite;
-  font-family: "Roboto", monospace;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
   margin-left: 45vw;
   margin-right: 5vw;
   white-space: nowrap;

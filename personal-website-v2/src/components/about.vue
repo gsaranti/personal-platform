@@ -6,27 +6,6 @@
           <h2 class="about-label">About Me</h2>
         </div>
 
-        <div class="image-row">
-          <div class="image-item">
-            <v-img :height="250"
-                   :width="333"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/family_v5_tdyc5n.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/family_v5_tdyc5n.jpg"/>
-          </div>
-          <div class="image-item image-hidden-1">
-            <v-img :height="250"
-                   :width="188"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"/>
-          </div>
-          <div class="image-item image-hidden-2">
-            <v-img :height="250"
-                   :width="333"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/bench_v5_mynrxo.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/bench_v5_mynrxo.jpg"/>
-          </div>
-        </div>
-
         <p>
           I am a software engineer with over five years of experience building premium video streaming
           platforms. Throughout my career, I've honed my analytical and restorative skills to architect
@@ -35,23 +14,23 @@
         </p>
 
         <div class="image-row">
-          <div class="image-item  image-hidden-1">
-            <v-img :height="250"
-                   :width="188"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"/>
+          <div class="image-item">
+            <v-img :height="200"
+                   :width="266"
+                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/family_v5_tdyc5n.jpg"
+                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/family_v5_tdyc5n.jpg"/>
+          </div>
+          <div class="image-item image-hidden-1">
+            <v-img :height="200"
+                   :width="154"
+                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"
+                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"/>
           </div>
           <div class="image-item image-hidden-2">
-            <v-img :height="250"
-                   :width="333"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"/>
-          </div>
-          <div class="image-item">
-            <v-img :height="250"
-                   :width="333"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"/>
+            <v-img :height="200"
+                   :width="266"
+                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/bench_v5_mynrxo.jpg"
+                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/bench_v5_mynrxo.jpg"/>
           </div>
         </div>
 
@@ -63,23 +42,23 @@
         </p>
 
         <div class="image-row">
-          <div class="image-item">
-            <v-img :height="250"
-                   :width="333"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/ferry_v5_qj2xq2.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/ferry_v5_qj2xq2.jpg"/>
-          </div>
-          <div class="image-item image-hidden-1">
-            <v-img :height="250"
-                   :width="188"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/bike_v5_qhvlxv.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/bike_v5_qhvlxv.jpg"/>
+          <div class="image-item  image-hidden-1">
+            <v-img :height="200"
+                   :width="150"
+                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"
+                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"/>
           </div>
           <div class="image-item image-hidden-2">
-            <v-img :height="250"
-                   :width="333"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/book_v5_quytft.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/book_v5_quytft.jpg"/>
+            <v-img :height="200"
+                   :width="266"
+                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"
+                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"/>
+          </div>
+          <div class="image-item">
+            <v-img :height="200"
+                   :width="266"
+                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"
+                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"/>
           </div>
         </div>
       </div>
@@ -134,13 +113,21 @@ export default {
 
 .about-me {
   line-height: 1.5;
-  padding: 10px 65px;
+  padding-top: 30px;
+  padding-bottom: 10px;
   background-color: #D8D7CC;
   position: relative;
 }
 
+.about-me p {
+  text-align: center;
+  font-size: 17px;
+  margin-right: 20vw;
+  margin-left: 20vw;
+}
+
 .about-label-wrapper {
-  padding-top: 25px;
+  padding-bottom: 25px;
   background-color: #D8D7CC;
 }
 
@@ -148,8 +135,9 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
-  margin-right: 25%;
-  margin-left: 25%;
+  font-size: 30px;
+  margin-right: 30%;
+  margin-left: 30%;
 }
 
 .about-label:before,
@@ -178,8 +166,8 @@ export default {
   align-items: center;
   align-self: center;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .image-item {
@@ -200,6 +188,11 @@ export default {
     overflow: auto;
   }
 
+  .about-me p {
+    margin-right: 15vw;
+    margin-left: 15vw;
+  }
+
   .image-hidden-1 {
     display: none;
   }
@@ -214,6 +207,11 @@ export default {
 @media (max-width: 500px) {
   .about-me {
     padding: 30px 40px;
+  }
+
+  .about-me p {
+    margin-right: 5vw;
+    margin-left: 5vw;
   }
 
   .about-label:before {

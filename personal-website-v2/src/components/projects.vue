@@ -118,12 +118,17 @@ ul {
   box-shadow: 0 0 5px rgba(0,0,0,10);
 }
 
+.projects-section p {
+  text-align: center;
+  font-size: 17px;
+}
+
 .projects-label {
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
-  margin-right: 35%;
-  margin-left: 35%;
+  margin-right: 30%;
+  margin-left: 30%;
   margin-bottom: 25px;
   font-size: 30px;
 }
@@ -221,7 +226,6 @@ ul {
   .projects-label {
     margin-right: 25%;
     margin-left: 25%;
-    font-size: 23px;
   }
 
   .projects-label:before {

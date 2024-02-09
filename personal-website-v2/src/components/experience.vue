@@ -1,7 +1,7 @@
 <template>
   <div class="experience">
     <div :class="{ 'base-item': !animate, 'visible-item': (animate && isVisible), 'hidden-item': !isVisible }">
-      <h2 class="label">The Path So Far</h2>
+      <h2 class="label">Experience</h2>
     </div>
     <div class="column">
       <div class="row">
@@ -84,7 +84,7 @@ export default {
   text-align: center;
   margin-right: 30%;
   margin-left: 30%;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   font-size: 30px;
 }
 
@@ -154,7 +154,6 @@ export default {
   .label {
     margin-right: 20%;
     margin-left: 20%;
-    font-size: 23px;
   }
 
   .label:before {
