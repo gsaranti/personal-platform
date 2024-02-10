@@ -24,8 +24,8 @@
             <div class="image-item image-hidden-1">
               <v-img :height="200"
                      :width="150"
-                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"
-                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"/>
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_100/v1707593375/IMG_2395_wbtqkn.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_100/v1707593375/IMG_2395_wbtqkn.jpg"/>
             </div>
             <div class="image-item image-hidden-2">
               <v-img :height="199"
@@ -46,20 +46,20 @@
             <div class="image-item image-hidden-1">
               <v-img :height="200"
                      :width="150"
-                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"
-                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"/>
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_100,w_3000,h_4000/v1707594026/IMG_0570_jxf53f.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_100,w_3000,h_4000/v1707594026/IMG_0570_jxf53f.jpg"/>
             </div>
             <div class="image-item image-hidden-2">
-              <v-img :height="199"
-                     :width="265"
-                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"
-                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"/>
+              <v-img :height="200"
+                     :width="256"
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_100,w_3089,h_2410/v1707595074/000011500023_ifufmh.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_100,w_3089,h_2410/v1707595074/000011500023_ifufmh.jpg"/>
             </div>
             <div class="image-item">
-              <v-img :height="200"
-                     :width="266"
-                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"
-                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"/>
+              <v-img :height="199"
+                     :width="265"
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_100/v1612750132/ferry_nbn0lt.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_100/v1612750132/ferry_nbn0lt.jpg"/>
             </div>
           </div>
         </div>
