@@ -169,6 +169,8 @@ ul {
   margin-top: 20px;
   margin-left: 100px;
   margin-right: 100px;
+  font-size: 16px;
+  font-weight: 450;
 }
 
 .project-details {
@@ -177,13 +179,18 @@ ul {
   justify-content: center;
 }
 
+.project-details li {
+  font-size: 16px;
+  font-weight: 450;
+}
+
 .technology {
   text-align: left;
 }
 
 .detail-buttons {
-  margin-top: 50px;
-  margin-left: 50px;
+  margin-top: 55px;
+  margin-left: 55px;
 }
 
 .detail-button {

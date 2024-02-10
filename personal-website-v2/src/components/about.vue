@@ -6,59 +6,61 @@
           <h2 class="about-label">About Me</h2>
         </div>
 
-        <p>
-          I am a software engineer with over five years of experience building premium video streaming
-          platforms. Throughout my career, I've honed my analytical and restorative skills to architect
-          and develop complex systems for video manifest and metadata delivery, cache eviction, ETL
-          pipelines, and more.
-        </p>
+        <div class="about-container">
+          <p>
+            I am a software engineer with over five years of experience building premium video streaming
+            platforms. Throughout my career, I've honed my analytical and restorative skills to architect
+            and develop complex systems for video manifest and metadata delivery, cache eviction, ETL
+            pipelines, and more.
+          </p>
 
-        <div class="image-row">
-          <div class="image-item">
-            <v-img :height="200"
-                   :width="266"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/family_v5_tdyc5n.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/family_v5_tdyc5n.jpg"/>
+          <div class="image-row">
+            <div class="image-item">
+              <v-img :height="199"
+                     :width="265"
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/family_v5_tdyc5n.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/family_v5_tdyc5n.jpg"/>
+            </div>
+            <div class="image-item image-hidden-1">
+              <v-img :height="200"
+                     :width="150"
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"/>
+            </div>
+            <div class="image-item image-hidden-2">
+              <v-img :height="199"
+                     :width="265"
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/bench_v5_mynrxo.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/bench_v5_mynrxo.jpg"/>
+            </div>
           </div>
-          <div class="image-item image-hidden-1">
-            <v-img :height="200"
-                   :width="154"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/look_v5_ow7dta.jpg"/>
-          </div>
-          <div class="image-item image-hidden-2">
-            <v-img :height="200"
-                   :width="266"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/bench_v5_mynrxo.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/bench_v5_mynrxo.jpg"/>
-          </div>
-        </div>
 
-        <p>
-          Outside of the office you'll find me enjoying the outdoors, whether that's exploring the city
-          I'm in or heading out for a weekend in the mountains. More often than not music is involved.
-          That usually means a jam session on the piano or guitar, or possibly blasting some good old Seattle
-          grunge in the car.
-        </p>
+          <p>
+            Outside of the office you'll find me enjoying the outdoors, whether that's exploring the city
+            I'm in or heading out for a weekend in the mountains. More often than not music is involved.
+            That usually means a jam session on the piano or guitar, or possibly blasting some good old Seattle
+            grunge in the car.
+          </p>
 
-        <div class="image-row">
-          <div class="image-item  image-hidden-1">
-            <v-img :height="200"
-                   :width="150"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"/>
-          </div>
-          <div class="image-item image-hidden-2">
-            <v-img :height="200"
-                   :width="266"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"/>
-          </div>
-          <div class="image-item">
-            <v-img :height="200"
-                   :width="266"
-                   lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"
-                   src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"/>
+          <div class="image-row">
+            <div class="image-item image-hidden-1">
+              <v-img :height="200"
+                     :width="150"
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833764/buildings_v5_si7azp.jpg"/>
+            </div>
+            <div class="image-item image-hidden-2">
+              <v-img :height="199"
+                     :width="265"
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/ski_v5_dbasle.jpg"/>
+            </div>
+            <div class="image-item">
+              <v-img :height="200"
+                     :width="266"
+                     lazy-src="https://res.cloudinary.com/df1dpirbp/image/upload/q_10,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"
+                     src="https://res.cloudinary.com/df1dpirbp/image/upload/q_auto,f_auto,r_25/v1614833765/henry_v5_vqzxsm.jpg"/>
+            </div>
           </div>
         </div>
       </div>
@@ -114,21 +116,23 @@ export default {
 .about-me {
   line-height: 1.5;
   padding-top: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   background-color: #D8D7CC;
   position: relative;
 }
 
 .about-me p {
   text-align: center;
-  font-size: 17px;
-  margin-right: 20vw;
-  margin-left: 20vw;
+  font-size: 16px;
+  font-weight: 450;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-right: 10vw;
+  margin-left: 10vw;
 }
 
 .about-label-wrapper {
   padding-bottom: 25px;
-  background-color: #D8D7CC;
 }
 
 .about-label {
@@ -161,18 +165,35 @@ export default {
   margin-right: -50%;
 }
 
+.about-container {
+  border-radius: 5px;
+  background-color: #C8C7BF;
+  margin-right: 8vw;
+  margin-left: 8vw;
+  padding-bottom: 30px;
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,.5);
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,.5);
+  -o-box-shadow: 0 0 5px rgba(0,0,0,.5);
+  -ms-box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
 .image-row {
   display: flex;
   align-items: center;
   align-self: center;
   justify-content: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
 }
 
 .image-item {
   margin-left: 10px;
   margin-right: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 15px rgba(0,0,0,.5);
+  -moz-box-shadow: 0 0 15px rgba(0,0,0,.5);
+  -o-box-shadow: 0 0 15px rgba(0,0,0,.5);
+  -ms-box-shadow: 0 0 15px rgba(0,0,0,.5);
 }
 
 .image-hidden-1 {
@@ -182,15 +203,9 @@ export default {
 }
 
 @media (max-width: 1000px) {
-  .about-me {
-    height: unset;
-    border-left: none;
-    overflow: auto;
-  }
-
   .about-me p {
-    margin-right: 15vw;
-    margin-left: 15vw;
+    margin-right: 10vw;
+    margin-left: 10vw;
   }
 
   .image-hidden-1 {
@@ -205,10 +220,6 @@ export default {
 }
 
 @media (max-width: 500px) {
-  .about-me {
-    padding: 30px 40px;
-  }
-
   .about-me p {
     margin-right: 5vw;
     margin-left: 5vw;
@@ -227,6 +238,11 @@ export default {
   .about-label {
     margin-right: 12%;
     margin-left: 12%;
+  }
+
+  .about-container {
+    margin-right: 25px;
+    margin-left: 25px;
   }
 }
 </style>
